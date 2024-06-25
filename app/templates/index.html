@@ -1,11 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HOME</title>
-</head>
-<body>
-    <h1>HOME PAGE</h1>
-</body>
-</html>
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- HOME PAGE CONTENTS -->
+<section id="home" class="home">
+    <div class="home-txt">
+        <h1>Your Trusted Handyman for Every Home Need</h1>
+        <p>Our skilled team is committed to top-notch service for your satisfaction. Count on us for reliable solutions that go above and beyond.O</p>
+        <button class="book-now btn btn-light rounded-pill">Book now</button>
+    </div>
+    <div class="home-img">
+        <div class="home-image"><img src="../static/images/home-handyman-img.svg" alt=""></div>
+    </div>
+</section>
+
+
+<!-- Cards Section -->
+<section >
+    <div class="slide-container">
+        <div class="slide-content">
+            <div class="card-wrapper">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="overlay"></span>
+
+                        <div class="card-image">
+                            <img src="../static/images/electric1.jpg" alt="" class="card-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section>
+    <h1>howmesection</h1>
+    <p>Exercitationem reprehenderit quis fugit nulla iste impedit quae fuga, nesciunt rerum mollitia eum at tenetur in consectetur. Voluptatem blanditiis aut, consequuntur quaerat ducimus voluptates culpa laudantium tempora sequi. Laborum, libero?</p>
+</section>
+
+
+
+<section id="about">
+    <h1>howmesection</h1>
+    <p>Itaque tenetur numquam, doloremque quos soluta temporibus ex eum laudantium eligendi maxime, alias totam quas cumque provident a illo modi, vero dolore cum odit similique accusamus sed optio? Nisi, quo.</p>
+    <div class="wave">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+        </svg>
+    </div>
+</section>
+<section>
+    <h1>howmesection</h1>
+    <p>Laboriosam tempore inventore quisquam voluptates ullam natus, sed eum numquam nam incidunt, temporibus nulla quam magni quidem atque voluptate? Temporibus laboriosam consectetur sit, optio sunt suscipit ex nulla beatae quisquam.</p>
+</section>
+
+{% endblock %}

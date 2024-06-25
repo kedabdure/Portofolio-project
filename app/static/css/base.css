@@ -1,0 +1,166 @@
+:root {
+    --border-color: #242a30;
+    --background-color: white;
+    --btn-color: rgb(3, 128, 3);
+    --text-color: #0a2b14;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
+
+body {
+    margin: 0;
+    min-width: 320px;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--background-color);
+}
+
+h1, h2, h3, p, span, a {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(24, 24, 24, 0.1);
+    background-color: var(--background-color);
+    line-height: 4rem;
+    padding: .2rem 5rem;
+}
+
+#nav-logo-section {
+    font-size: 1.4rem;
+}
+
+#nav-social-section {
+    display: flex;
+    gap: 2rem;
+}
+
+nav .nav-section a {
+    text-decoration: none;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+#nav-social-section .btn{
+    color: var(--btn-color);
+    margin: auto;
+}
+
+#nav-social-section .btn:hover {
+    background-color: #fff;
+}
+
+/* NAVBAR ICON */
+.navbar-icon i{
+    color: var(--text-color);
+    background-color: #f2f2f2;
+    border-radius: 3px;
+    font-size: 22px;
+    float: left;
+    line-height: 80px;
+    padding: .4rem;
+    cursor: pointer;
+    display: block;
+}
+
+.navbar-icon:hover {
+    background-color: #e4e4e4;
+
+}
+
+.navbar-icon .fa-bars {
+    display: none;
+}
+
+.navbar-icon .fa-times {
+    display: none;
+}
+
+#menu-toggle {
+    display: none;
+}
+
+/* MOBILE VERSION */
+
+@media (max-width: 858px) {
+    .navbar-icon {
+        margin: 2rem 3rem;
+    }
+
+    #nav-logo-section {
+        font-size: 1rem;
+    }
+
+    .navbar-icon .fa-bars {
+        display: block;
+    }
+
+    nav {
+        position: fixed;
+        top: 0;
+        width: 0;
+        height: 100vh;
+        flex-direction: column;
+        overflow: hidden;
+        align-items: left;
+        gap: 0;
+        padding: 0;
+        z-index: 1;
+        background-color: rgb(243, 243, 243);
+    }
+
+    #nav-social-section {
+        display: block;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 20px 20px;
+        gap: 0;
+    }
+
+    #nav-social-section .btn{
+        color: var(--btn-color);
+        margin: auto;
+        border: none;
+        background: none;
+        color: var(--text-color);
+    }
+
+    #nav-social-section .btn:hover {
+        background: none;
+    }
+
+
+    #nav-social-section,
+    #nav-request-section {
+        display: block;
+    }
+
+
+    /* Toggle Navbar */
+    #menu-toggle:checked ~ nav {
+        width: 300px;
+        
+    }
+
+    #menu-toggle:checked ~ .navbar-icon .fa-bars {
+        display: none;
+    }
+
+    #menu-toggle:checked ~ .navbar-icon .fa-times {
+        display: block;
+        margin-left: 280px;
+        padding: auto 0;
+        position: fixed;
+    }
+}

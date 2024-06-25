@@ -3,20 +3,16 @@ from flask import render_template
 
 
 @main.route('/', methods=['GET'])
+@main.route('/home', methods=['GET'])
 def index():
-    return "<h1>HOME PAGE</h1>"
+    return render_template('index.html')
 
 
-@main.route('/about', methods=['GET'])
-def about():
-    return render_template('about.html')
+@main.route('/services', methods=['GET'])
+def services():
+    return render_template('services.html')
 
 
-@main.route('contact', methods=['GET'])
-def contact():
-    return render_template('contact.html')
-
-
-@main.route('blogs', methods=['GET'])
-def get_blogs():
-    return render_template('blogs.html')
+@main.route('/register', methods=['GET'])
+def register():
+    return render_template('register.html')
