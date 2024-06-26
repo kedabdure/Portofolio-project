@@ -3,7 +3,6 @@ section {
     flex-direction: column;
     min-height: 450px;
     align-items: center;
-    padding: 0 12%;
 }
 
 .home {
@@ -12,15 +11,16 @@ section {
     min-height: 100vh;
     background-color: var(--background-color);
     position: relative;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    gap: 2rem;
+    padding: 0 10%;
 }
-
+/* 
 .home-txt {
-    /* padding-top: -2rem; */
-}
+    padding-top: -2rem;
+} */
 
 .home-txt h1 {
     font-size: 3rem;
@@ -28,7 +28,7 @@ section {
 }
 
 .home-img {
-    width: 600px;
+    width: 800px;
     /* margin-left: 2rem; */
 }
 
@@ -50,5 +50,140 @@ section {
     background-color: rgba(116, 117, 117, 0.2);
 
 }
+/* CARDS SECTION */
+.cards-section {
+    position: relative;
+    background: #eee;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #000;
+    margin: 0;
+    padding: 2rem 3rem;
+    min-height: 100vh;
+}
+
+/* Correct class name from "slider-container" to "slide-container" to match the HTML class */
+.slide-container {
+    width: 100%;
+    height: 100%;
+    background-color: grey;
+    margin: 1rem 5rem;
+}
+
+/* Correct class name from "card-wrapper" to "card-wrapper" */
+.card-wrapper {
+    width: 100%;
+    display: flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 4px;
+}
+
+.card {
+    border-radius: 25px;
+    background-color: #fff;
+    /* Add margin for spacing between cards */
+    margin: 20px;
+    flex-shrink: 0;
+}
+
+.card-content,
+.image-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 14px;
+}
+
+.image-content {
+    position: relative;
+    row-gap: 5px;
+    padding: 25px 0;
+}
+
+.overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: var(--btn-color);
+    border-radius: 0 25px 0 25px;
+}
+
+.overlay::before,
+.overlay::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: -40px;
+    height: 40px;
+    width: 40px;
+    background-color: var(--btn-color);
+    /* Add more specific positioning for ::before */
+}
+
+.overlay::after {
+    border-radius: 0 25px 0 0;
+    background-color: #ffffff;
+}
+
+.card-image {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    background-color: #fff;
+    border-radius: 50%;
+    padding: 3px;
+}
+
+.card-image .card-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid var(--btn-color);
+}
+
+.name {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.description {
+    font-size: 14px;
+    color: var(--text-color);
+    text-align: center;
+}
+
+.card-btn {
+    border: none;
+    font-size: 14px; /* Correct font property */
+    color: rgb(251, 251, 251);
+    font-weight: 500;
+    padding: 8px 16px;
+    background-color: var(--btn-color);
+    border-radius: 10px;
+    margin: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.card-btn:hover {
+    background-color: #00ad00;
+}
 
 
+.reviews-section {
+    position: relative;
+    background: #eee;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #000;
+    margin: 0;
+    padding: 0;
+}
