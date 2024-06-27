@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    .heading {
+        font-size: 3rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+    }
+
+    .btn {
+        font-size: 1rem;
+        font-weight: bold;
+        background-color: #028b02;
+        margin-top: 2rem;
+        padding: .6rem;
+    }
+
+    .main_container {
+        background-image: url('../static/images/handyman-painting.jpg');
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 3rem;
+    }
+
+    .sub_container {
+        background-color: white;
+        margin-top: 15rem;
+        border-radius: 10px;
+        padding: 2rem;
+        max-width: 480px;
+        height: auto;
+    }
+
+    form {
+        width: 100%;
+        padding: 1.5rem;
+    }
+
+</style>
+
+<div class="main_container">
+    <div class="container d-flex flex-column justify-content-center align-items-center sub_container">
+        <h1 class="heading">Expert Handyman</h1>
+        <form method="POST">
+            <div class="form-group w-100">
+                <input type="text" class="form-control" id="firstName" name="firstName"
+                    value="{{ request.form.get('full_name', '') }}" placeholder="First name" required />
+            </div>
+
+            <div class="form-group w-100">
+                <input type="text" class="form-control" id="lastName" name="lastName"
+                    value="{{ request.form.get('full_name', '') }}" placeholder="Last name" required />
+            </div>
+
+            <div class="form-group w-100">
+                <input type="email" class="form-control" id="email" name="email"
+                    value="{{ request.form.get('email', '') }}" placeholder="Email" required />
+            </div>
+
+            <div class="form-group">
+                <input type="tel" class="form-control" id="phone" name="phone" 
+                       placeholder="Phone" required 
+                       inputmode="numeric" 
+                       pattern="\d{10,15}" 
+                       title="Please enter a valid phone number (10-15 digits)." 
+                       minlength="10" 
+                       maxlength="15">
+            </div>
+
+            <div class="form-group w-100">
+                <input type="password" class="form-control" id="password1" name="password1"
+                    value="{{ request.form.get('password1', '') }}" placeholder="Password" required />
+            </div>
+
+            <div class="form-group w-100 mb-2">
+                <input type="password" class="form-control" id="password2" name="password2"
+                    value="{{ request.form.get('password2', '') }}" placeholder="Confirm password" required />
+            </div> 
+
+            <button type="submit" class="btn btn-success w-100 rounded-pill mb-2">Create an account</button>
+
+            <p class="text-center mt-3 terms" style="font-size: .89rem;">
+                By signing up, you agree to our <a href="#" class="text-decoration-none" style="color: #048904;">Terms
+                    of Use</a> <br>and <a href="#" class="text-decoration-none" style="color: #048904;">Privacy
+                    Policy</a>.
+            </p>
+        </form>
+
+    </div>
+</div>
+{% endblock content %}
+{% block footer %}
+{% endblock footer %}
+{% block navbar %}
+{% endblock navbar %}
