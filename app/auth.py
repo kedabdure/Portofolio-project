@@ -8,33 +8,34 @@ from . import db
 auth = Blueprint('auth', __name__)
 
 
-@auth.route('/login', methods=['GET', 'POST'])
+@auth.route('/login', methods=['GET', 'POST']) 
 def login():
-    if request.method == 'POST':
-        data = request.form
-        email = data.get('email')
+    if request.method == 'POST': # check if the form send data with post method
+        data = request.form # fetch data from the form
+        email = data.get('email') # getting data by specifying the name of the field
         password = data.get('password')
 
-        user = User.query.filter_by(email=email).first()
+        user = User.query.filter_by(email=email).first() # get user by email from the db
+                                                        # we use query for db and request for form
 
         if user:
-            if check_password_hash(user.password, password):
-                flash('Login successfully!', category='success')
-                login_user(user, remember=True)
-                return redirect(url_for('main.services'))
+            if check_password_hash(user.password, password): # check if the user password in db and the form are the same
+                flash('Login successfully!', category='success') # flash success massage at the top
+                login_user(user, remember=True) # the user login and will be remembered by the app until they loged out
+                return redirect(url_for('main.services')) # redirect them to specified route
             else:
                 flash("Incorrect Password!", category='error')
         else:
             flash("Email does't exist", category='error')
 
-    return render_template('login.html', user=current_user)
+    return render_template('login.html', user=current_user) # 
 
 
 @auth.route('/logout')
-@login_required
+@login_required # this decorator force user to login unless this part not accessible by the client
 def logout():
-    logout_user()
-    return redirect(url_for('auth.login'))
+    logout_user() # logout ot the app
+    return redirect(url_for('main.index'))
 
 
 @auth.route('/sign_up', methods=['GET', 'POST'])
