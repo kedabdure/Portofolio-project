@@ -189,11 +189,11 @@ p {
 }
 
 
-
 /* Radio Buttons */
-.input-group  label {
-    display: flex;
-    flex-direction: column;
+.input-group label {
+    display: block;
+    grid-template-rows: repeat(3, 1fr);
+    /* align-items: center; Center items vertically */
     font-size: 1.1rem; /* Adjust the font size */
     font-weight: 400;
     margin: .7rem auto;
@@ -205,10 +205,11 @@ p {
     height: 1.6rem;
 }
 
-.taskoption h3{
+.taskoption h3 {
     border-bottom: 1px solid #ccc;
     padding: .3rem;
     width: 13rem;
+    margin-bottom: 1rem;
 }
 
 
