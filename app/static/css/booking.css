@@ -109,9 +109,9 @@ textarea::placeholder {
 }
 
 ::placeholder {
-    font-size: 1.2rem; /* Adjust the value as needed */
+    font-size: 1.1rem; /* Adjust the value as needed */
     opacity: .5;
-    line-height: 500px;
+    line-height: 400px;
 }
 
 /* Styles for Basic items's Next Button. */
@@ -183,20 +183,25 @@ p {
     display: block;
 }
 
+
+
 /* Styles for input group. */
 .input-group {
     margin: 1rem 0;
 }
 
-
 /* Radio Buttons */
+.input-group {
+    display: grid;
+    grid-template-columns: 1fr; /* Single column layout */
+    gap: .7rem; /* Space between items */
+}
+
 .input-group label {
-    display: block;
-    grid-template-rows: repeat(3, 1fr);
-    /* align-items: center; Center items vertically */
+    display: flex; /* Flexbox for aligning radio buttons and labels */
+    align-items: center; /* Center items vertically */
     font-size: 1.1rem; /* Adjust the font size */
-    font-weight: 400;
-    margin: .7rem auto;
+    font-weight: 500;
 }
 
 .input-group label input[type="radio"] {
@@ -207,11 +212,11 @@ p {
 
 .taskoption h3 {
     border-bottom: 1px solid #ccc;
+    font-size: 1.2rem;
     padding: .3rem;
     width: 13rem;
     margin-bottom: 1rem;
 }
-
 
 
 
