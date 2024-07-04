@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="../static/css/home.css">
     <!-- Services Section CSS -->
     <link rel="stylesheet" href="../static/css/services.css">
+    <!-- About Section CSS -->
+    <link rel="stylesheet" href="../static/css/about.css">
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="../static/css/slider.css">
     <!-- Font Awesome CSS -->
@@ -34,13 +36,16 @@
         <nav>
             <div id="nav-logo-section" class="nav-section">
                 <a href="{{ url_for('main.index') }}">
+                    <span class="logo-icon">🔧</span> <!-- Tool icon for handyman service -->
                     EXPERT HANDYMAN
                 </a>
             </div>
             <div id="nav-social-section" class="nav-section">
-                <a href="#services">Services</a>
+                <!-- <a href="{{ url_for('main.profile') }}">profile</a> -->
+                <a href="/home">home</a>
+                <a href="{{ url_for('main.services') }}">Services</a>
                 <a href="{{ url_for('main.register') }}">Sign up / Log in</a>
-                <a href="#" class="btn btn-outline-success btn-light">Request Services</a>
+                <a href="{{ url_for('main.booking') }}" class="btn btn-outline-success btn-light">GET HELP NOW</a>
             </div>
         </nav>
         <label for="menu-toggle" class="navbar-icon">

@@ -1,48 +1,45 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from flask_login import LoginManager
+from flask_login import LoginManager, current_user
 import os
 
-# from flask_migrate import Migrate
-# from flask_bootstrap import Bootstrap
-# migrate = Migrate()
-
-# create db instance
+# Create db instance
 db = SQLAlchemy()
 DB_NAME = 'database.db'
 
 def create_app():
     app = Flask(__name__)
-    app.config.from_object('app.config.Config') # Load configuration setting from specific class
+    app.config.from_object('app.config.Config')  # Load configuration settings from a specific class
 
-    db.init_app(app) # initialize db with flask app instance
-
+    db.init_app(app)  # Initialize db with Flask app instance
 
     login_manager = LoginManager()
-    login_manager.login_view = 'auth.login' # specify the login view to redirect when login needed
-    login_manager.init_app(app) # bind loginManager instance to Flask app
+    login_manager.login_view = 'auth.login'  # Specify the login view to redirect when login is needed
+    login_manager.init_app(app)  # Bind LoginManager instance to Flask app
 
-    from .models import User
+    from app.models.models import User  # Import User model
 
-    with app.app_context(): # allow flask config info and and other properties accessible globaly in the block which it defined
-        db.create_all()     # cuz create all need to access the current state of the app
+    @app.context_processor
+    def inject_user():
+        return dict(user=current_user)  # Inject the current user into the template context
 
+    with app.app_context():  # Access Flask config and other properties globally within this block
+        db.create_all()  # Create all tables in the database
 
-    @login_manager.user_loader # telling login manager to use the decorated function to load user from database by by id
-    def load_user(user_id):    # help for user session management
-        return User.query.filter_by(id=user_id)
+    @login_manager.user_loader  # Load user by ID for session management
+    def load_user(user_id):
+        return User.query.get(user_id)  # As the id in db model is string no need to convert it to Integer int(user_id)
 
-    #registering blue prints to flask routs
-    from app.routes import main as main_blueprint
-    from .auth import auth as authentication_blueprint
+    # Register blueprints to Flask routes
+    from app.routes.main import main as main_blueprint
+    from app.routes.auth import auth as auth_blueprint
 
     app.register_blueprint(main_blueprint, url_prefix='/')
-    app.register_blueprint(authentication_blueprint, url_prefix='/')
+    app.register_blueprint(auth_blueprint, url_prefix='/auth')  # Add a prefix for auth routes
 
     return app
 
-
 def create_db(app):
-    if not os.path.exists(DB_NAME): # check if the file is already exists
-        db.create_all(app=app)
-        print('db created success!')
+    if not os.path.exists(DB_NAME):  # Check if the database file already exists
+        db.create_all(app=app)  # Create all tables in the database
+        print('Database created successfully!')

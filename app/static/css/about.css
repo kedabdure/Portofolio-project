@@ -1,0 +1,11 @@
+#about {
+    width: 100vw;
+    height: 100vh;
+    margin: 50px auto;
+    background-color: #eee;
+}
+
+#about h1 {
+    font-size: 3rem;
+    font-weight: 700;
+}

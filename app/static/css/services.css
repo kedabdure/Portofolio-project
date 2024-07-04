@@ -1,29 +1,23 @@
-/* General Styles */
-body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #f0f0f0;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-.services {
-    padding: 50px 0;
+#services {
+    width: 100vw;
+    height: auto;
+    margin: 25px auto;
+    padding: 30px 0;
     text-align: center;
     background-color: #fff;
 }
 
-.service-header {
+.service-container h1 {
     font-size: 2.3rem;
     font-weight: 700;
-    margin-bottom: 20px;
     color: #333;
 }
 
-.service-container .header-paragraph {
-    font-size: 1.1rem;
-    margin: 3.5rem 3rem  1rem 3rem;
-    font-weight: 500;
+.service-container .subtitle {
+    font-size: 1rem;
+    width: 80%;
+    margin: 2rem auto;
+    font-weight: 600;
     color: #666;
 }
 
@@ -109,25 +103,37 @@ body {
     background-color: #eee;
 }
 
+/* SHOW ALL SERVICES BUTTON */
 .all-services {
-    margin-top: 20px;
+    margin: 20px auto;
+    text-align: center; /* Center align the services */
 }
 
 .all-services a {
     display: inline-block;
-    padding: 10px 20px;
-    font-size: 1.1rem;
+    padding: 10px 20px; /* Slightly larger padding */
+    font-size: 1.2rem; /* Slightly larger font size */
     color: #fff;
     background-color: #038003;
-    border-radius: 5px;
+    border-radius: 5px; /* Rounded corners for a pill-like shape */
     text-decoration: none;
     cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for a lifted effect */
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .all-services a:hover {
     background-color: #026302;
+    transform: translateY(-3px); /* Slight lift on hover */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Slightly larger shadow on hover */
 }
+
+.all-services a:active {
+    transform: translateY(1px); /* Slight push down on active/click */
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1); /* Reduced shadow on active/click */
+}
+/* END OF BUTTON */
+
 
 /* Show all cards when the "All Services" button is clicked */
 .all-services a.show-all {
