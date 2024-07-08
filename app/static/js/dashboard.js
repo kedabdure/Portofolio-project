@@ -27,8 +27,8 @@ darkMode.addEventListener("click", () => {
 const sidebarLinks = document.querySelectorAll('.sidebar a');
 
 sidebarLinks.forEach(link => {
-    link.addEventListener('click', function (event) {
-        event.preventDefault(); // Prevent the default link behavior
+    link.addEventListener('click', function () {
+        // Prevent the default link behavior
 
         // Remove 'active' class from all links
         sidebarLinks.forEach(link => {
@@ -41,6 +41,8 @@ sidebarLinks.forEach(link => {
 });
 
 
+
+
 // Sidebar LINKS
 const dashboardBtn = document.querySelector(".dashboard");
 const usersBtn = document.querySelector(".users");
@@ -50,13 +52,10 @@ const ticketsBtn = document.querySelector(".tickets");
 const reportBtn = document.querySelector(".report");
 const settingsBtn = document.querySelector(".settings");
 const addBtn = document.querySelector(".add");
-const logoutBtn = document.querySelector(".logout");
+
 
 // CONTAINER COMPONENTS
 const container = document.querySelector(".container");
-
-// CONTAINER COMPONENTS
-
 // Main Section Contents
 const mainSection = document.querySelectorAll("main");
 const analyzeSection = document.querySelector(".analyse");
@@ -108,4 +107,4 @@ const statusButtons = document.querySelectorAll('.status-btn');
                 statusCell.classList.add('completed');
             }
         });
-    });
+});

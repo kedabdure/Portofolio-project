@@ -230,7 +230,6 @@ aside .sidebar .message-count{
 }
 
 
-
 /* MAIN SECTION */
 main{
     margin-top: 1.4rem;
@@ -385,7 +384,6 @@ main .recent-orders table:hover {
 main table thead {
     background-color: var(--color-primary);
     color: var(--color-white);
-    padding-right: ;
 }
 
 main table thead th {
