@@ -27,7 +27,7 @@ darkMode.addEventListener("click", () => {
 const sidebarLinks = document.querySelectorAll('.sidebar a');
 
 sidebarLinks.forEach(link => {
-    link.addEventListener('click', function(event) {
+    link.addEventListener('click', function (event) {
         event.preventDefault(); // Prevent the default link behavior
 
         // Remove 'active' class from all links
@@ -40,20 +40,6 @@ sidebarLinks.forEach(link => {
     });
 });
 
-
-// BOOKING STATUS
-Orders.forEach(order => {
-    const tr = document.createElement('tr');
-    const trContent = `
-        <td>${order.productName}</td>
-        <td>${order.productNumber}</td>
-        <td>${order.paymentStatus}</td>
-        <td class="${order.status === 'Declined' ? 'danger' : order.status === 'Pending' ? 'warning' : 'primary'}">${order.status}</td>
-        <td class="primary">Details</td>
-    `;
-    tr.innerHTML = trContent;
-    document.querySelector('table tbody').appendChild(tr);
-});
 
 // Sidebar LINKS
 const dashboardBtn = document.querySelector(".dashboard");
@@ -94,3 +80,32 @@ bookingsBtn.addEventListener("click", function (event) {
 });
 
 
+// BOOKING STATUS
+const statusButtons = document.querySelectorAll('.status-btn');
+
+    statusButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const statusCell = this.closest('tr').querySelector('.task-status');
+            console.log('Button clicked');
+            console.log('Status cell:', statusCell);
+
+            // Cycle through statuses (for example: Pending -> In Progress -> Completed)
+            if (statusCell.textContent === 'Pending') {
+                statusCell.textContent = 'In Progress';
+            } else if (statusCell.textContent === 'In Progress') {
+                statusCell.textContent = 'Completed';
+            } else {
+                statusCell.textContent = 'Pending';
+            }
+
+            // Optionally, add styles based on status
+            statusCell.classList.remove('pending', 'in-progress', 'completed');
+            if (statusCell.textContent === 'Pending') {
+                statusCell.classList.add('pending');
+            } else if (statusCell.textContent === 'In Progress') {
+                statusCell.classList.add('in-progress');
+            } else {
+                statusCell.classList.add('completed');
+            }
+        });
+    });

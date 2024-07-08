@@ -368,10 +368,10 @@ main .recent-orders table {
     background: var(--table-bg);
     width: 100%;
     margin: 2rem auto;
-    /* padding: var(--card-padding); */
+    /* padding: 1.5rem 1rem; */
     text-align: center;
     box-shadow: var(--box-shadow);
-    border-radius: var(--card-border-radius);
+    border-radius: 10px;
     border-collapse: separate;
     border-spacing: 0;
     overflow: hidden;
@@ -385,6 +385,7 @@ main .recent-orders table:hover {
 main table thead {
     background-color: var(--color-primary);
     color: var(--color-white);
+    padding-right: ;
 }
 
 main table thead th {
@@ -436,24 +437,26 @@ main .recent-orders a:hover {
     color: var(--color-secondary);
 }
 
-/* status button */
-.status {
-    padding: 0.2rem;
+/* status and status button */
+.task-status {
+    width: 90px;
+    padding: 0.3rem;
     border-radius: 0.5rem;
     text-align: center;
+    overflow: hidden;
 }
 
-.status.pending {
+.task-status.pending {
     background-color: yellow;
     color: black;
 }
 
-.status.in-progress {
+.task-status.in-progress {
     background-color: orange;
     color: white;
 }
 
-.status.completed {
+.task-status.completed {
     background-color: green;
     color: white;
 }
