@@ -2,8 +2,10 @@ from flask import Blueprint, render_template, request, flash, redirect, url_for
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, login_required, logout_user, current_user
 from app.models.models import User
+from app.models.models import Booking
 from app import db
 from . import auth
+
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
@@ -65,16 +67,74 @@ def sign_up():
                 flash('Email address already exists', category='error')
             else:
                 new_user = User(
-                    email=email, 
-                    first_name=first_name, 
-                    last_name=last_name, 
-                    phone=phone, 
+                    email=email,
+                    first_name=first_name,
+                    last_name=last_name,
+                    phone=phone,
+                    is_admin=False,
                     password=generate_password_hash(password1, method='pbkdf2:sha256')  # Hash the password
                 )
                 db.session.add(new_user)  # Add the new user to the session
                 db.session.commit()  # Commit the session to the database
                 login_user(new_user, remember=True)  # Log the new user in
+                print('successful!')
                 flash('Account successfully created!', category='success')  # Flash a success message
                 return redirect(url_for('main.profile'))  # Redirect to the profile page
 
     return render_template('sign_up.html', user=current_user)  # Render the sign-up template
+
+
+
+@auth.route('/booking', methods=['GET', 'POST'])
+def booking():
+    if request.method == 'POST':  # Check if the form was submitted via POST method
+        service_name = request.form.get('service_name')
+        task_location = request.form.get('task_location')
+        street_name = request.form.get('street_name')
+        task_size = request.form.get('task_size')
+        task_detail = request.form.get('task_detail')
+        full_name = request.form.get('full_name')
+        email = request.form.get('email')
+        phone = request.form.get('phone')
+
+
+        # Validate the form data
+        if not full_name or len(full_name) <= 2:
+            flash("First name must be greater than 2 characters", category='error')
+        elif not email or len(email) < 3:
+            flash('Email must be greater than 3 characters', category='error')
+        elif not phone or len(phone) < 10:
+            flash('Phone number must be at least 10 characters', category='error')
+        if not task_location:
+            flash('Task location is required', category='error')
+        elif not service_name:
+            flash('Service name is required', category='error')
+        elif not street_name:
+            flash('Street name is required', category='error')
+        elif not task_detail:
+            flash('Task detail is required', category='error')
+        elif not full_name:
+            flash('Full name is required', category='error')
+        elif not email:
+            flash('Email is required', category='error')
+        elif not phone:
+            flash('Phone number is required', category='error')
+        else:
+            new_booking = Booking(
+                service_name = service_name,
+                task_location=task_location,
+                street_name=street_name,
+                task_size=task_size,
+                task_detail=task_detail,
+                full_name=full_name,
+                email=email,
+                phone=phone
+            )
+
+            db.session.add(new_booking)  # Add the new user to the session
+            db.session.commit()  # Commit the session to the database
+            print('successful!')
+            flash('Booked successfully!', category='success')  # Flash a success message
+            return redirect(url_for('main.index'))  # Redirect to the profile page
+
+    return render_template('booking.html', user=current_user)  # Render the sign-up template

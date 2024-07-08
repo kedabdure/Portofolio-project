@@ -1,0 +1,339 @@
+{% extends 'base.html' %}
+{% block head %}
+{% endblock head %}
+{% block navbar %}
+{% endblock navbar %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/admin.css">
+</head>
+<body>
+    <div class="container">
+
+        <!-- Sidebar Section -->
+        <aside>
+            <div class="toggle">
+                <div class="logo">
+                    <img src="../static/images/admins/logo.png" alt="">
+                    <h2>Ex<span class="danger">Handyman</span></h2>
+                </div>
+                <div class="close" id="close-btn">
+                    <span class="material-symbols-sharp">
+                        close
+                    </span>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <a href="#" class="dashboard">
+                    <span class="material-symbols-sharp">
+                        dashboard
+                    </span>
+                    <h3>Dashboard</h3>
+                </a>
+                <a href="#" class="users">
+                    <span class="material-symbols-sharp">
+                        person
+                    </span>
+                    <h3>User</h3>
+                </a>
+                <a href="#all-bookings" class="bookings">
+                    <span class="material-symbols-sharp">
+                        receipt_long
+                    </span>
+                    <h3>Bookings</h3>
+                </a>
+                <a href="#" class="active analytics">
+                    <span class="material-symbols-sharp">
+                        insights
+                    </span>
+                    <h3>Analytics</h3>
+                </a>
+                <a href="#" class="tickets">
+                    <span class="material-symbols-sharp">
+                        mail_outline
+                    </span>
+                    <h3>Tickets</h3>
+                    <span class="message-count">27</span>
+                </a>
+                <!-- <a href="#">
+                    <span class="material-symbols-sharp">
+                        inventory
+                    </span>
+                    <h3>Scale List</h3>
+                </a> -->
+                <a href="#" class="report">
+                    <span class="material-symbols-sharp">
+                        report_gmailerrorred
+                    </span>
+                    <h3>Reports</h3>
+                </a>
+                <a href="#" class="settings">
+                    <span class="material-symbols-sharp">
+                        settings
+                    </span>
+                    <h3>Settings</h3>
+                </a>
+                <a href="#" class="add">
+                    <span class="material-symbols-sharp">
+                        add
+                    </span>
+                    <h3>New Login</h3>
+                </a>
+                <a href="{{ url_for('auth.login') }}" class="logout">
+                    <span class="material-symbols-sharp">
+                        logout
+                    </span>
+                    <h3>Logout</h3>
+                </a>
+            </div>
+
+        </aside>
+        <!-- End of sidebar section -->
+
+
+        <!-- Main Content -->
+        <main>
+            <h1>Analytics</h1>
+            <!-- Analyses -->
+            <div class="analyse">
+                <div class="sales">
+                    <div class="status">
+                        <div class="info">
+                            <h3>Completed</h3>
+                            <h1>25,042</h1>
+                        </div>
+                        <div class="progresss">
+                            <svg>
+                                <circle cx="38" cy="38" r="36"></circle>
+                            </svg>
+                            <div class="percentage">
+                                <p>+81%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="visits">
+                    <div class="status">
+                        <div class="info">
+                            <h3>Pending</h3>
+                            <h1>15</h1>
+                        </div>
+                        <div class="progresss">
+                            <svg>
+                                <circle cx="38" cy="38" r="36"></circle>
+                            </svg>
+                            <div class="percentage">
+                                <p>2%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="searches">
+                    <div class="status">
+                        <div class="info">
+                            <h3>Canceled</h3>
+                            <h1>17</h1>
+                        </div>
+                        <div class="progresss">
+                            <svg>
+                                <circle cx="38" cy="38" r="36"></circle> <!-- create a circle with (x,y) = (38, 38) direction and radius of 36 -->
+                            </svg>
+                            <div class="percentage">
+                                <p>1.23%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End of Analyses -->
+
+
+            <!-- New Users Section -->
+            <div class="new-users">
+                <h2>New Users</h2>
+                <div class="user-list">
+                    {% for user in users %}
+                    <div class="user">
+                        <img src="{{ url_for('static', filename='images/admins/profile-2.jpg') }}">
+                        <h2>{{ user.first_name }}</h2>
+                        <p>{{ user.phone }}</p>
+                    </div>
+                    {% endfor %}
+
+                    <div class="user">
+                        <img src="../static/images/admins/plus.png">
+                        <h2>More</h2>
+                        <p>New User</p>
+                    </div>
+                    
+                </div>
+            </div>
+            <!-- End of New Users Section -->
+
+
+            <!-- Recent Orders Table -->
+            <div class="recent-orders">
+                <h2>Recent Orders</h2>
+                <table id="all-bookings">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Address</th>
+                            <!-- <th>Task Size</th> -->
+                            <!-- <th>Task Detail</th> -->
+                            <th>FulName</th>
+                            <!-- <th>Email</th> -->
+                            <th>Phone</th>
+                            <th>ServName</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for booking in bookings %}
+                        <tr>
+                            <td>{{ booking.id }}</td>
+                            <td>{{ booking.street_name }}, {{ booking.task_location }}</td>
+                            <!-- <td>{{ booking.task_size }}</td> -->
+                            <!-- <td>{{ booking.task_detail }}</td> -->
+                            <td>{{ booking.full_name }}</td>
+                            <!-- <td>{{ booking.email }}</td> -->
+                            <td>{{ booking.phone }}</td>
+                            <td>{{ booking.service_name }}</td>
+                            <td>{{ booking.date_created }}</td>
+                            <td class="status">Pending</td>
+                            <td><button class="status-btn">Status</button></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                <a href="#">Show All</a>
+            </div>
+            <!-- End of Recent Orders -->
+
+        </main>
+        <!-- End of Main Content -->
+
+
+        <!-- Right Section -->
+        <div class="right-section">
+            <!-- Navbar  -->
+            <div class="nav">
+                <button id="menu-btn">
+                    <span class="material-symbols-sharp">
+                        menu
+                    </span>
+                </button>
+                <div class="dark-mode">
+                    <span class="material-symbols-sharp active">
+                        light_mode
+                    </span>
+                    <span class="material-symbols-sharp">
+                        dark_mode
+                    </span>
+                </div>
+
+                <div class="profile">
+                    <div class="info">
+                        <p>Hey, <b>Reza</b></p>
+                        <small class="text-muted">Admin</small>
+                    </div>
+                    <div class="profile-photo">
+                        <img src="../static/images/admins/profile-1.jpg">
+                    </div>
+                </div>
+
+            </div>
+            <!-- End of Nav -->
+
+            <!-- User profile -->
+            <div class="user-profile">
+                <div class="logo">
+                    <img src="../static/images/admins/logo.png">
+                    <h2>ExHandyman</h2>
+                    <p>Fullstack Web Developer</p>
+                </div>
+            </div>
+
+            <!-- Reminder -->
+            <div class="reminders">
+                <div class="header">
+                    <h2>Reminders</h2>
+                    <span class="material-symbols-sharp">
+                        notifications_none
+                    </span>
+                </div>
+
+                <div class="notification">
+                    <div class="icon">
+                        <span class="material-symbols-sharp">
+                            volume_up
+                        </span>
+                    </div>
+                    <div class="content">
+                        <div class="info">
+                            <h3>Workshop</h3>
+                            <small class="text_muted">
+                                08:00 AM - 12:00 PM
+                            </small>
+                        </div>
+                        <span class="material-symbols-sharp">
+                            more_vert
+                        </span>
+                    </div>
+                </div>
+
+                <div class="notification deactive">
+                    <div class="icon">
+                        <span class="material-symbols-sharp">
+                            edit
+                        </span>
+                    </div>
+                    <div class="content">
+                        <div class="info">
+                            <h3>Workshop</h3>
+                            <small class="text_muted">
+                                08:00 AM - 12:00 PM
+                            </small>
+                        </div>
+                        <span class="material-symbols-sharp">
+                            more_vert
+                        </span>
+                    </div>
+                </div>
+
+                <div class="notification add-reminder">
+                    <div>
+                        <span class="material-symbols-sharp">
+                            add
+                        </span>
+                        <h3>Add Reminder</h3>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <!-- <script src="../static/js/orders.js"></script> -->
+    <script src="../static/js/dashboard.js"></script>
+</body>
+
+</html>
+
+{% endblock content %}
+{% block footer %}
+{% endblock footer %}

@@ -3,6 +3,7 @@
 <html lang="en">
 
 <head>
+    {% block head %}
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block title %}{% endblock %} | Expert Handyman</title>
@@ -26,7 +27,7 @@
     <link rel="stylesheet" href="../static/css/slider.css">
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    {% endblock head %}
 </head>
 <body>
     <!-- NAVIGATION BAR -->
@@ -42,10 +43,20 @@
             </div>
             <div id="nav-social-section" class="nav-section">
                 <!-- <a href="{{ url_for('main.profile') }}">profile</a> -->
-                <a href="/home">home</a>
+                {% if current_user.is_authenticated %}
+                <a href="/home">Home</a>
                 <a href="{{ url_for('main.services') }}">Services</a>
-                <a href="{{ url_for('main.register') }}">Sign up / Log in</a>
-                <a href="{{ url_for('main.booking') }}" class="btn btn-outline-success btn-light">GET HELP NOW</a>
+                {% if current_user.is_admin %}
+                <a href="{{ url_for('main.admin') }}">Admin-Dashboard</a>
+                {% endif %}
+                <a href="{{ url_for('auth.logout') }}">Logout</a>
+                <a href="{{ url_for('auth.booking') }}" class="btn btn-outline-success btn-light">GET HELP NOW</a>
+                {% else %}
+                <a href="/home">Home</a>
+                <a href="{{ url_for('main.services') }}">Services</a>
+                <a href="{{ url_for('auth.login') }}">Sign up / Log in</a>
+                <a href="{{ url_for('auth.booking') }}" class="btn btn-outline-success btn-light">GET HELP NOW</a>
+                {% endif %}
             </div>
         </nav>
         <label for="menu-toggle" class="navbar-icon">

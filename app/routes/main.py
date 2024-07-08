@@ -1,6 +1,7 @@
 from . import main
-from flask import render_template, url_for, redirect
+from flask import render_template, url_for, redirect, request
 from flask_login import login_required, current_user
+from app.models.models import User, Booking
 
 
 @main.route('/', methods=['GET'])
@@ -8,16 +9,13 @@ from flask_login import login_required, current_user
 def index():
     return render_template('index.html')
 
-
 @main.route('/services', methods=['GET'])
 def services():
     return redirect(url_for('main.index') + '#services')
 
-
 @main.route('/register', methods=['GET'])
 def register():
     return render_template('register.html')
-
 
 @main.route('/profile')
 @login_required
@@ -31,9 +29,13 @@ def profile():
 
     return render_template('user_profile.html', user=current_user, bookings=bookings)
 
-
-@main.route('/booking')
-def booking():
-    """booking section"""
-    return render_template('booking.html')
-
+# ADMIN ROUTE
+@main.route('/admin')
+@login_required
+def admin():
+    """Admin dashboard"""
+    if current_user.is_admin:
+        bookings = Booking.query.all()  # Retrieve all bookings
+        users = User.query.all()  # Retrieve all users (if needed)
+        return render_template('dashboard.html', users=users, bookings=bookings)  # Pass bookings to the template
+    return redirect(url_for('auth.login'))
