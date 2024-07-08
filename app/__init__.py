@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, current_user
 from flask_migrate import Migrate # help to modify the db schema 
 import os
+from models import db
 
 # to use flask migration first
 # `flask db init` initialize flask migration 
@@ -11,8 +12,6 @@ import os
 # `flask db upgrade` Apply the migration to update the database schema with the new column.
 
 
-# Create db instance
-db = SQLAlchemy()
 DB_NAME = 'database.db'
 
 def create_app():
@@ -26,7 +25,7 @@ def create_app():
     login_manager.login_view = 'auth.login'  # Specify the login view to redirect when login is needed
     login_manager.init_app(app)  # Bind LoginManager instance to Flask app
 
-    from app.models.models import User  # Import User model
+    from models.user import User  # Import User model
 
     @app.context_processor
     def inject_user():

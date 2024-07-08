@@ -1,7 +1,8 @@
 from . import main
 from flask import render_template, url_for, redirect, request
 from flask_login import login_required, current_user
-from app.models.models import User, Booking
+from models.user import User
+from models.booking import Booking
 
 
 @main.route('/', methods=['GET'])
