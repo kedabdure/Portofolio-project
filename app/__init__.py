@@ -51,8 +51,10 @@ def create_app():
     # Register blueprints to Flask routes
     from app.routes.main import main as main_blueprint
     from app.routes.form import auth as auth_blueprint
+    from api.v1.views import api_views as api_blueprint
 
     app.register_blueprint(main_blueprint, url_prefix='/')
+    app.register_blueprint(api_blueprint, url_prefix='/api/v1') # registering api views
     app.register_blueprint(auth_blueprint, url_prefix='/auth')  # Add a prefix for auth routes
 
     return app
