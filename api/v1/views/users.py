@@ -4,6 +4,7 @@ from models import User
 from models import db
 
 
+# GET ALL USERS
 @api_views.route('/users', methods=['GET'], strict_slashes=False)
 def get_users():
     """Retrieves the list of all User objects"""
@@ -11,6 +12,7 @@ def get_users():
     return jsonify([user.to_dict() for user in users])
 
 
+# GET USER BY ID
 @api_views.route('/users/<int:user_id>', methods=['GET'], strict_slashes=False)
 def get_user(user_id):
     """Retrieves a User object"""
@@ -20,6 +22,7 @@ def get_user(user_id):
     return jsonify(user.to_dict())
 
 
+# DELETE USER BY ID
 @api_views.route('/users/<int:user_id>', methods=['DELETE'], strict_slashes=False)
 def delete_user(user_id):
     """Deletes a User object"""
@@ -31,6 +34,7 @@ def delete_user(user_id):
     return jsonify({}), 204
 
 
+# CREATE USER
 @api_views.route('/users', methods=['POST'], strict_slashes=False)
 def create_user():
     """Creates a User object"""
@@ -43,6 +47,7 @@ def create_user():
     return jsonify(new_user.to_dict()), 201
 
 
+# UPDATE USER DATA
 @api_views.route('/users/<int:user_id>', methods=['PUT'], strict_slashes=False)
 def update_user(user_id):
     """Updates a User object"""
@@ -53,4 +58,3 @@ def update_user(user_id):
     user.update(data)
     db.session.commit()
     return jsonify(user.to_dict())
-

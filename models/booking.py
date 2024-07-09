@@ -33,3 +33,13 @@ class Booking(db.Model):
 
     def __repr__(self):
         return f'<Booking {self.id} - {self.full_name}>'
+
+
+    def update(self, data):
+        for key, value in data.items():
+            setattr(self, key, value)
+
+
+    # EXAMPLAE OF POST, PUT BOOKING
+    # curl -X PUT -H "Content-Type: application/json" -d '{"email": "ekram@shemsu"}' http://127.0.0.1:5000/api/v1/booking/2
+    # curl -X POST -H "Content-Type: application/json" -d '{"task_location": "Location 3", "street_name": "Street 3", "task_size": "Medium", "task_detail": "Task 3 details", "full_name": "Michael Brown", "email": "michael.brown@example.com", "phone": "5555555555"}' http://127.0.0.1:5000/api/v1/combined_models

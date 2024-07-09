@@ -8,6 +8,7 @@ from models.booking import Booking
 from models import db
 
 
+# GET ALL BOOKINGS
 @api_views.route('/booking', methods=['GET'], strict_slashes=False)
 def get_bookings():
     """Retrieves the list of all Booking objects"""
@@ -16,22 +17,53 @@ def get_bookings():
     return jsonify(booking_list)
 
 
+# GET BOOKING BY ID
 @api_views.route('/booking/<int:book_id>', methods=['GET'], strict_slashes=False)
 def get_booking(book_id):
     """Retrieves Booking object by Id"""
-    booking = Booking.query.filter_by(id=book_id).first()
+    booking = Booking.query.get(book_id)
     if booking is None:
         abort(404)
     return jsonify(booking.to_dict())
 
 
+# DELETE BOOKING BY ID
 @api_views.route('/booking/<int:book_id>', methods=['DELETE'], strict_slashes=False)
 def delete_booking(book_id):
     """Retrieves Booking object by Id and delete"""
-    booking = Booking.query.filter_by(id=book_id).first()
+    booking = Booking.query.get(book_id)
     if booking is None:
         abort(404)
     
     db.session.delete(booking)
     db.session.commit()
     return jsonify({'message': 'Booking deleted successfully'}), 200
+
+
+# CREATE BOOKING
+@api_views.route('/booking', methods=['POST'], strict_slashes=False)
+def post_booking():
+    """Post Booking object"""
+    if not request.json:
+        abort(404)
+    data = request.json  # Get JSON data from request
+    # Create a new Booking object from the JSON data
+    new_booking = Booking(**data) # the `**data` syntax unpacks the data dictionary, passing its key-value pairs as keyword arguments to the Booking constructor
+    db.session.add(new_booking)
+    db.session.commit()
+    return jsonify(new_booking.to_dict()), 201
+
+
+# UPDATE BOOKING DATA
+@api_views.route('/booking/<int:book_id>', methods=['PUT'], strict_slashes=False)
+def update_booking(book_id):
+    """UPDATE Booking object"""
+    booking = Booking.query.get(book_id)
+    if booking is None:
+        abort(404)
+    if not request.json:
+        abort(400)
+    data = request.get_json()
+    booking.update(data)
+    db.session.commit()
+    return jsonify(booking.to_dict()), 200
