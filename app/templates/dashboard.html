@@ -203,6 +203,34 @@
                     </tbody>
                 </table>
 
+
+                <!-- User Table -->
+                <table id="all-users" class="hidden">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Full name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Is admin</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users %}
+                        <tr>
+                            <td class="user-id">{{ user.id }}</td>
+                            <td>{{ user.first_name }} {{ user.last_name }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.phone }}</td>
+                            <td>{{ user.is_admin }}</td>
+                            <td>{{ user.date_created }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <!-- <a href="#" id="show-more-users-btn">Show All</a> -->
+
                 <a href="#" id="show-more-btn">Show All</a>
             </div>
             <!-- End of Recent Orders -->

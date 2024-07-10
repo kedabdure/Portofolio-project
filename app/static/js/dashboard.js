@@ -71,11 +71,16 @@ const mainTitle = document.querySelector('main .main-title');
 const recentOrders = document.querySelector(".recent-orders");
 const newUsers = document.querySelector(".new-users");
 const container = document.querySelector(".container"); // Assuming container class exists
+const usersTable = document.getElementById('all-users')
+const bookingsTable = document.getElementById('all-bookings');
+const showMoreBtn = document.getElementById('show-more-btn')
 
 bookingsBtn.addEventListener("click", function (event) {
     event.preventDefault();
-    toggleVisibility([rightSection, newUsers], false);
+    toggleVisibility([rightSection, newUsers, usersTable], false);
+    toggleVisibility([bookingsTable, ], true);
     analyzeSection.style.display = '';
+    showMoreBtn.style.display = ''
     updateHeaders('All bookings in details', 'Bookings');
     container.style.gridTemplateColumns = "12rem auto auto";
 });
@@ -85,22 +90,80 @@ const analyzeSection = document.querySelector(".analyse");
 const analyticsBtn = document.querySelector(".analytics");
 
 analyticsBtn.addEventListener('click', () => {
-    toggleVisibility([rightSection, newUsers], true);
+    toggleVisibility([rightSection, newUsers, bookingsTable], true);
+    toggleVisibility([usersTable], false);
     analyzeSection.style.display = '';
+    showMoreBtn.style.display = ''
+
     updateHeaders('Recent bookings', 'Analytics');
 });
+
 
 // DISPLAY ALL USERS IN DETAIL
 const usersBtn = document.querySelector(".users");
 
-usersBtn.addEventListener('click', (event) => {
+usersBtn.addEventListener("click", function (event) {
     event.preventDefault();
+    toggleVisibility([rightSection, analyzeSection, bookingsTable], false);
+    toggleVisibility([newUsers, usersTable], true);
     analyzeSection.style.display = 'none';
-    toggleVisibility([rightSection, analyzeSection], false);
-    toggleVisibility([newUsers], true);
+    showMoreBtn.style.display = 'none'
     updateHeaders('All users', 'Users');
+    container.style.gridTemplateColumns = "12rem auto .5rem";
 });
+
+
 /* END OF SIDEBAR LINKS */
+
+
+
+// SHOW ALL TABLE CONTENTS
+const initialDisplayCount = 4;
+let currentDisplayCount = initialDisplayCount;
+
+// Get DOM elements
+    /*already defined at the top*/
+
+// const bookingsTable = document.getElementById('all-bookings');
+const rows = bookingsTable.querySelectorAll('tbody tr');
+
+// Function to render rows
+function renderRows() {
+    // Hide all rows initially
+    rows.forEach(row => row.classList.add('hidden'));
+
+    // Display rows up to the current count
+    for (let i = 0; i < currentDisplayCount && i < rows.length; i++) {
+        rows[i].classList.remove('hidden');
+    }
+
+    // Hide the button if all rows are displayed
+    if (currentDisplayCount >= rows.length) {
+        showMoreBtn.style.display = 'none';
+    }
+}
+
+// Event listener for the "Show More" button
+showMoreBtn.addEventListener('click', (event) => {
+    event.preventDefault();
+    currentDisplayCount += initialDisplayCount;
+    renderRows();
+});
+
+// Initial render
+renderRows();
+
+
+// FUNCTION TO GENERATE RANDOM COLOR
+function getRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
 
 
 // BOOKING STATUS
@@ -208,52 +271,6 @@ function updateAnalytics() {
 }
 
 
-
-// SHOW ALL TABLE CONTENTS
-const initialDisplayCount = 3;
-let currentDisplayCount = initialDisplayCount;
-
-// Get DOM elements
-const allBookingsTable = document.getElementById('all-bookings');
-const showMoreBtn = document.getElementById('show-more-btn');
-const rows = allBookingsTable.querySelectorAll('tbody tr');
-
-// Function to render rows
-function renderRows() {
-    // Hide all rows initially
-    rows.forEach(row => row.classList.add('hidden'));
-
-    // Display rows up to the current count
-    for (let i = 0; i < currentDisplayCount && i < rows.length; i++) {
-        rows[i].classList.remove('hidden');
-    }
-
-    // Hide the button if all rows are displayed
-    if (currentDisplayCount >= rows.length) {
-        showMoreBtn.style.display = 'none';
-    }
-}
-
-// Event listener for the "Show More" button
-showMoreBtn.addEventListener('click', (event) => {
-    event.preventDefault();
-    currentDisplayCount += initialDisplayCount;
-    renderRows();
-});
-
-// Initial render
-renderRows();
-
-
-// FUNCTION TO GENERATE RANDOM COLOR
-function getRandomColor() {
-    const letters = '0123456789ABCDEF';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-}
 
 
 // FUNCTION TO FETCH AND DISPLAY LAST 5 NEW USERS
