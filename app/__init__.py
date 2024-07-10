@@ -4,9 +4,10 @@ from flask_login import LoginManager, current_user
 from flask_migrate import Migrate # help to modify the db schema 
 import os
 from models import db
+from flask_cors import CORS
 
 # to use flask migration first
-# `flask db init` initialize flask migration 
+# `flask db init` initialize flask migration if the first time 
 # then make model change
 # Run `flask db migrate -m "Add phone column to User model."` to create a migration script that includes your changes.
 # `flask db upgrade` Apply the migration to update the database schema with the new column.
@@ -17,6 +18,10 @@ DB_NAME = 'database.db'
 def create_app():
     app = Flask(__name__)
     app.config.from_object('app.config.Config')  # Load configuration settings from a specific class
+    CORS(app)
+    # we can also configure CORS with specific parameters
+    # CORS(app, resources={r"/api/*": {"origins": "http://127.0.0.1:5500"}})
+
 
     db.init_app(app)  # Initialize db with Flask app instance
     migrate = Migrate(app, db) # Initialize Flask-Migrate

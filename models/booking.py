@@ -13,7 +13,7 @@ class Booking(db.Model):
     phone = db.Column(db.String(20), nullable=False)
     service_name = db.Column(db.String(200), nullable=True)  # Optional service name field
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
-
+    status = db.Column(db.String, default='Pending')
 
     def to_dict(self):
         """booking obj to dictionary"""
@@ -28,6 +28,7 @@ class Booking(db.Model):
             'phone': self.phone,
             'service_name': self.service_name,
             'date_created': self.date_created,
+            'status': self.status
         }
 
 
@@ -42,4 +43,4 @@ class Booking(db.Model):
 
     # EXAMPLAE OF POST, PUT BOOKING
     # curl -X PUT -H "Content-Type: application/json" -d '{"email": "ekram@shemsu"}' http://127.0.0.1:5000/api/v1/booking/2
-    # curl -X POST -H "Content-Type: application/json" -d '{"task_location": "Location 3", "street_name": "Street 3", "task_size": "Medium", "task_detail": "Task 3 details", "full_name": "Michael Brown", "email": "michael.brown@example.com", "phone": "5555555555"}' http://127.0.0.1:5000/api/v1/combined_models
+    # curl -X POST -H "Content-Type: application/json" -d '{"task_location": "Location 3", "street_name": "Street 3", "task_size": "Medium", "task_detail": "Task 3 details", "full_name": "Michael Brown", "email": "michael.brown@example.com", "phone": "5555555555"}' http://127.0.0.1:5000/api/v1/bookin

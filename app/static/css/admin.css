@@ -248,7 +248,7 @@ main .analyse > div{
     margin-top: 1rem;
     box-shadow: var(--box-shadow);
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all .5s ease;
 }
 
 main .analyse > div:hover{
@@ -262,9 +262,17 @@ main .analyse > div .status{
 }
 
 main .analyse h3{
-    margin-left: 0.6rem;
+    margin-left: auto 0.5rem;
     font-size: 1rem;
+    font-weight: 600;
 }
+
+main .analyse h1{
+    margin-left: 0.5rem;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
 
 main .analyse .progresss{
     position: relative;
@@ -316,7 +324,7 @@ main .analyse .progresss .percentage{
 
 
 
-/* NEW USER */
+/* NEW USERS */
 main .new-users{
     margin-top: 1.3rem;
 }
@@ -346,11 +354,16 @@ main .new-users .user-list .user{
     justify-content: center;
 }
 
-main .new-users .user-list .user img{
+main .new-users .user-list .user .nickname{
+    text-align: center;
+    line-height: 5rem;
+    font-size: 3rem;
+    font-weight: 600;
     width: 5rem;
     height: 5rem;
     margin-bottom: 0.4rem;
     border-radius: 50%;
+    background-color: #eee;
 }
 
 main .recent-orders{
@@ -428,11 +441,12 @@ main .recent-orders a {
     color: var(--color-primary);
     text-decoration: none;
     font-weight: bold;
-    transition: color 0.3s ease;
+    transition: color 0.5s ease;
 }
 
 main .recent-orders a:hover {
-    color: var(--color-secondary);
+    color: var(--color-dark-variant);
+    border: 2px solid var(--color-primary);
 }
 
 /* status and status button */
@@ -449,7 +463,7 @@ main .recent-orders a:hover {
     color: black;
 }
 
-.task-status.in-progress {
+.task-status.progressing {
     background-color: orange;
     color: white;
 }
@@ -463,14 +477,15 @@ main .recent-orders a:hover {
     padding: 0.5rem .7rem;
     border: none;
     border-radius: 0.3rem;
-    background-color: var(--color-dark-variant);
-    color: white;
+    background-color: var(--color-light);
+    box-shadow: var(--box-shadow);
+    color: var(--color-dark-variant);
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 .status-btn:hover {
-    background-color: rgb(70, 70, 77);
+    background-color: rgb(204, 204, 208);
 }
 /* End of table */
 
@@ -484,7 +499,7 @@ main .recent-orders a:hover {
 .right-section .nav{
     display: flex;
     justify-content: end;
-    gap: 2rem;
+    gap: 1.7rem;
 }
 
 .right-section .nav button{
@@ -519,15 +534,24 @@ main .recent-orders a:hover {
 
 .right-section .nav .profile{
     display: flex;
-    gap: 2rem;
+    align-items: center;
+    gap: 1rem;
     text-align: right;
 }
 
 .right-section .nav .profile .profile-photo{
-    width: 2.8rem;
-    height: 2.8rem;
+    width: 2.3rem;
+    height: 2.3rem;
+    text-align: center;
+    line-height: 2.3rem;
+    background-color: rgb(4, 149, 4);
     border-radius: 50%;
-    overflow: hidden;
+    color:  white;
+}
+
+.right-section .nav .profile .profile-photo h2 {
+    font-size: 1.3rem;
+    font-weight: 500;
 }
 
 

@@ -48,7 +48,7 @@
                     <span class="material-symbols-sharp">
                         receipt_long
                     </span>
-                    <h3>Bookings</h3>
+                    <h3>Booking Details</h3>
                 </a>
                 <a href="#" class="active analytics">
                     <span class="material-symbols-sharp">
@@ -101,14 +101,14 @@
 
         <!-- Main Content -->
         <main>
-            <h1>Analytics</h1>
+            <h1 class="main-title">Analytics</h1>
             <!-- Analyses -->
             <div class="analyse">
                 <div class="sales">
                     <div class="status">
                         <div class="info">
-                            <h3>Completed</h3>
-                            <h1>25,042</h1>
+                            <h3>Total Completed<br>task</h3>
+                            <h1></h1>
                         </div>
                         <div class="progresss">
                             <svg>
@@ -123,8 +123,8 @@
                 <div class="visits">
                     <div class="status">
                         <div class="info">
-                            <h3>Pending</h3>
-                            <h1>15</h1>
+                            <h3>Total Pending <br>task</h3>
+                            <h1></h1>
                         </div>
                         <div class="progresss">
                             <svg>
@@ -139,8 +139,8 @@
                 <div class="searches">
                     <div class="status">
                         <div class="info">
-                            <h3>Canceled</h3>
-                            <h1>17</h1>
+                            <h3>Total Progressing <br>task</h3>
+                            <h1></h1>
                         </div>
                         <div class="progresss">
                             <svg>
@@ -158,22 +158,8 @@
 
             <!-- New Users Section -->
             <div class="new-users">
-                <h2>New Users</h2>
+                <h2>Recent users</h2>
                 <div class="user-list">
-                    {% for user in users %}
-                    <div class="user">
-                        <img src="{{ url_for('static', filename='images/admins/profile-2.jpg') }}">
-                        <h2>{{ user.first_name }}</h2>
-                        <p>{{ user.phone }}</p>
-                    </div>
-                    {% endfor %}
-
-                    <div class="user">
-                        <img src="../static/images/admins/plus.png">
-                        <h2>More</h2>
-                        <p>New User</p>
-                    </div>
-                    
                 </div>
             </div>
             <!-- End of New Users Section -->
@@ -181,7 +167,7 @@
 
             <!-- Recent Orders Table -->
             <div class="recent-orders">
-                <h2>Recent Orders</h2>
+                <h2>Recent bookings</h2>
                 <table id="all-bookings">
                     <thead>
                         <tr>
@@ -190,7 +176,7 @@
                             <!-- <th>Task Size</th> -->
                             <!-- <th>Task Detail</th> -->
                             <th>FulName</th>
-                            <!-- <th>Email</th> -->
+                            <th>Email</th>
                             <th>Phone</th>
                             <th>ServName</th>
                             <th>Date</th>
@@ -201,23 +187,23 @@
                     <tbody>
                         {% for booking in bookings %}
                         <tr>
-                            <td>{{ booking.id }}</td>
+                            <td class="book-id">{{ booking.id }}</td>
                             <td>{{ booking.street_name }}, {{ booking.task_location }}</td>
                             <!-- <td>{{ booking.task_size }}</td> -->
                             <!-- <td>{{ booking.task_detail }}</td> -->
                             <td>{{ booking.full_name }}</td>
-                            <!-- <td>{{ booking.email }}</td> -->
+                            <td>{{ booking.email }}</td>
                             <td>{{ booking.phone }}</td>
                             <td>{{ booking.service_name }}</td>
                             <td>{{ booking.date_created }}</td>
-                            <td><p class="task-status pending">Pending</p> </td>
+                            <td><p class="task-status {{ booking.status | lower }}">{{ booking.status }}</p> </td>
                             <td><button class="status-btn">Status</button></td>
                         </tr>
                         {% endfor %}
                     </tbody>
                 </table>
 
-                <a href="#">Show All</a>
+                <a href="#" id="show-more-btn">Show All</a>
             </div>
             <!-- End of Recent Orders -->
 
@@ -245,11 +231,11 @@
 
                 <div class="profile">
                     <div class="info">
-                        <p>Hey, <b>Reza</b></p>
+                        <p>Hey, <b>{{ user.first_name }}</b></p>
                         <small class="text-muted">Admin</small>
                     </div>
                     <div class="profile-photo">
-                        <img src="../static/images/admins/profile-1.jpg">
+                        <h2>{{ user.first_name[0] | upper }}</h2>
                     </div>
                 </div>
 
@@ -259,9 +245,9 @@
             <!-- User profile -->
             <div class="user-profile">
                 <div class="logo">
-                    <img src="../static/images/admins/logo.png">
-                    <h2>ExHandyman</h2>
-                    <p>Fullstack Web Developer</p>
+                    <img src="../static/images/all-tool-handyman.svg">
+                    <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+                    <p>CEO of Expert Handyman Service</p>
                 </div>
             </div>
 
