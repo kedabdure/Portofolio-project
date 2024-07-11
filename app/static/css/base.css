@@ -3,7 +3,6 @@
     --background-color: white;
     --text-color: #0a2b14;
     --btn-color: #038003; /* Primary button color */
-    --btn-hover-color: #038003; /* Button color on hover */
     --btn-background: #fff; /* Background color */
     --btn-hover-background: #038003; /* Background color on hover */
     --btn-border-color: #038003; /* Border color */
@@ -22,9 +21,13 @@
 body {
     margin: 0;
     min-width: 320px;
+    width: 100vw;
+    height: auto;
     display: flex;
     flex-direction: column;
     background-color: var(--background-color);
+    overflow-x: hidden;
+    position: relative;
 }
 
 h1, h2, h3, p, span, a {
@@ -40,11 +43,14 @@ nav {
     align-items: center;
     border-bottom: 1px solid rgba(24, 24, 24, 0.1);
     background-color: #eee;
-    line-height: 4rem;
+    line-height: 3rem;
     padding: .2rem 5rem;
+    margin: 0;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 100;
 }
-
-
 
 /* FENCY ANINIMATIO FOR LOGO */
 #nav-logo-section a {
@@ -170,7 +176,6 @@ nav {
 
 
 /* BUTTON WITH FANCY STYLE */
-
 #nav-social-section .btn {
     color: var(--btn-color);
     background-color: var(--btn-background);

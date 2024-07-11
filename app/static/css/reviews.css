@@ -1,0 +1,149 @@
+.reviews-section {
+    width: 100%;
+    display: flex;
+    
+    gap: 10rem;
+    padding: 2rem auto;
+    position: relative;
+}
+
+.reviews-section-left h1 {
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #0a2b14;
+}
+
+.reviews-section-left p {
+    color: #0a2b14;
+    margin-bottom: 1rem;
+}
+
+.reviews-section-left button {
+    padding: 1rem 2rem;
+    margin-top: 1rem;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(to right,
+            var(--primary-color),
+            var(--primary-color-dark));
+    color: var(--white);
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.reviews-section-right {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.reviews-section-right .card {
+    padding: 2rem;
+    width: 400px;
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.reviews-section-right .card img {
+    max-width: 75px;
+    border-radius: 100%;
+}
+
+.reviews-section-right .card-content {
+    display: flex;
+    gap: 1rem;
+}
+
+.card-content span i {
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+.reviews-section-right .card-details p {
+    font-style: italic;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+}
+
+.reviews-section-right .card-details h4 {
+    text-align: right;
+    color: var(--primary-color);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+
+/* BOLOBS SECTION TOP*/
+.custom-shape-divider-top-1720701082 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-top-1720701082 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 144px;
+}
+
+.custom-shape-divider-top-1720701082 .shape-fill {
+    fill: #038003;
+}
+
+/* BOLOB BOTTOM */
+.custom-shape-divider-bottom-1720701593 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1720701593 svg {
+    position: relative;
+    display: block;
+    width: calc(169% + 1.3px);
+    height: 147px;
+}
+
+.custom-shape-divider-bottom-1720701593 .shape-fill {
+    fill: #038003;
+}
+
+
+
+/* RESPOSIVE DESIGN */
+@media (width < 1200px) {
+    .reviews-section {
+        gap: 3rem;
+    }
+}
+
+@media (width < 900px) {
+    .reviews-section {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .reviews-section-right {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (width < 750px) {
+    .reviews-section-right {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

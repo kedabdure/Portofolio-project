@@ -1,8 +1,34 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet" />
+
+
 <!-- HOME PAGE CONTENTS -->
+
 <section id="home" class="home">
+    <svg id="blob-top-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#024802;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#13b313;stop-opacity:1" />
+            </linearGradient>
+        </defs>
+        <path id="my-blobs" fill="url(#gradient1)"
+            d="M47.4,-57.6C54.3,-50.6,48.1,-29,49.8,-10.1C51.6,8.8,61.4,24.9,58.8,38.1C56.2,51.4,41.2,61.6,26.5,62.4C11.9,63.2,-2.4,54.5,-16.2,48C-30.1,41.5,-43.5,37.2,-53.9,27.3C-64.2,17.3,-71.3,1.7,-68.6,-11.8C-65.8,-25.3,-53.2,-36.8,-40.1,-42.8C-27,-48.7,-13.5,-49.2,3.3,-53.2C20.2,-57.1,40.4,-64.7,47.4,-57.6Z"
+            transform="translate(100 100)" />
+    </svg>
+    <svg id="blob-top-svg2" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#0b810b;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#39c239;stop-opacity:1" />
+            </linearGradient>
+        </defs>
+        <path id="my-blobs" fill="url(#gradient1)"
+            d="M47.4,-57.6C54.3,-50.6,48.1,-29,49.8,-10.1C51.6,8.8,61.4,24.9,58.8,38.1C56.2,51.4,41.2,61.6,26.5,62.4C11.9,63.2,-2.4,54.5,-16.2,48C-30.1,41.5,-43.5,37.2,-53.9,27.3C-64.2,17.3,-71.3,1.7,-68.6,-11.8C-65.8,-25.3,-53.2,-36.8,-40.1,-42.8C-27,-48.7,-13.5,-49.2,3.3,-53.2C20.2,-57.1,40.4,-64.7,47.4,-57.6Z"
+            transform="translate(100 100)" />
+    </svg>
     <div class="home-txt">
         <h1>Your Trusted Handyman for Every Home Need</h1>
         <p>Our skilled team is committed to top-notch service for your satisfaction. Count on us for reliable solutions
@@ -14,81 +40,79 @@
     </div>
 </section>
 
+<!-- About section -->
+<section id="about" class="about-section">
+    <div class="hero-image">
+        <img src="../static/images/electric1.jpg" alt="HandyFix Services Team">
+    </div>
+    <div class="inner-container">
+        <h1>Your Local Handyman Heroes</h1>
+        <p> Our mission is simple: to provide unparalleled home repair and improvement solutions with a smile. As a
+            family-owned business, we pride ourselves on delivering prompt, reliable service that exceeds expectations.
+        </p>
+
+        <div class="benefits">
+            <h3>Why Choose Us?</h3>
+            <ul>
+                <li><i class="fas fa-wrench"></i> Expertise: Skilled technicians with years of experience.</li>
+                <li><i class="far fa-clock"></i> Reliability: Timely arrivals and efficient service.</li>
+                <li><i class="fas fa-check"></i> Satisfaction: Commitment to your happiness and peace of mind.</li>
+            </ul>
+        </div>
+        <div class="cta">
+            <a href="#" class="btn">Let Us Help You</a>
+        </div>
+    </div>
+</section>
+
+<!-- SERVICES SECTION -->
 <section id="services">
     <div class="service-container">
         <h1>OUR SERVICES</h1>
-        <p class="subtitle" >With over 15 years of experience and a real focus on customer satisfaction, you can rely on us for your next renovation, driveway setup, or home repair. We provide professional services for private and commercial customers.</p>
+        <p class="subtitle">With over 5 years of experience and a real focus on customer satisfaction, you can rely on
+            us for your next home repair or improvement project. We provide professional services for private and
+            commercial customers.</p>
         <ul>
             <li>
                 <a href="#"><img src="../static/images/electric1.jpg" alt="Electrical Services"></a>
                 <h4 class="service-title">Electrical Services</h4>
-                <P class="service-des">Keep your home safe and powered with our professional electrical services. We handle everything from wiring issues to installing new fixtures.</P>
+                <p class="service-des">Professional electrical services to keep your home safe and powered.</p>
                 <button type="button" class="get-help-btn"><a href="#">GET HELP</a></button>
             </li>
             <li>
                 <a href="#"><img src="../static/images/furniture-drilling-land2.jpg" alt="Carpentry Services"></a>
                 <h4 class="service-title">Carpentry Services</h4>
-                <P class="service-des">Transform your space with our skilled carpentry services. From custom furniture to detailed trim work, our carpenters bring craftsmanship to every project.</P>
+                <p class="service-des">Transform your space with custom carpentry and trim work.</p>
                 <button type="button" class="get-help-btn"><a href="#">GET HELP</a></button>
             </li>
             <li>
                 <a href="#"><img src="../static/images/handyman-painting.jpg" alt="Painting Services"></a>
                 <h4 class="service-title">Painting Services</h4>
-                <P class="service-des">Give your home a fresh look with our expert painting services. We offer interior and exterior painting with quality work and a flawless finish.</P>
+                <p class="service-des">Expert interior and exterior painting with a flawless finish.</p>
                 <button type="button" class="get-help-btn"><a href="#">GET HELP</a></button>
             </li>
             <li>
                 <a href="#"><img src="../static/images/handyman-painting.jpg" alt="HVAC Services"></a>
                 <h4 class="service-title">HVAC Services</h4>
-                <P class="service-des">Stay comfortable year-round with our reliable HVAC services. We ensure your system operates efficiently, keeping your home at the perfect temperature.</P>
-                <button type="button" class="get-help-btn"><a href="#">GET HELP</a></button>
-            </li>
-            <li>
-                <a href="#"><img src="../static/images/furniture-drilling-land2.jpg" alt="Carpentry Services"></a>
-                <h4 class="service-title">Carpentry Services</h4>
-                <P class="service-des">Transform your space with our skilled carpentry services. From custom furniture to detailed trim work, our carpenters bring craftsmanship to every project.</P>
+                <p class="service-des">Reliable HVAC services to keep your home comfortable year-round.</p>
                 <button type="button" class="get-help-btn"><a href="#">GET HELP</a></button>
             </li>
             <li>
                 <a href="#"><img src="../static/images/furniture-drilling-land2.jpg" alt="Flooring Services"></a>
                 <h4 class="service-title">Flooring Services</h4>
-                <P class="service-des">Upgrade your home with our premium flooring services. We specialize in hardwood, tile, laminate, and more, providing durable and beautiful options.</P>
+                <p class="service-des">Premium flooring services for durable and beautiful options.</p>
                 <button type="button" class="get-help-btn"><a href="#">GET HELP</a></button>
             </li>
             <li>
                 <a href="#"><img src="../static/images/cleaning-window-land1.jpg" alt="Roofing Services"></a>
                 <h4 class="service-title">Roofing Services</h4>
-                <P class="service-des">Protect your home with our expert roofing services. From minor repairs to complete replacements, our experienced roofers ensure your roof is sturdy and secure.</P>
+                <p class="service-des">Expert roofing services to protect your home with a sturdy roof.</p>
                 <button type="button" class="get-help-btn"><a href="#">GET HELP</a></button>
             </li>
             <li>
                 <a href="#"><img src="../static/images/electric1.jpg" alt="General Maintenance"></a>
                 <h4 class="service-title">General Maintenance</h4>
-                <P class="service-des">Keep your home in top shape with our comprehensive maintenance services. We handle all the small tasks that make a big difference.</P>
-                <button type="button" class="get-help-btn"><a href="#">GET HELP</a></button>
-            </li>
-            <li>
-                <a href="#"><img src="../static/images/electric1.jpg" alt="Electrical Services"></a>
-                <h4 class="service-title">Electrical Services</h4>
-                <P class="service-des">Keep your home safe and powered with our professional electrical services. We handle everything from wiring issues to installing new fixtures.</P>
-                <button type="button" class="get-help-btn"><a href="#">GET HELP</a></button>
-            </li>
-            <li>
-                <a href="#"><img src="../static/images/furniture-drilling-land2.jpg" alt="Flooring Services"></a>
-                <h4 class="service-title">Flooring Services</h4>
-                <P class="service-des">Upgrade your home with our premium flooring services. We specialize in hardwood, tile, laminate, and more, providing durable and beautiful options.</P>
-                <button type="button" class="get-help-btn"><a href="#">GET HELP</a></button>
-            </li>
-            <li>
-                <a href="#"><img src="../static/images/furniture-drilling-land2.jpg" alt="Carpentry Services"></a>
-                <h4 class="service-title">Carpentry Services</h4>
-                <P class="service-des">Transform your space with our skilled carpentry services. From custom furniture to detailed trim work, our carpenters bring craftsmanship to every project.</P>
-                <button type="button" class="get-help-btn"><a href="#">GET HELP</a></button>
-            </li>
-            <li>
-                <a href="#"><img src="../static/images/furniture-drilling-land2.jpg" alt="Carpentry Services"></a>
-                <h4 class="service-title">Carpentry Services</h4>
-                <P class="service-des">Transform your space with our skilled carpentry services. From custom furniture to detailed trim work, our carpenters bring craftsmanship to every project.</P>
+                <p class="service-des">Comprehensive maintenance services to keep your home in top shape.</p>
                 <button type="button" class="get-help-btn"><a href="#">GET HELP</a></button>
             </li>
         </ul>
@@ -96,110 +120,68 @@
     </div>
 </section>
 
-<section id="about">
-    <h1>About</h1>
-    <p>Itaque tenetur numquam, doloremque quos soluta temporibus ex eum laudantium eligendi maxime, alias totam quas
-        cumque provident a illo modi, vero dolore cum odit similique accusamus sed optio? Nisi, quo.</p>
-    <div class="wave">
-        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-            <path
-                d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
-                class="shape-fill"></path>
-        </svg>
-    </div>
-</section>
-
-<!-- Cards Section -->
+<!-- CARDS SECTION -->
 <section id="cards-section" class="slider-section">
-    
-    <!-- <header>
-        <nav>
-            <a href="">Home</a>
-            <a href="">Contacts</a>
-            <a href="">Info</a>
-        </nav>
-    </header> -->
-
+    <div class="trending-services"><h1>Trending Services</h1></div>
     <!-- carousel -->
-    <div class="carousel">
+    <div class="carousel" style="display: '';">
         <!-- list item -->
         <div class="list">
             <div class="item">
                 <img src="../static/images/slider/furniture-drilling-land2.jpg">
                 <div class="content">
-                    <div class="author">ABDK</div>
                     <div class="title">Furniture Assembly</div>
-                    <div class="topic">Repair and Maintenance</div>
+                    <div class="topic">Repair & Maintenance</div>
                     <div class="des">
-                        <!-- lorem 50 -->
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt
-                        minima placeat, itaque eum neque officiis unde, eaque optio ratione aliquid assumenda facere
-                        ab et quasi ducimus aut doloribus non numquam. Explicabo, laboriosam nisi reprehenderit
-                        tempora at laborum natus unde. Ut, exercitationem eum aperiam illo illum laudantium?
+                        We assemble and repair all types of furniture with precision and care.
                     </div>
                     <div class="buttons">
-                        <button>SEE MORE</button>
-                        <button>SUBSCRIBE</button>
+                        <button>BOOK NOW</button>
                     </div>
                 </div>
             </div>
             <div class="item">
                 <img src="../static/images/slider/electric1.jpg">
                 <div class="content">
-                    <div class="author">ETHIO</div>
-                    <div class="title">ELECTRIC REPAIR & INSTALATION</div>
-                    <div class="topic">Bulb</div>
+                    <div class="title">Electrical Services</div>
+                    <div class="topic">Repairs & Installation</div>
                     <div class="des">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt
-                        minima placeat, itaque eum neque officiis unde, eaque optio ratione aliquid assumenda facere
-                        ab et quasi ducimus aut doloribus non numquam. Explicabo, laboriosam nisi reprehenderit
-                        tempora at laborum natus unde. Ut, exercitationem eum aperiam illo illum laudantium?
+                        Professional electrical repairs and installations to ensure your home is safe.
                     </div>
                     <div class="buttons">
-                        <button>SEE MORE</button>
-                        <button>SUBSCRIBE</button>
+                        <button>BOOK NOW</button>
                     </div>
                 </div>
             </div>
             <div class="item">
                 <img src="../static/images/slider/cleaning-home-land1.jpg">
                 <div class="content">
-                    <div class="author">KDBS</div>
-                    <div class="title">HOME CLEANING</div>
-                    <div class="topic">Cleaning help</div>
+                    <div class="title">Home Cleaning</div>
+                    <div class="topic">Cleaning Services</div>
                     <div class="des">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt
-                        minima placeat, itaque eum neque officiis unde, eaque optio ratione aliquid assumenda facere
-                        ab et quasi ducimus aut doloribus non numquam. Explicabo, laboriosam nisi reprehenderit
-                        tempora at laborum natus unde. Ut, exercitationem eum aperiam illo illum laudantium?
+                        Thorough home cleaning services to keep your living space spotless.
                     </div>
                     <div class="buttons">
-                        <button>SEE MORE</button>
-                        <button>SUBSCRIBE</button>
+                        <button>BOOK NOW</button>
                     </div>
                 </div>
             </div>
             <div class="item">
                 <img src="../static/images/slider/cleaning-window-land1.jpg">
                 <div class="content">
-                    <div class="author">BLUES</div>
-                    <div class="title">cleaning-window-land1 CLIEANING</div>
-                    <div class="topic">Cleaning building windows</div>
+                    <div class="title">Window Cleaning</div>
+                    <div class="topic">Glass & Windows</div>
                     <div class="des">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt
-                        minima placeat, itaque eum neque officiis unde, eaque optio ratione aliquid assumenda facere
-                        ab et quasi ducimus aut doloribus non numquam. Explicabo, laboriosam nisi reprehenderit
-                        tempora at laborum natus unde. Ut, exercitationem eum aperiam illo illum laudantium?
+                        Expert window cleaning for sparkling clear views.
                     </div>
                     <div class="buttons">
-                        <button>SEE MORE</button>
-                        <button>SUBSCRIBE</button>
+                        <button>BOOK NOW</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- list thumnail -->
+        <!-- list thumbnail -->
         <div class="thumbnail">
             <div class="item">
                 <img src="../static/images/slider/furniture-drilling-land2.jpg">
@@ -207,19 +189,13 @@
                     <div class="title">
                         Furniture
                     </div>
-                    <div class="description">
-                        we repair and maintain your furniture
-                    </div>
                 </div>
             </div>
             <div class="item">
                 <img src="../static/images/slider/electric1.jpg">
                 <div class="content">
                     <div class="title">
-                        Electric help
-                    </div>
-                    <div class="description">
-                        we maintain ur electric problem
+                        Electrical
                     </div>
                 </div>
             </div>
@@ -227,10 +203,7 @@
                 <img src="../static/images/slider/cleaning-window-land1.jpg">
                 <div class="content">
                     <div class="title">
-                        Building Cleaning
-                    </div>
-                    <div class="description">
-                        We clean your building windows and doors
+                        Windows
                     </div>
                 </div>
             </div>
@@ -240,27 +213,21 @@
                     <div class="title">
                         Home Cleaning
                     </div>
-                    <div class="description">
-                        we clean your home like ours
-                    </div>
                 </div>
             </div>
             <div class="item">
                 <img src="../static/images/slider/cleaning-window-land1.jpg">
                 <div class="content">
                     <div class="title">
-                        window Cleaning
-                    </div>
-                    <div class="description">
-                        We clean your building windows and doors
+                        Windows
                     </div>
                 </div>
             </div>
         </div>
         <!-- next prev -->
-
         <div class="arrows">
-            <button id="prev"><</button>
+            <button id="prev">
+                <</button>
             <button id="next">></button>
         </div>
         <!-- time running -->
@@ -268,12 +235,158 @@
     </div>
 </section>
 
+<!-- Review Section -->
+<section id="reviews-section" class="reviews-section">
+    <div class="custom-shape-divider-bottom-1720701593">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
+            <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
+            <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
+        </svg>
+    </div>
+    <div class="custom-shape-divider-top-1720701082">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path
+                d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
+                opacity=".25" class="shape-fill"></path>
+            <path
+                d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
+                opacity=".5" class="shape-fill"></path>
+            <path
+                d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
+                class="shape-fill"></path>
+        </svg>
+    </div>
+    <div class="reviews-section-left">
+        <h1>Read what our customers love about us</h1>
+        <p>
+            Over 200 companies frim diverse sectors consult us to enhance the
+            user experience of their products and services.
+        </p>
+        <p>
+            We have helped companies increase their customer base and generate
+            multifold revenue with our service.
+        </p>
+        <button>Read our success stories</button>
+    </div>
+    <div class="reviews-section-right">
+        <div class="card">
+            <img src="../static/images/review/pic-2.jpeg" alt="user" />
+            <div class="card-content">
+                <span><i class="ri-double-quotes-l"></i></span>
+                <div class="card-details">
+                    <p>
+                        We had a great time collaboraring with the Filament team. They
+                        have my high recommendation!
+                    </p>
+                    <h4>- Marnus Stephen</h4>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <img src="../static/images/review/pic-1.jpg" alt="user" />
+            <div class="card-content">
+                <span><i class="ri-double-quotes-l"></i></span>
+                <div class="card-details">
+                    <p>
+                        The team drastically improved our product's user experience &
+                        increased our business outreach.
+                    </p>
+                    <h4>- Andrew Jettpace</h4>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <img src="../static/images/review/pic-3.jpg" alt="user" />
+            <div class="card-content">
+                <span><i class="ri-double-quotes-l"></i></span>
+                <div class="card-details">
+                    <p>
+                        I absolutely loved working with the Filament team. Complete
+                        experts at what they do!
+                    </p>
+                    <h4>- Stacy Stone</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-<section>
-    <h1>howmesection</h1>
-    <p>Laboriosam tempore inventore quisquam voluptates ullam natus, sed eum numquam nam incidunt, temporibus nulla quam
-        magni quidem atque voluptate? Temporibus laboriosam consectetur sit, optio sunt suscipit ex nulla beatae
-        quisquam.</p>
+<!-- Footer Section -->
+<section id="footer-section">
+        <div class="custom-shape-divider-top-1720701082">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path
+                    d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
+                    opacity=".25" class="shape-fill"></path>
+                <path
+                    d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
+                    opacity=".5" class="shape-fill"></path>
+                <path
+                    d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
+                    class="shape-fill"></path>
+            </svg>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="row">
+            <div class="footer-col">
+                <h4>company</h4>
+                <ul>
+                    <li><a href="#">about us</a></li>
+                    <li><a href="#">All services</a></li>
+                    <li><a href="#">privacy policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Our services</h4>
+                <ul>
+                    <li><a href="#">Plumbing</a></li>
+                    <li><a href="#">Electrical Repairs</a></li>
+                    <li><a href="#">Painting</a></li>
+                    <li><a href="#">Carpentry</a></li>
+                    <li><a href="#">Roofing Repairs</a></li>
+                    <li><a href="#">Furniture Assembly</a></li>
+                    <li><a href="#">Window Repair</a></li>
+                    <li><a href="#">Drywall Repair</a></li>
+                    <li><a href="#">General Maintenance</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#">DIY Tips</a></li>
+                    <li><a href="#">Maintenance Guides</a></li>
+                    <li><a href="#">Safety Tips</a></li>
+                    <li><a href="#">Tool Recommendations</a></li>
+                    <li><a href="#">Home Improvement Ideas</a></li>
+                    <li><a href="#">Energy Saving Tips</a></li>
+                    <li><a href="#">Project Planning</a></li>
+                    <li><a href="#">Cost Estimation</a></li>
+                    <li><a href="#">Material Selection</a></li>
+                    <li><a href="#">Cleaning Tips</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>follow us</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fa-solid fa-laptop"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-telegram"></i></a>
+                    <a href="#"><i class="fa-solid fa-laptop"></i></a>
+                </div>
+            </div>
+            <div class="contact-box">
+                <div class="phone-icon">📞</div>
+                <div class="phone-number">0953431572</div>
+                <div class="call-now">Call Us Now</div>
+            </div>
+        </div>
+    </footer>
+    <div class="copy-right">
+        <span class="text-muted">&copy; 2024 Expert Handyman. All rights reserved.</span>
+    </div>
 </section>
 
 {% endblock %}
