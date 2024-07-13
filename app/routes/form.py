@@ -28,11 +28,13 @@ def login():
 
     return render_template('login.html', user=current_user)  # Render the login template
 
+
 @auth.route('/logout')
 @login_required  # Ensure the user is logged in to access this route
 def logout():
     logout_user()  # Log the user out
     return redirect(url_for('main.index'))  # Redirect to the index page
+
 
 @auth.route('/sign_up', methods=['GET', 'POST'])
 def sign_up():
@@ -87,6 +89,7 @@ def sign_up():
 
 @auth.route('/booking', methods=['GET', 'POST'])
 def booking():
+    booking_success = False
     if request.method == 'POST':  # Check if the form was submitted via POST method
         service_name = request.form.get('service_name')
         task_location = request.form.get('task_location')
@@ -134,7 +137,10 @@ def booking():
             db.session.add(new_booking)  # Add the new user to the session
             db.session.commit()  # Commit the session to the database
             print('successful!')
-            flash('Booked successfully!', category='success')  # Flash a success message
-            return redirect(url_for('main.index'))  # Redirect to the profile page
+            booking_success = True
+            # flash('Booked successfully!', category='success')  # Flash a success message
 
-    return render_template('booking.html', user=current_user)  # Render the sign-up template
+        
+            return redirect(url_for('main.index') + '?success=true')
+
+    return render_template('booking.html', user=current_user, booking_success=booking_success)

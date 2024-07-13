@@ -11,15 +11,11 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1H3GBQdYdM3hCb9jQkTv6XjBjHmPVm7PrRbqLmD1QIg5Df2D1gTt2n1X0WpZDDZ6LqH7WUj41v2FEmMMbK1iCw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
-    <!-- Downloaded font awesome -->
-    <!-- <link rel="stylesheet" href="../static/css/font-awesome.min.css"> -->
-
+    <!-- Google Material Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp" rel="stylesheet" />
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../static/css/reviews.css" />
@@ -30,11 +26,17 @@
     <link rel="stylesheet" href="../static/css/about.css">
     <link rel="stylesheet" href="../static/css/slider.css">
 
+    <scriptscript src="https://kit.fontawesome.com/64d58efce2.js"
+    crossorigin="anonymous"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome-free-6.5.2-web/css/all.min.css') }}">
+
     {% endblock head %}
 </head>
 <body>
-    <!-- NAVIGATION BAR -->
     <header>
+        <!-- NAVIGATION BAR -->
         {% block navbar %}
         <input type="checkbox" id="menu-toggle">
         <nav>
@@ -68,6 +70,19 @@
         </label> -->
         {% endblock %}
     </header>
+    
+    <!-- Booking Confirmation Pop-up -->
+    <div id="booking-popup" class="popup-overlay" style="display: 'none';">
+        <div class="popup-content">
+            <span class="material-symbols-sharp popup-icon">
+                check
+            </span>
+            <span class="close-btn">&times;</span>
+            <h2>Booking Confirmed!</h2>
+            <p>Thank you for your booking. A tasker will contact you shortly.</p>
+            <button class="ok-btn">OK</button>
+        </div>
+    </div>
 
     <!-- SHOWING ERROR For validation of Form -->
     {% with messages = get_flashed_messages(with_categories=true) %} {% if

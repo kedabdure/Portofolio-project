@@ -1,10 +1,22 @@
 #services {
     width: 100vw;
     height: auto;
-    margin: 5rem auto;
+    margin: 0 auto;
     padding: 30px 0;
     text-align: center;
     background-color: rgba(0, 0, 0, 0.03);
+    position: relative;
+}
+
+/* Blob S vg */
+#services #blob-top-svg {
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    top: -8rem;
+    left: -7rem;
+    transform: rotate(360deg);
+    z-index: -1;
 }
 
 .service-container h1 {

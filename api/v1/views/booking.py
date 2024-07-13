@@ -34,7 +34,7 @@ def delete_booking(book_id):
     booking = Booking.query.get(book_id)
     if booking is None:
         abort(404)
-    
+
     db.session.delete(booking)
     db.session.commit()
     return jsonify({'message': 'Booking deleted successfully'}), 200

@@ -49,3 +49,30 @@ function updateProgressbar() {
     progress.style.width = ((formStepsNum) / (progressSteps.length - 1)) * 100 + "%";
     
 }
+
+
+// BOOKING CONFIRMATION POP UP
+const popUpBox = document.querySelector('.popup-overlay')
+const closeIcon = document.querySelector('.close-btn')
+
+closeIcon.addEventListener('click', () => {
+    popUpBox.style.display = 'none'
+})
+
+okBtn.addEventListener('click', () => {
+    popUpBox.style.display = 'none'
+})
+
+
+function showPopUp() {
+    popUpBox.style.display = 'block'
+}
+
+// CHECK IF THE BOOKING WAS SUCCESSFUL
+const urlParams = new URLSearchParams(window.location.search);
+const success = urlParams.get('success')
+if (success === 'true') {
+    showPopUp()
+}
+
+

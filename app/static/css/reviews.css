@@ -1,21 +1,26 @@
 .reviews-section {
     width: 100%;
     display: flex;
-    
-    gap: 10rem;
-    padding: 2rem auto;
+    flex-direction: row;
+    gap: 8rem;
+    padding: 5rem;
     position: relative;
 }
 
+.reviews-section-left {
+    padding-top: 10rem;
+}
+
 .reviews-section-left h1 {
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
     font-size: 2.5rem;
-    font-weight: 600;
+    font-weight: 700;
     color: #0a2b14;
 }
 
 .reviews-section-left p {
     color: #0a2b14;
+    font-size: 1.1rem;
     margin-bottom: 1rem;
 }
 
@@ -58,12 +63,14 @@
 
 .reviews-section-right .card-content {
     display: flex;
-    gap: 1rem;
 }
 
-.card-content span i {
+.card-content span {
+    margin: 2rem 0 0 2rem;
     font-size: 2rem;
-    color: var(--primary-color);
+    color: green;
+    transform: rotate(180deg);
+    transform-origin: left top;
 }
 
 .reviews-section-right .card-details p {
