@@ -70,7 +70,7 @@ def update_booking(book_id):
 
 
 # COUNT TASKS
-@api_views.route('/task_counts', methods=['GET'], strict_slashes=False)
+@api_views.route('/booking/task_counts', methods=['GET'], strict_slashes=False)
 def get_task_counts():
     """Return counts of tasks based on their status"""
     completed_count = Booking.query.filter_by(status='Completed').count()
@@ -82,3 +82,18 @@ def get_task_counts():
         'pending': pending_count,
         'in_progress': in_progress_count
     }), 200
+    
+
+# # COUNT TASKS
+# @api_views.route('/booking/<string: email>/', methods=['GET'], strict_slashes=False)
+# def get_booking_by_email(email):
+#     """Return counts of tasks based on their status"""
+#     completed_count = Booking.query.filter_by(status=email)
+#     pending_count = Booking.query.filter_by(status='Pending').count()
+#     in_progress_count = Booking.query.filter_by(status='Progressing').count()
+
+#     return jsonify({
+#         'completed': completed_count,
+#         'pending': pending_count,
+#         'in_progress': in_progress_count
+#     }), 200

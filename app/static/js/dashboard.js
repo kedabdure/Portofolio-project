@@ -105,31 +105,35 @@ usersBtn.addEventListener("click", function (event) {
 });
 /* END OF SIDEBAR LINKS */
 
-// SHOW ALL TABLE CONTENTS
-const initialDisplayCount = 4;
-let currentDisplayCount = initialDisplayCount;
 
-// Get DOM elements
-/*already defined at the top*/
 
-// const bookingsTable = document.getElementById('all-bookings');
-const rows = bookingsTable.querySelectorAll("tbody tr");
 
-// Function to render rows
-function renderRows() {
-    // Hide all rows initially
-    rows.forEach((row) => row.classList.add("hidden"));
+// // SHOW ALL TABLE CONTENTS
+// const initialDisplayCount = 4;
+// let currentDisplayCount = initialDisplayCount;
 
-    // Display rows up to the current count
-    for (let i = 0; i < currentDisplayCount && i < rows.length; i++) {
-        rows[i].classList.remove("hidden");
-    }
+// // Get DOM elements
+// /*already defined at the top*/
 
-    // Hide the button if all rows are displayed
-    if (currentDisplayCount >= rows.length) {
-        showMoreBtn.style.display = "none";
-    }
-}
+// // const bookingsTable = document.getElementById('all-bookings');
+// const rows = bookingsTable.querySelectorAll("tbody tr");
+
+// // Function to render rows
+// function renderRows() {
+//     // Hide all rows initially
+//     rows.forEach((row) => row.classList.add("hidden"));
+
+//     // Display rows up to the current count
+//     for (let i = 0; i < currentDisplayCount && i < rows.length; i++) {
+//         rows[i].classList.remove("hidden");
+//     }
+
+//     // Hide the button if all rows are displayed
+//     if (currentDisplayCount >= rows.length) {
+//         showMoreBtn.style.display = "none";
+//     }
+// }
+
 
 // Event listener for the "Show More" button
 showMoreBtn.addEventListener("click", (event) => {

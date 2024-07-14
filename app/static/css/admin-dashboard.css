@@ -374,20 +374,24 @@ main .recent-orders h2{
     margin-bottom: 0.8rem;
 }
 
-
 /* TABLE */
+/* TABLE */
+main .recent-orders {
+    max-width: 100%;
+    overflow: auto;
+}
+
 main .recent-orders table {
     background: var(--table-bg);
     width: 100%;
     margin: 2rem auto;
-    /* padding: 1.5rem 1rem; */
     text-align: center;
     box-shadow: var(--box-shadow);
     border-radius: 10px;
     border-collapse: separate;
     border-spacing: 0;
-    overflow: hidden;
     transition: all 0.3s ease;
+    display: block; /* Make table block-level element to enable scrolling */
 }
 
 main .recent-orders table:hover {
@@ -397,6 +401,9 @@ main .recent-orders table:hover {
 main table thead {
     background-color: var(--color-primary);
     color: var(--color-white);
+    display: table;
+    width: 100%;
+    table-layout: fixed; /* Fix the header width to align with table body */
 }
 
 main table thead th {
@@ -409,16 +416,28 @@ main table thead th:last-child {
     border: none;
 }
 
+main table tbody {
+    display: block;
+    max-height: 60vh; /* Adjust height as needed */
+    overflow-y: auto;
+    overflow-x: auto;
+}
+
 main table tbody td {
-    height: 2rem;
+    height: auto;
     padding: 1rem 0.5rem;
     border-bottom: 1px solid var(--border-color);
     color: var(--color-dark-variant);
     transition: background-color 0.3s ease;
+    white-space: normal; /* Allow text wrapping */
+    word-wrap: break-word; /* Break long words */
 }
 
 main table tbody tr {
     transition: background-color 0.3s ease;
+    display: table;
+    width: 100%;
+    table-layout: fixed; /* Fix the row width to align with header */
 }
 
 main table tbody tr:hover {
@@ -429,8 +448,14 @@ main table tbody tr:last-child td {
     border: none;
 }
 
+/* Ensure cells don't interfere with each other */
+main table td, main table th {
+    min-width: 150px; /* Set minimum width for cells */
+}
+
+
 /* show all */
-main .recent-orders a {
+/* main .recent-orders a {
     width: 100px;
     text-align: center;
     display: block;
@@ -442,7 +467,7 @@ main .recent-orders a {
     text-decoration: none;
     font-weight: bold;
     transition: color 0.5s ease;
-}
+} */
 
 main .recent-orders a:hover {
     color: var(--color-dark-variant);

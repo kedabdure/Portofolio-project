@@ -13,7 +13,7 @@
     }
 
     .card-header {
-        background-color: #007bff;
+        background-color:#038003;
         color: white;
         font-size: 1.2rem;
         text-align: center;
@@ -28,23 +28,23 @@
     }
 
     .profile-section img {
-        border: 5px solid #007bff;
+        border: 5px solid #038003;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
     .profile-section h5 {
         font-size: 1.5rem;
         margin-top: 15px;
-        color: #007bff;
+        color: #666;
     }
 
     .profile-section p {
-        color: #555;
+        color: #666;
         font-size: 1.1rem;
     }
 
     .btn-danger {
-        background-color: #d9534f;
+        background-color: crimson;
         border: none;
         padding: 10px 20px;
         font-size: 0.9rem;
@@ -62,7 +62,7 @@
     }
 
     .statistics-card {
-        background-color: #007bff;
+        background-color: #038003;
         color: white;
         padding: 20px;
         border-radius: 5px;
@@ -96,14 +96,8 @@
                     <a href="{{ url_for('auth.logout') }}" class="btn btn-danger btn-sm">Logout</a>
                 </div>
             </div>
-            <div class="card statistics-card">
-                <h4>Account Statistics</h4>
-                <p>Total Bookings: {{ total_bookings }}</p>
-                <p>Pending Bookings: {{ pending_bookings }}</p>
-                <p>Completed Bookings: {{ completed_bookings }}</p>
-            </div>
         </div>
-        <div class="col-md-8">
+        <!-- <div class="col-md-8"> -->
             <div class="card">
                 <div class="card-header">
                     <h4>Booking History</h4>
@@ -127,22 +121,6 @@
                             {% endfor %}
                         </tbody>
                     </table>
-                </div>
-            </div>
-            <div class="statistics-section">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="card statistics-card">
-                            <h4>Most Booked Service</h4>
-                            <p>{{ most_booked_service }}</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card statistics-card">
-                            <h4>Average Rating</h4>
-                            <p>{{ average_rating }}</p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

@@ -47,25 +47,33 @@
     right: 5%;
     z-index: 1000;
     box-shadow:   5px -5px 50px rgba(0, 0, 0, 0.2),   5px 5px 50px rgba(0, 0, 0, 0.2),   5px 5px 50px rgba(0, 0, 0, 0.2);
-    /* border: 2px solid transparent; */
     border-top-right-radius: 10px;
     border-right-color: #ddd;
-    /* Adjust color as desired */
     border-bottom-color: #ddd;
-    /* Adjust color as desired */
+}
+
+.inner-container::before {
+    content: '';
+    width: 15%;
+    height: 6px;
+    border-radius: 36px;
+    background-image: linear-gradient(to right, #00FF00, #006400);
+    position: absolute;
+    top: 6rem;
+    left: 3.3rem;
 }
 
 .inner-container h1 {
-    font-size: 36px;
+    font-size: 2.1rem;
     font-weight: 700;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 .inner-container p {
     font-size: 16px;
     color: #555555;
     line-height: 1.6;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 }
 
 .benefits {
@@ -89,24 +97,28 @@
     margin-bottom: 10px;
 }
 
-.benefits ul li i {
-    margin-right: 10px;
+.benefits ul li img {
+    width: 20px;
+    height: 25px;
+    color: #666666;
+    /* margin-right: 10px; */
 }
 
 .cta .btn {
     display: inline-block;
-    padding: 10px 20px;
-    background-color: var(--btn-color);
+    padding: 8px 16px;
+    background-color: green;
     color: #ffffff;
-    font-size: 18px;
+    font-size: 19px;
     font-weight: 600;
     text-decoration: none;
     border-radius: 5px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform .5s ease;
 }
 
 .cta .btn:hover {
-    background-color: var(--btn-hover-background);
+    background-color: rgb(17, 155, 17);
+    transform: scale(1.05);
 }
 
 @media (max-width: 768px) {

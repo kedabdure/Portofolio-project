@@ -54,6 +54,12 @@
     display: none; /* Hide all cards by default */
 }
 
+.service-container ul li a img{
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+}
+
 .service-container ul li:nth-child(-n+4) {
     display: block; /* Show only the first 4 cards */
 }
