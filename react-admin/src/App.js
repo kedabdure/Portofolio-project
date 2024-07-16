@@ -1,5 +1,6 @@
 import { Routes } from "react-router-dom";
 // import Sidebar from "./scenes/global/Sidebar";
+import Topbar from "./scenes/global/Topbar";
 // import Dashboard from "./scenes/dashboard";
 // import Team from "./scenes/team";
 // import Invoices from "./scenes/invoices";
@@ -25,7 +26,7 @@ function App() {
         <div className="app">
           {/* <Sidebar isSidebar={isSidebar} /> */}
           <main className="content">
-            {/* <Topbar setIsSidebar={setIsSidebar} /> */}
+            <Topbar  />
             <Routes>
               {/* <Route path="/" element={<Dashboard />} /> */}
               {/* <Route path="/team" element={<Team />} /> */}
