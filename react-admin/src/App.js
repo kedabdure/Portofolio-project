@@ -1,13 +1,13 @@
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
+import Contacts from "./scenes/contacts";
 import Dashboard from "./scenes/dashboard";
 import Sidebar from "./scenes/global/Sidebar";
 import Topbar from "./scenes/global/Topbar";
 import Team from "./scenes/team";
 import { ColorModeContext, useMode } from "./theme";
 // import Invoices from "./scenes/invoices";
-// import Contacts from "./scenes/contacts";
 // import Bar from "./scenes/bar";
 // import Form from "./scenes/form";
 // import Line from "./scenes/line";
@@ -28,7 +28,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/team" element={<Team />} />
-              {/* <Route path="/conta cts" element={<Contacts />} /> */}
+              <Route path="/contacts" element={<Contacts />} />
               {/* <Route path="/invoices" element={<Invoices />} /> */}
               {/* <Route path="/form" element={<Form />} /> */}
               {/* <Route path="/bar" element={<Bar />} /> */}

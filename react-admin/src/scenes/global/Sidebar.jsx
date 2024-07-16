@@ -7,6 +7,7 @@ import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined
 import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
+import PeopleOutlinedIcon from '@mui/icons-material/PeopleOutlined';
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
@@ -131,13 +132,13 @@ const Sidebar = () => {
                         >
                             Data
                         </Typography>
-                        {/* <Item
+                        <Item
                             title="Manage Team"
                             to="/team"
                             icon={<PeopleOutlinedIcon />}
                             selected={selected}
                             setSelected={setSelected}
-                        /> */}
+                        />
                         <Item
                             title="Contacts Information"
                             to="/contacts"
