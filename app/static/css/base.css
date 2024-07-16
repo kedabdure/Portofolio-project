@@ -28,6 +28,12 @@ body {
     position: relative;
 }
 
+/* Alert message */
+.alert {
+    height: 50px;
+    margin-bottom: 0;
+}
+
 
 /* Pop-up Overlay */
 .popup-overlay {

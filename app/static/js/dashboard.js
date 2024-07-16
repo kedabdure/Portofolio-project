@@ -73,7 +73,7 @@ bookingsBtn.addEventListener("click", function (event) {
     toggleVisibility([rightSection, newUsers, usersTable], false);
     toggleVisibility([bookingsTable], true);
     analyzeSection.style.display = "";
-    showMoreBtn.style.display = "";
+    // showMoreBtn.style.display = "";
     updateHeaders("All bookings in details", "Bookings");
     container.style.gridTemplateColumns = "12rem auto auto";
 });
@@ -86,7 +86,7 @@ analyticsBtn.addEventListener("click", () => {
     toggleVisibility([rightSection, newUsers, bookingsTable], true);
     toggleVisibility([usersTable], false);
     analyzeSection.style.display = "";
-    showMoreBtn.style.display = "";
+    // showMoreBtn.style.display = "";
 
     updateHeaders("Recent bookings", "Analytics");
 });
@@ -96,11 +96,11 @@ const usersBtn = document.querySelector(".users");
 
 usersBtn.addEventListener("click", function (event) {
     event.preventDefault();
-    toggleVisibility([rightSection, analyzeSection, bookingsTable], false);
+    toggleVisibility([rightSection, bookingsTable], false);
     toggleVisibility([newUsers, usersTable], true);
     analyzeSection.style.display = "none";
-    showMoreBtn.style.display = "none";
     updateHeaders("All users", "Users");
+
     container.style.gridTemplateColumns = "12rem auto .5rem";
 });
 /* END OF SIDEBAR LINKS */
@@ -136,14 +136,14 @@ usersBtn.addEventListener("click", function (event) {
 
 
 // Event listener for the "Show More" button
-showMoreBtn.addEventListener("click", (event) => {
-    event.preventDefault();
-    currentDisplayCount += initialDisplayCount;
-    renderRows();
-});
+// showMoreBtn.addEventListener("click", (event) => {
+//     event.preventDefault();
+//     currentDisplayCount += initialDisplayCount;
+//     renderRows();
+// });
 
-// Initial render
-renderRows();
+// // Initial render
+// renderRows();
 
 // FUNCTION TO GENERATE RANDOM COLOR
 function getRandomColor() {
@@ -230,7 +230,7 @@ function updateStatus(status, id) {
 
 // FUNCTION TO COUNT EACH TASK STATUS AND DISPLAY WITH ANIMATION
 function updateAnalytics() {
-    fetch("http://127.0.0.1:5000/api/v1/task_counts")
+    fetch("http://127.0.0.1:5000/api/v1/booking/task_counts")
         .then((response) => {
             if (!response.ok) {
                 throw new Error("Network response was not ok");
@@ -261,7 +261,6 @@ function showNewUsers() {
             if (!response.ok) {
                 throw new Error("Network response was not ok");
             }
-
             return response.json();
         })
         .then((data) => {

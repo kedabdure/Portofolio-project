@@ -58,6 +58,7 @@
                 <a href="{{ url_for('main.admin') }}">Admin</a>
                 {% endif %}
                 <a href="{{ url_for('auth.logout') }}">Logout</a>
+                <a href="{{ url_for('main.profile') }}">Profile</a>
                 <a href="{{ url_for('auth.booking') }}" class="btn btn-outline-success btn-light">GET HELP NOW</a>
                 {% else %}
                 <a href="/home">Home</a>
@@ -73,7 +74,7 @@
         </label> -->
         {% endblock %}
     </header>
-    
+    {% block popup %}
     <!-- Booking Confirmation Pop-up -->
     <div id="booking-popup" class="popup-overlay" style="display: 'none';">
         <div class="popup-content">
@@ -86,12 +87,14 @@
             <button class="ok-btn">OK</button>
         </div>
     </div>
+    {% endblock popup %}
+
 
     <!-- SHOWING ERROR For validation of Form -->
     {% with messages = get_flashed_messages(with_categories=true) %} {% if
     messages %} {% for category, message in messages %} {% if category ==
     'error' %}
-    <div class="alert alert-danger alert-dismissable fade show" role="alert">
+    <div class="alert alert-danger alert-dismissable fade show hide" id="timeout-alert" role="alert">
         {{ message }}
         <button type="button" class="close" data-dismiss="alert">
             <span aria-hidden="true">&times;</span>
