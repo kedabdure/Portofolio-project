@@ -9,6 +9,7 @@ import InputBase from "@mui/material/InputBase";
 import { useContext } from "react";
 import { ColorModeContext, tokens } from "../../theme";
 
+
 const Topbar = () => {
     const theme = useTheme(); // get the current theme
     const colors = tokens(theme.palette.mode); // generate the color palette based on the current theme mode
