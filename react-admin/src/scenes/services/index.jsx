@@ -4,7 +4,8 @@ import Header from "../../components/Header";
 import { mockDataInvoices } from "../../data/mockData";
 import { tokens } from "../../theme";
 
-const Invoices = () => {
+
+const Services = () => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     const columns = [
@@ -22,7 +23,7 @@ const Invoices = () => {
         },
         {
             field: "email",
-            headerName: "Email",
+            headerNaServicesme: "Email",
             flex: 1,
         },
         {
@@ -44,7 +45,7 @@ const Invoices = () => {
 
     return (
         <Box m="20px">
-            <Header title="INVOICES" subtitle="List of Invoice Balances" />
+            <Header title="SERVICES" subtitle="List of services we offer" />
             <Box
                 m="40px 0 0 0"
                 height="75vh"
@@ -80,4 +81,4 @@ const Invoices = () => {
     );
 };
 
-export default Invoices;
+export default Services;

@@ -7,7 +7,7 @@ import Header from "../../components/Header";
 import { mockDataTeam } from "../../data/mockData";
 import { tokens } from "../../theme";
 
-const Team = () => {
+const Users = () => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     const columns = [
@@ -70,7 +70,7 @@ const Team = () => {
 
     return (
         <Box m="20px">
-            <Header title="TEAM" subtitle="Managing the Team Members" />
+            <Header title="USERS" subtitle="Managing all users" />
             <Box
                 m="40px 0 0 0"
                 height="75vh"
@@ -106,4 +106,4 @@ const Team = () => {
     );
 };
 
-export default Team;
+export default Users;
