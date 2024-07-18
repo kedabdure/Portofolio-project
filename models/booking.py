@@ -32,10 +32,6 @@ class Booking(db.Model):
         }
 
 
-    def __repr__(self):
-        return f'<Booking {self.id} - {self.full_name}>'
-
-
     def update(self, data):
         for key, value in data.items():
             setattr(self, key, value)

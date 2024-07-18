@@ -19,8 +19,11 @@ def login():
         if user:
             if check_password_hash(user.password, password):  # Verify the user's password
                 flash('Login successful!', category='success')  # Flash a success message
-                login_user(user, remember=True)  # Log the user in and remember the session
-                return redirect(url_for('main.profile'))  # Redirect to the profile page
+                login_user(user, remember=True)  # Log the user in and remember the session 
+                if user.is_admin == "true":
+                    return redirect('http://localhost:3000/dashboard')
+                else:
+                    return redirect(url_for('main.index'))
             else:
                 flash("Incorrect password!", category='error')  # Flash an error message
         else:

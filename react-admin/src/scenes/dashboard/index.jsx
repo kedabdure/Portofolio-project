@@ -20,7 +20,7 @@ const Dashboard = () => {
             <Box display="flex" justifyContent="space-between" alignItems="center">
                 <Header title="DASHBOARD" subtitle="Welcome to Ex. Handyman Services's Dashboard" />
                 {/* download btn not needed now */}
-                {/* <Box>
+                <Box>
                     <Button
                         sx={{
                             backgroundColor: colors.blueAccent[700],
@@ -33,7 +33,7 @@ const Dashboard = () => {
                         <DownloadOutlinedIcon sx={{ mr: "10px" }} />
                         Download Reports
                     </Button>
-                </Box> */}
+                </Box>
             </Box>
 
 
@@ -127,9 +127,10 @@ const Dashboard = () => {
                 </Box>
 
                 {/* ROW 2 */}
+                {/* Recent Booking Table */}
                 <Box
                     gridColumn="span 8"
-                    gridRow="span 2"
+                    gridRow="span 3"
                     backgroundColor={colors.primary[400]}
                     overflow="auto"
                     position="relative"
@@ -182,11 +183,11 @@ const Dashboard = () => {
                         </Box>
                     ))}
                 </Box>
-
-
+                
+                {/* Recent Users Table */}
                 <Box
                     gridColumn="span 4"
-                    gridRow="span 2"
+                    gridRow="span 3"
                     backgroundColor={colors.primary[400]}
                     overflow="auto"
                     position="relative"

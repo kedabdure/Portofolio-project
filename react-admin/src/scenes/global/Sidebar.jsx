@@ -111,6 +111,7 @@ const Sidebar = () => {
                         </Box>
                     )}
 
+                    {/* Sidebar Links */}
                     <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%', paddingLeft: isCollapsed ? undefined : "10%" }}>
                         <Box>
                             <Item
@@ -176,6 +177,7 @@ const Sidebar = () => {
                         <Box sx={{ mt: '30px', mb: 2 }}>
                             <Item
                                 title="Logout"
+                                to="http://127.0.0.1:5000/auth/logout"
                                 icon={<LogoutOutlinedIcon />}
                                 selected={selected}
                                 setSelected={setSelected}

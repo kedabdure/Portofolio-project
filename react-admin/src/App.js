@@ -32,7 +32,6 @@ function App() {
                             <Route path="/services" element={<Services />} />
                             <Route path="/form" element={<Form />} />
                             <Route path="/calendar" element={<Calendar />} />
-
                         </Routes>
                     </main>
                 </div>

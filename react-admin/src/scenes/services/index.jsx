@@ -1,5 +1,5 @@
 import { Box, Typography, useTheme } from "@mui/material";
-import { DataGrid } from "@mui/x-data-grid";
+import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import Header from "../../components/Header";
 import { mockDataInvoices } from "../../data/mockData";
 import { tokens } from "../../theme";
@@ -20,11 +20,13 @@ const Services = () => {
             field: "phone",
             headerName: "Phone Number",
             flex: 1,
+            editable: true,
         },
         {
             field: "email",
             headerNaServicesme: "Email",
             flex: 1,
+            editable: true,
         },
         {
             field: "cost",
@@ -73,9 +75,16 @@ const Services = () => {
                     "& .MuiCheckbox-root": {
                         color: `${colors.greenAccent[200]} !important`,
                     },
+                    "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
+                        color: `${colors.grey[100]} !important`,
+                    },
                 }}
             >
-                <DataGrid checkboxSelection rows={mockDataInvoices} columns={columns} />
+                <DataGrid
+                    checkboxSelection
+                    rows={mockDataInvoices}
+                    columns={columns}
+                    components={{ Toolbar: GridToolbar }} />
             </Box>
         </Box>
     );
