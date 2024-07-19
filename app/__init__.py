@@ -5,6 +5,7 @@ from flask_migrate import Migrate # help to modify the db schema
 import os
 from models import db
 from flask_cors import CORS
+from flask_mail import Mail
 
 # to use flask migration first
 # `flask db init` initialize flask migration if the first time 
@@ -14,6 +15,7 @@ from flask_cors import CORS
 
 
 DB_NAME = 'database.db'
+mail = Mail()
 
 def create_app():
     app = Flask(__name__)
@@ -22,9 +24,10 @@ def create_app():
     # we can also configure CORS with specific parameters
     # CORS(app, resources={r"/api/*": {"origins": "http://127.0.0.1:5500"}})
 
-
+    mail.init_app(app)
     db.init_app(app)  # Initialize db with Flask app instance
     migrate = Migrate(app, db) # Initialize Flask-Migrate
+    
     
     login_manager = LoginManager()
     login_manager.login_view = 'auth.login'  # Specify the login view to redirect when login is needed

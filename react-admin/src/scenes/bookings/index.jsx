@@ -153,6 +153,33 @@ const Bookings = () => {
     };
 
 
+    // SEND EMAIL TO USERS
+    const sendEmail = async () => {
+        const sender = "experthandyman@fastmail.com";
+        const subject = 'Expert Handyman';
+        const message = "Your booking status has been updated.";
+        const recipients = data.filter((row) => selectionModel.includes(row.id)).map((row) => row.email);
+
+        fetch('http://localhost:5000/api/v1/email', {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                subject: subject,
+                message: message,
+                sender: sender,
+                recipients: recipients,
+            })
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Email sent successfully:", data);
+            })
+            .catch(error => {
+                console.error("Error sending email:", error);
+            });
+    };
+
+
     return (
         <Box m="20px">
             <Header title="BOOKINGS" subtitle="Managing all bookings" />
@@ -221,7 +248,7 @@ const Bookings = () => {
                     </Button>
                     {/* Progressing button */}
                     <Button
-                        onClick={() => handleStatusChange('Completed')}
+                        onClick={() => handleStatusChange('Progressing')}
                         sx={{
                             padding: "7px auto",
                             width: "110px",
@@ -240,9 +267,12 @@ const Bookings = () => {
                             Progressing
                         </Typography>
                     </Button>
-                    {/* Completed button */}
+                    {/* Approved button */}
                     <Button
-                        onClick={() => handleStatusChange('Completed')}
+                        onClick={() => {
+                            handleStatusChange('Approved');
+                            sendEmail();
+                        }}
                         sx={{
                             padding: "7px auto",
                             width: "110px",
@@ -258,7 +288,7 @@ const Bookings = () => {
                         }}
                     >
                         <Typography variant="h6">
-                            Completed
+                            Approved
                         </Typography>
                     </Button>
                 </Box>

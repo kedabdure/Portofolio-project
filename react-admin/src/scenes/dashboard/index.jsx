@@ -7,12 +7,97 @@ import { Box, Button, IconButton, Typography, useTheme } from "@mui/material";
 import Header from "../../components/Header";
 import ProgressCircle from "../../components/ProgressCircle";
 import StatBox from "../../components/StatBox";
-import { mockTransactions } from "../../data/mockData";
 import { tokens } from "../../theme";
+import { useState, useEffect } from "react";
+
 
 const Dashboard = () => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
+
+
+    const [userData, setUserData] = useState([]);
+    const [totalUsers, setTotalUsers] = useState(0);
+
+    const [data, setData] = useState([]);
+    const [taskCount, setTaskCount] = useState({ completed: 0, pending: 0, in_progress: 0 });
+    const [totalBookings, setTotalBookings] = useState(0);
+
+    useEffect(() => {
+        updateAnalytics();
+    }, []);
+    
+    // USER DATA
+    useEffect(() => {
+        fetch('http://localhost:5000/api/v1/users')
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                const lastFiveUsers = data.slice(-5);
+                setData(lastFiveUsers);
+                setTotalUsers(data.length);
+            })
+            .catch(error => {
+                console.error("Error fetching data:", error);
+            });
+    }, []);
+
+    // BOOKING DATA
+    useEffect(() => {
+        fetch('http://localhost:5000/api/v1/booking')
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                const lastFiveBooking = data.slice(-6);
+                setData(lastFiveBooking);
+                setTotalBookings(data.length);
+            })
+            .catch(error => {
+                console.error("Error fetching data:", error);
+            });
+    }, []);
+
+
+    // FUNCTION TO COUNT EACH TASK STATUS AND DISPLAY WITH ANIMATION
+    const updateAnalytics = () => {
+        fetch("http://127.0.0.1:5000/api/v1/booking/task_counts")
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+                return response.json();
+            })
+            .then((data) => {
+                setTaskCount(data);
+            //     console.log(data);
+            //     countUp(document.getElementById('completedTasks'), data.completed, 1000);
+            //     countUp(document.getElementById('pendingTasks'), data.pending, 1000);
+            //     countUp(document.getElementById('inProgressTasks'), data.in_progress, 1000);
+            })
+            .catch((error) => {
+                console.error("There was a problem with the fetch operation:", error);
+                alert("Failed to fetch task counts. Please try again later.");
+            });
+    };
+
+
+
+    // ANIMATE COUNT UP
+    const countUp = (element, endValue, duration) => {
+        let startValue = 0;
+        const increment = endValue / (duration / 10); // Adjust the increment based on the duration
+        const counter = setInterval(() => {
+            startValue += increment;
+            element.textContent = Math.floor(startValue).toLocaleString(); // Format the number with commas
+
+            if (startValue >= endValue) {
+                clearInterval(counter);
+                element.textContent = endValue.toLocaleString(); // Ensure the final value is set correctly
+            }
+        }, 10); // Adjust the interval for smoother animation
+    };
+
+
 
     return (
         <Box m="20px 20px 50px 20px">
@@ -54,7 +139,8 @@ const Dashboard = () => {
                 >
                     {/* completed */}
                     <StatBox
-                        title="12,361"
+                        id="completedTasks"
+                        title={taskCount.completed}
                         subtitle="Completed Tasks"
                         progress="1"
                         increase="+14%"
@@ -65,6 +151,8 @@ const Dashboard = () => {
                         }
                     />
                 </Box>
+
+                {/* Pending */}
                 <Box
                     gridColumn="span 3"
                     backgroundColor={colors.primary[400]}
@@ -72,9 +160,9 @@ const Dashboard = () => {
                     alignItems="center"
                     justifyContent="center"
                 >
-                    {/* Pending */}
                     <StatBox
-                        title="431,225"
+                        id="pendingTasks"
+                        title={taskCount.pending}
                         subtitle="Pending Tasks"
                         progress="0.50"
                         increase="+21%"
@@ -85,6 +173,8 @@ const Dashboard = () => {
                         }
                     />
                 </Box>
+
+                {/* Progressing */}
                 <Box
                     gridColumn="span 3"
                     backgroundColor={colors.primary[400]}
@@ -92,9 +182,9 @@ const Dashboard = () => {
                     alignItems="center"
                     justifyContent="center"
                 >
-                    {/* Progressing */}
                     <StatBox
-                        title="32,441"
+                        id="inProgressTasks"
+                        title={taskCount.in_progress}
                         subtitle="Progressing Tasks"
                         progress="0.30"
                         increase="+5%"
@@ -114,7 +204,7 @@ const Dashboard = () => {
                 >
                     {/* Total Bookings */}
                     <StatBox
-                        title="1,325,134"
+                        title={totalBookings}
                         subtitle="Total Bookings"
                         progress="0.80"
                         increase="+43%"
@@ -134,7 +224,7 @@ const Dashboard = () => {
                     backgroundColor={colors.primary[400]}
                     overflow="auto"
                     position="relative"
-                    borderRadius={3}
+                    borderRadius={1}
                 >
                     <Box
                         display="flex"
@@ -151,9 +241,9 @@ const Dashboard = () => {
                             Recent Bookings
                         </Typography>
                     </Box>
-                    {mockTransactions.map((transaction, i) => (
+                    {data.map((row, i) => (
                         <Box
-                            key={`${transaction.txId}-${i}`}
+                            key={`${row.id}-${i}`}
                             display="flex"
                             justifyContent="space-between"
                             alignItems="center"
@@ -166,28 +256,31 @@ const Dashboard = () => {
                                     variant="h5"
                                     fontWeight="600"
                                 >
-                                    {transaction.txId}
+                                    {row.id}
                                 </Typography>
                                 <Typography color={colors.grey[100]}>
-                                    {transaction.user}
+                                    {row.service_name}
                                 </Typography>
                             </Box>
-                            <Box color={colors.grey[100]}>{transaction.date}</Box>
-                            <Box
-                                backgroundColor={colors.greenAccent[500]}
-                                p="5px 10px"
-                                borderRadius="4px"
-                            >
-                                ${transaction.cost}
+                            <Box display='flex' alignItems='left' justifyContent="left" color={colors.grey[100]}>{row.street_name}</Box>
+                            <Box display='flex' alignItems='left' justifyContent="left" color={colors.grey[100]}>{row.email}</Box>
+                            <Box display='flex' alignItems='left' justifyContent="left" color={colors.grey[100]}>
+                            <Typography
+                                    color={colors.greenAccent[600]}
+                                    variant="h5"
+                                    fontWeight="600"
+                                >
+                                    {row.phone}
+                                </Typography>
                             </Box>
                         </Box>
                     ))}
                 </Box>
-                
+
                 {/* Recent Users Table */}
                 <Box
                     gridColumn="span 4"
-                    gridRow="span 3"
+                    gridRow="span 2"
                     backgroundColor={colors.primary[400]}
                     overflow="auto"
                     position="relative"
@@ -208,9 +301,9 @@ const Dashboard = () => {
                             Recent Users
                         </Typography>
                     </Box>
-                    {mockTransactions.map((transaction, i) => (
+                    {userData.map((row, i) => (
                         <Box
-                            key={`${transaction.txId}-${i}`}
+                            key={`${row.id}-${i}`}
                             display="flex"
                             justifyContent="space-between"
                             alignItems="center"
@@ -223,33 +316,36 @@ const Dashboard = () => {
                                     variant="h5"
                                     fontWeight="600"
                                 >
-                                    {transaction.txId}
-                                </Typography>
-                                <Typography color={colors.grey[100]}>
-                                    {transaction.user}
+                                    {row.id}
                                 </Typography>
                             </Box>
-                            <Box color={colors.grey[100]}>{transaction.date}</Box>
+                            <Box>
+                                <Typography color={colors.grey[100]}>
+                                    {row.first_name}
+                                </Typography>
+                            </Box>
+                            <Box color={colors.grey[100]}>{row.is_admin}</Box>
                             <Box
-                                backgroundColor={colors.greenAccent[500]}
+                                backgroundColor={colors.greenAccent[600]}
                                 p="5px 10px"
                                 borderRadius="4px"
                             >
-                                ${transaction.cost}
+                                {row.phone}
                             </Box>
                         </Box>
                     ))}
                 </Box>
 
                 {/* ROW 3 */}
-                {/* <Box
+                <Box
                     gridColumn="span 4"
-                    gridRow="span 2"
+                    gridRow="span 1"
                     backgroundColor={colors.primary[400]}
                     p="30px"
+
                 >
-                    <Typography variant="h5" fontWeight="600">
-                        Campaign
+                    <Typography fontSize=".9rem" borderRadius="5px" padding="6px" variant="h6" fontWeight="600" backgroundColor={colors.greenAccent[500]} textAlign="center">
+                        Total Number Of Users
                     </Typography>
                     <Box
                         display="flex"
@@ -257,18 +353,16 @@ const Dashboard = () => {
                         alignItems="center"
                         mt="25px"
                     >
-                        <ProgressCircle size="125" />
                         <Typography
-                            variant="h5"
+                            variant="h1"
                             color={colors.greenAccent[500]}
-                            sx={{ mt: "15px" }}
+                            sx={{ mt: "-5px", mb:"10px", fontWeight: "700" }}
                         >
-                            $48,352 revenue generated
+                            {totalUsers}
                         </Typography>
-                        <Typography>Includes extra misc expenditures and costs</Typography>
+                        {/* <Typography sx={{ mt:"-8px" }}>All user who can see their profiles</Typography> */}
                     </Box>
-                </Box> */}
-
+                </Box>
             </Box>
         </Box>
     );

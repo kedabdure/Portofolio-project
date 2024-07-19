@@ -3,3 +3,6 @@ flask_sqlalchemy
 flask_migrate
 flask_bootstrap
 Flask-Migrate
+flak_mailman
+flask_cors
+flask_login
