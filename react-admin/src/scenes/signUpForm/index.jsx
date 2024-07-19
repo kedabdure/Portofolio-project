@@ -3,25 +3,34 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { Formik } from "formik";
 import * as yup from "yup";
 import Header from "../../components/Header";
+import { useNavigate } from "react-router-dom";
 
 const SingUp = () => {
     const isNonMobile = useMediaQuery("(min-width:600px)");
+    const navigate = useNavigate();
 
     const handleFormSubmit = (values) => {
         console.log(values);
         // Submit the form data to your API
-        fetch("http://127.0.0.1:5000/api/v1/admins", {
+        fetch("http://127.0.0.1:5000/api/v1/signup", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(values),
         })
-            .then(response => response.json())
-            .then(data => {
-                console.log("Success:", data);
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+                return response.json();
             })
-            .catch(error => {
+            .then((data) => {
+                console.log("Success:", data);
+            
+                navigate("/dashboard");
+            })
+            .catch((error) => {
                 console.error("Error:", error);
             });
     };
@@ -118,9 +127,9 @@ const SingUp = () => {
                                 sx={{ gridColumn: "span 4" }}
                             />
                         </Box>
-                        <Box display="flex" justifyContent="end" mt="20px">
+                        <Box display="flex" justifyContent="center" mt="20px">
                             <Button type="submit" color="secondary" variant="contained">
-                                Create New Admin
+                                Create
                             </Button>
                         </Box>
                     </form>

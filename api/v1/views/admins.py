@@ -11,8 +11,8 @@ from models import Admins
 def signup():
     data = request.get_json()
 
-    first_name = data.get('first_name')
-    last_name = data.get('last_name')
+    first_name = data.get('firstName')
+    last_name = data.get('lastName')
     email = data.get('email')
     phone = data.get('phone')
     password = data.get('password')
@@ -41,6 +41,7 @@ def signup():
     try:
         db.session.add(new_admin)
         db.session.commit()
+        print('admin crated successfully')
         return jsonify({"message": "User created successfully"}), 201
     except Exception as e:
         db.session.rollback()
@@ -60,6 +61,7 @@ def login():
         return jsonify({"success": True, "message": "Login successful"})
     else:
         return jsonify({"success": False, "message": "Invalid credentials"}), 401
+
 
 # LOGOUT
 @api_views.route('/logout', methods=['POST'])

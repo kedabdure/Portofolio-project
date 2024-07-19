@@ -91,7 +91,8 @@ const Sidebar = () => {
                         )}
                     </MenuItem>
 
-                    {!isCollapsed && (
+                    {/* profile pic */}
+                    {/* {!isCollapsed && (
                         <Box mb="25px">
                             <Box display="flex" justifyContent="center" alignItems="center">
                                 <img
@@ -116,7 +117,7 @@ const Sidebar = () => {
                                 </Typography>
                             </Box>
                         </Box>
-                    )}
+                    )} */}
 
                     {/* Sidebar Links */}
                     <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%', paddingLeft: isCollapsed ? undefined : "10%" }}>
@@ -181,7 +182,7 @@ const Sidebar = () => {
                             />
                         </Box>
 
-                        <Box sx={{ mt: '30px', mb: 2 }}>
+                        <Box sx={{ mt: '60px', mb: 2 }}>
                             <Item
                                 title="Logout"
                                 to="/"
