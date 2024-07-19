@@ -1,9 +1,9 @@
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
-import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
+// import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import SearchIcon from "@mui/icons-material/Search";
-import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
+// import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import { Box, IconButton, useTheme } from "@mui/material";
 import InputBase from "@mui/material/InputBase";
 import { useContext } from "react";
@@ -38,14 +38,14 @@ const Topbar = () => {
                         <LightModeOutlinedIcon />
                     )}
                 </IconButton>
-
+{/* 
                 <IconButton>
                     <NotificationsOutlinedIcon />
                 </IconButton>
 
                 <IconButton>
                     <SettingsOutlinedIcon />
-                </IconButton>
+                </IconButton> */}
 
                 <IconButton>
                     <PersonOutlinedIcon />

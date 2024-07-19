@@ -6,6 +6,14 @@ from app import db
 from models import Admins
 
 
+# GET ALL USERS
+@api_views.route('/admins', methods=['GET'], strict_slashes=False)
+def get_admins():
+    """Retrieves the list of all User objects"""
+    users = Admins.query.all()
+    return jsonify([user.to_dict() for user in users])
+
+
 # SINGUP
 @api_views.route('/signup', methods=['POST'])
 def signup():

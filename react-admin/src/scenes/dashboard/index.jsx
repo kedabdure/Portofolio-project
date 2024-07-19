@@ -3,9 +3,9 @@ import DoneAllOutlinedIcon from '@mui/icons-material/DoneAllOutlined';
 import PendingOutlinedIcon from '@mui/icons-material/PendingOutlined';
 import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
 import ApprovalOutlinedIcon from '@mui/icons-material/ApprovalOutlined';
-import { Box, Button, IconButton, Typography, useTheme } from "@mui/material";
+import { Box, Button, Typography, useTheme } from "@mui/material";
 import Header from "../../components/Header";
-import ProgressCircle from "../../components/ProgressCircle";
+// import ProgressCircle from "../../components/ProgressCircle";
 import StatBox from "../../components/StatBox";
 import { tokens } from "../../theme";
 import { useState, useEffect } from "react";
@@ -34,7 +34,7 @@ const Dashboard = () => {
             .then(data => {
                 console.log(data);
                 const lastFiveUsers = data.slice(-5);
-                setData(lastFiveUsers);
+                setUserData(lastFiveUsers);
                 setTotalUsers(data.length);
             })
             .catch(error => {
@@ -69,10 +69,6 @@ const Dashboard = () => {
             })
             .then((data) => {
                 setTaskCount(data);
-            //     console.log(data);
-            //     countUp(document.getElementById('completedTasks'), data.completed, 1000);
-            //     countUp(document.getElementById('pendingTasks'), data.pending, 1000);
-            //     countUp(document.getElementById('inProgressTasks'), data.in_progress, 1000);
             })
             .catch((error) => {
                 console.error("There was a problem with the fetch operation:", error);
@@ -81,31 +77,13 @@ const Dashboard = () => {
     };
 
 
-
-    // ANIMATE COUNT UP
-    const countUp = (element, endValue, duration) => {
-        let startValue = 0;
-        const increment = endValue / (duration / 10); // Adjust the increment based on the duration
-        const counter = setInterval(() => {
-            startValue += increment;
-            element.textContent = Math.floor(startValue).toLocaleString(); // Format the number with commas
-
-            if (startValue >= endValue) {
-                clearInterval(counter);
-                element.textContent = endValue.toLocaleString(); // Ensure the final value is set correctly
-            }
-        }, 10); // Adjust the interval for smoother animation
-    };
-
-
-
     return (
         <Box m="20px 20px 50px 20px">
             {/* HEADER */}
             <Box display="flex" justifyContent="space-between" alignItems="center">
                 <Header title="DASHBOARD" subtitle="Welcome to Ex. Handyman Services's Dashboard" />
                 {/* download btn not needed now */}
-                <Box>
+                {/* <Box>
                     <Button
                         sx={{
                             backgroundColor: colors.blueAccent[700],
@@ -118,7 +96,7 @@ const Dashboard = () => {
                         <DownloadOutlinedIcon sx={{ mr: "10px" }} />
                         Download Reports
                     </Button>
-                </Box>
+                </Box> */}
             </Box>
 
 
@@ -324,7 +302,6 @@ const Dashboard = () => {
                                     {row.first_name}
                                 </Typography>
                             </Box>
-                            <Box color={colors.grey[100]}>{row.is_admin}</Box>
                             <Box
                                 backgroundColor={colors.greenAccent[600]}
                                 p="5px 10px"

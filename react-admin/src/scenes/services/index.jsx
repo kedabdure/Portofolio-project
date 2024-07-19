@@ -1,8 +1,8 @@
 import { Box, Typography, useTheme } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import Header from "../../components/Header";
-import { mockDataInvoices } from "../../data/mockData";
 import { tokens } from "../../theme";
+import { useState, useEffect } from "react";
 
 
 const Services = () => {
@@ -11,14 +11,14 @@ const Services = () => {
     const columns = [
         { field: "id", headerName: "ID" },
         {
-            field: "name",
-            headerName: "Name",
+            field: "first_name",
+            headerName: "First Name",
             flex: 1,
             cellClassName: "name-column--cell",
         },
         {
-            field: "phone",
-            headerName: "Phone Number",
+            field: "last_name",
+            headerName: "Last Name",
             flex: 1,
             editable: true,
         },
@@ -29,21 +29,30 @@ const Services = () => {
             editable: true,
         },
         {
-            field: "cost",
-            headerName: "Cost",
+            field: "phone",
+            headerName: "Phone Number",
             flex: 1,
             renderCell: (params) => (
                 <Typography color={colors.greenAccent[500]}>
-                    ${params.row.cost}
+                    📱{params.row.phone}
                 </Typography>
             ),
         },
-        {
-            field: "date",
-            headerName: "Date",
-            flex: 1,
-        },
     ];
+
+    const [adminsData, setAdminsData] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:5000/api/v1/admins')
+            .then(res => res.json())
+            .then(data => {
+                setAdminsData(data);
+            })
+            .catch(error => {
+                console.error("Error fetching data:", error);
+            });
+    }, []);
+
 
     return (
         <Box m="20px">
@@ -82,7 +91,7 @@ const Services = () => {
             >
                 <DataGrid
                     checkboxSelection
-                    rows={mockDataInvoices}
+                    rows={adminsData}
                     columns={columns}
                     components={{ Toolbar: GridToolbar }} />
             </Box>

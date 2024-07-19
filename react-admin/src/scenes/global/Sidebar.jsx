@@ -152,7 +152,7 @@ const Sidebar = () => {
                                 setSelected={setSelected}
                             />
                             <Item
-                                title="Services"
+                                title="Manage Admins"
                                 to="/services"
                                 icon={<HomeRepairServiceOutlinedIcon />}
                                 selected={selected}

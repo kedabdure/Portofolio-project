@@ -6,7 +6,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import Header from "../../components/Header";
 import { tokens } from "../../theme";
 import { useEffect, useState } from "react";
-import dataProvider from "../dataProvider/dataProvider";
+import dataProvider from "../PrivateRoute/PrivateRoute";
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 
 const Users = () => {
