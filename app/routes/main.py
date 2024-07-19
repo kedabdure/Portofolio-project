@@ -40,5 +40,3 @@ def admin():
         users = User.query.all()  # Retrieve all users (if needed)
         return render_template('dashboard.html', users=users, bookings=bookings)  # Pass bookings to the template
     return redirect(url_for('auth.login'))
-
-

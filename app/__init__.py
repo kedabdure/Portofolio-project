@@ -1,17 +1,11 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, current_user
-from flask_migrate import Migrate # help to modify the db schema 
+from flask_migrate import Migrate
 import os
 from models import db
 from flask_cors import CORS
 from flask_mail import Mail
-
-# to use flask migration first
-# `flask db init` initialize flask migration if the first time 
-# then make model change
-# Run `flask db migrate -m "Add phone column to User model."` to create a migration script that includes your changes.
-# `flask db upgrade` Apply the migration to update the database schema with the new column.
 
 
 DB_NAME = 'database.db'
@@ -43,7 +37,7 @@ def create_app():
     with app.app_context():  # Access Flask config and other properties globally within this block
         db.create_all()  # Create all tables in the database
         user = User.query.filter_by(email='abdurehimk77@gmail.com').first()
-        
+
         if user:
             user.is_admin = True
             db.session.commit()

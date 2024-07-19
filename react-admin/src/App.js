@@ -3,14 +3,14 @@ import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Bookings from "./scenes/bookings";
 import Dashboard from "./scenes/dashboard";
-import Form from "./scenes/form";
+import SingUp from "./scenes/signUpForm";
+import Login from "./scenes/loginForm"
 import Sidebar from "./scenes/global/Sidebar";
 import Topbar from "./scenes/global/Topbar";
 import Services from "./scenes/services";
 import Users from "./scenes/users";
 import { ColorModeContext, useMode } from "./theme";
 import Calendar from "./scenes/calendar/calendar";
-
 
 
 function App() {
@@ -26,11 +26,12 @@ function App() {
                     <main className="content">
                         <Topbar setIsSidebar={setIsSidebar} />
                         <Routes>
-                            <Route path="/" element={<Dashboard />} />
+                            <Route path="/" element={<Login />} />
+                            <Route path="/dashboard" element={<Dashboard />} />
                             <Route path="/users" element={<Users />} />
                             <Route path="/bookings" element={<Bookings />} />
                             <Route path="/services" element={<Services />} />
-                            <Route path="/form" element={<Form />} />
+                            <Route path="/form" element={<SingUp />} />
                             <Route path="/calendar" element={<Calendar />} />
                         </Routes>
                     </main>

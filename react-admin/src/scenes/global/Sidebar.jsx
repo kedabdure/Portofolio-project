@@ -12,6 +12,13 @@ import "react-pro-sidebar/dist/css/styles.css";
 import { Link } from "react-router-dom";
 import { tokens } from "../../theme";
 
+
+
+const handleLogout = () => {
+    localStorage.removeItem('authToken');
+};
+
+
 const Item = ({ title, to, icon, selected, setSelected }) => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
@@ -116,7 +123,7 @@ const Sidebar = () => {
                         <Box>
                             <Item
                                 title="Dashboard"
-                                to="/"
+                                to="/dashboard"
                                 icon={<HomeOutlinedIcon />}
                                 selected={selected}
                                 setSelected={setSelected}
@@ -177,10 +184,11 @@ const Sidebar = () => {
                         <Box sx={{ mt: '30px', mb: 2 }}>
                             <Item
                                 title="Logout"
-                                to="http://127.0.0.1:5000/auth/logout"
+                                to="/"
                                 icon={<LogoutOutlinedIcon />}
                                 selected={selected}
                                 setSelected={setSelected}
+                                onClick={handleLogout}
                             />
                         </Box>
                     </Box>
