@@ -3,7 +3,8 @@ import os
 class APIConfig:
     API_KEY = os.environ.get('API_KEY') or 'default-api-key'
     # BASE_URL = os.environ.get('API_BASE_URL') or 'http://localhost:5000/api'
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or 'sqlite:///database.db'
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or 'postgresql://abdure:1234@localhost/database'
     
     # MAIL CONFIGURATION
     MAIL_SERVER = "smtp.fastmail.com"

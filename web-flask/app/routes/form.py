@@ -138,8 +138,6 @@ def booking():
             print('successful!')
             booking_success = True
             # flash('Booked successfully!', category='success')  # Flash a success message
-
-        
             return redirect(url_for('main.index') + '?success=true')
 
     return render_template('booking.html', user=current_user, booking_success=booking_success)

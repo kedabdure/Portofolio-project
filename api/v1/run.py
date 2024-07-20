@@ -1,12 +1,19 @@
 from flask_cors import CORS
 from flask import Flask, jsonify
-from api.v1.views import api_views
 from api.v1.views import mail
+from models import db
 
 app = Flask(__name__)
 app.config.from_object('api_config.APIConfig')
-mail.init_app(app)
 cors = CORS(app, resources={r"/api/*": {"origins": "0.0.0.0"}})
+
+
+# CONNECT API TO DB AND MAIL
+db.init_app(app)
+mail.init_app(app)
+
+# REGISTER BLUEPRINT
+from api.v1.views import api_views
 app.register_blueprint(api_views, url_prefix='/api/v1')
 
 
@@ -19,4 +26,4 @@ def page_not_found(error):
 
 # run the flask app
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5000)
