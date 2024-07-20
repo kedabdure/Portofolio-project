@@ -5,20 +5,19 @@ from flask_migrate import Migrate
 import os
 from models import db
 from flask_cors import CORS
-from flask_mail import Mail
+
 
 
 DB_NAME = 'database.db'
-mail = Mail()
+
 
 def create_app():
     app = Flask(__name__)
-    app.config.from_object('app.config.Config')  # Load configuration settings from a specific class
+    app.config.from_object('config.FlaskConfig')  # Load configuration settings from a specific class
     CORS(app)
     # we can also configure CORS with specific parameters
     # CORS(app, resources={r"/api/*": {"origins": "http://127.0.0.1:5500"}})
 
-    mail.init_app(app)
     db.init_app(app)  # Initialize db with Flask app instance
     migrate = Migrate(app, db) # Initialize Flask-Migrate
     
@@ -53,15 +52,13 @@ def create_app():
     # Register blueprints to Flask routes
     from app.routes.main import main as main_blueprint
     from app.routes.form import auth as auth_blueprint
-    from api.v1.views import api_views as api_blueprint
 
     app.register_blueprint(main_blueprint, url_prefix='/')
-    app.register_blueprint(api_blueprint, url_prefix='/api/v1') # registering api views
-    app.register_blueprint(auth_blueprint, url_prefix='/auth')  # Add a prefix for auth routes
+    app.register_blueprint(auth_blueprint, url_prefix='/auth')
 
     return app
 
 def create_db(app):
-    if not os.path.exists(DB_NAME):  # Check if the database file already exists
-        db.create_all(app=app)  # Create all tables in the database
+    if not os.path.exists(DB_NAME):
+        db.create_all(app=app)
         print('Database created successfully!')

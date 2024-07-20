@@ -20,10 +20,7 @@ def login():
             if check_password_hash(user.password, password):  # Verify the user's password
                 flash('Login successful!', category='success')  # Flash a success message
                 login_user(user, remember=True)  # Log the user in and remember the session 
-                if user.is_admin == "true":
-                    return redirect('http://localhost:3000/dashboard')
-                else:
-                    return redirect(url_for('main.index'))
+                return redirect(url_for('main.index'))
             else:
                 flash("Incorrect password!", category='error')  # Flash an error message
         else:
@@ -76,7 +73,6 @@ def sign_up():
                     first_name=first_name,
                     last_name=last_name,
                     phone=phone,
-                    is_admin=False,
                     password=generate_password_hash(password1, method='pbkdf2:sha256')  # Hash the password
                 )
                 db.session.add(new_user)  # Add the new user to the session
