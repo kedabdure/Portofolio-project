@@ -96,7 +96,6 @@ SQLAlchemy==2.0.30
 ssh-import-id==5.10
 Twisted==18.9.0
 typing-extensions==4.11.0
-ubuntu-pro-client==8001
 ufw==0.36
 unattended-upgrades==0.1
 urllib3==1.25.8
