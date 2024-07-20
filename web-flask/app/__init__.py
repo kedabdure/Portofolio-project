@@ -1,5 +1,4 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, current_user
 from flask_migrate import Migrate
 import os
@@ -7,9 +6,7 @@ from models import db
 from flask_cors import CORS
 
 
-
 DB_NAME = 'database.db'
-
 
 def create_app():
     app = Flask(__name__)
