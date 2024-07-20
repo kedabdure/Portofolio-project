@@ -29,7 +29,7 @@ const Dashboard = () => {
     
     // USER DATA
     useEffect(() => {
-        fetch('http://localhost:5000/api/v1/users')
+        fetch('/api/v1/users')
             .then(res => res.json())
             .then(data => {
                 console.log(data);
@@ -44,7 +44,7 @@ const Dashboard = () => {
 
     // BOOKING DATA
     useEffect(() => {
-        fetch('http://localhost:5000/api/v1/booking')
+        fetch('/api/v1/booking')
             .then(res => res.json())
             .then(data => {
                 console.log(data);
@@ -60,7 +60,7 @@ const Dashboard = () => {
 
     // FUNCTION TO COUNT EACH TASK STATUS AND DISPLAY WITH ANIMATION
     const updateAnalytics = () => {
-        fetch("http://127.0.0.1:5000/api/v1/booking/task_counts")
+        fetch("/api/v1/booking/task_counts")
             .then((response) => {
                 if (!response.ok) {
                     throw new Error("Network response was not ok");

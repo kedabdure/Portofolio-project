@@ -79,7 +79,7 @@ const Bookings = () => {
     const [selectionModel, setSelectionModel] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/api/v1/booking')
+        fetch('/api/v1/booking')
             .then(res => res.json())
             .then(data => {
                 setData(data);
@@ -116,7 +116,7 @@ const Bookings = () => {
     };
 
     const saveDataToDB = (id, updatedFields) => {
-        fetch(`http://localhost:5000/api/v1/booking/${id}`, {
+        fetch(`/api/v1/booking/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -160,7 +160,7 @@ const Bookings = () => {
         const message = "Your booking status has been updated.";
         const recipients = data.filter((row) => selectionModel.includes(row.id)).map((row) => row.email);
 
-        fetch('http://localhost:5000/api/v1/email', {
+        fetch('/api/v1/email', {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
