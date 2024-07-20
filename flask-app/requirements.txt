@@ -94,7 +94,6 @@ six==1.14.0
 soupsieve==1.9.5
 SQLAlchemy==2.0.30
 ssh-import-id==5.10
-systemd-python==234
 Twisted==18.9.0
 typing-extensions==4.11.0
 ubuntu-pro-client==8001
