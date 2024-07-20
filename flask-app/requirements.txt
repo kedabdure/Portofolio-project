@@ -56,7 +56,6 @@ lazr.config==3.0
 lazr.delegates==2.1.0
 lazr.restfulclient==0.14.2
 lazr.uri==1.0.3
-lxml==4.5.0
 mailman==3.3.9
 Mako==1.3.5
 MarkupSafe==2.1.5
