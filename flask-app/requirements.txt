@@ -52,7 +52,6 @@ jsonpatch==1.22
 jsonpointer==2.0
 jsonschema==3.0.1
 keyring==18.0.1
-language-selector==0.1
 launchpadlib==1.10.13
 lazr.config==3.0
 lazr.delegates==2.1.0
