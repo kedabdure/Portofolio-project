@@ -1,0 +1,8 @@
+api==0.0.7
+app==0.0.1
+asposestorage==1.0.2
+Flask==3.0.3
+Flask_Cors==4.0.1
+Flask_Login==0.6.3
+flask_mail==0.10.0
+Werkzeug==3.0.3
