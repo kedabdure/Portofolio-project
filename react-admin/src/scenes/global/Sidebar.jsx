@@ -185,7 +185,7 @@ const Sidebar = () => {
                         <Box sx={{ mt: '60px', mb: 2 }}>
                             <Item
                                 title="Logout"
-                                to="/"
+                                to="/dashboard"
                                 icon={<LogoutOutlinedIcon />}
                                 selected={selected}
                                 setSelected={setSelected}
