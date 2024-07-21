@@ -1,12 +1,21 @@
+import sys
+import os
 from flask_cors import CORS
 from flask import Flask, jsonify
 from api.v1.views import mail
 from models import db
 
-app = Flask(__name__)
-app.config.from_object('api_config.APIConfig')
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
-# Enable CORS if needed
+app = Flask(__name__)
+
+try:
+    app.config.from_object('api_config.APIConfig')
+    from api.api_config import APIConfig
+    print("Import successful")
+except ImportError as e:
+    print("Not successful")
+
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 # CONNECT API TO DB AND MAIL
