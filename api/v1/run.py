@@ -5,8 +5,9 @@ from models import db
 
 app = Flask(__name__)
 app.config.from_object('api_config.APIConfig')
-cors = CORS(app, resources={r"/api/*": {"origins": "0.0.0.0"}})
 
+# Enable CORS if needed
+cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 # CONNECT API TO DB AND MAIL
 db.init_app(app)
@@ -16,14 +17,18 @@ mail.init_app(app)
 from api.v1.views import api_views
 app.register_blueprint(api_views, url_prefix='/api/v1')
 
-
 @app.errorhandler(404)
 def page_not_found(error):
-    """custom page not found msg"""
-    message = {"error": "Page Not found"}
+    """Custom page not found message"""
+    message = {"error": "Page Not Found"}
     return jsonify(message), 404
 
+@app.errorhandler(500)
+def internal_error(error):
+    """Custom internal server error message"""
+    message = {"error": "Internal Server Error"}
+    return jsonify(message), 500
 
-# run the flask app
+# Run the Flask app
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    app.run()
