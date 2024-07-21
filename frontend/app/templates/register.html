@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block content %}
+    <style>
+        .head {
+            /* font-family: 'Montserrat', sans-serif; */
+            font-size: 2.4rem;
+            font-weight: bold;
+            margin: .6rem;
+        }
+        .btn {
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        .login button {
+            background-color: var(--btn-color);
+        }
+
+        .signup-btn:hover {
+            background-color: var(--btn-color);
+        }
+
+        .login-btn,
+        .signup-btn {
+            border-radius: 36px;
+        }
+
+        .main_container {
+            background-image: url('../static/images/electric1.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .sub_container {
+            background-color: rgba(255, 255, 255, 1);
+            border-radius: 10px;
+            padding: 2rem;
+            max-width: 400px;
+        }
+
+    </style>
+
+    <div class="main_container">
+        <div class="container-fluid d-flex flex-column justify-content-center align-items-center sub_container">
+            <h1 class="head heading">Expert Handyman</h1>
+            <div class="login m-3 w-100">
+                <a href="{{ url_for('auth.login') }}">
+                    <button class="btn btn-success login-btn w-100 p-2.9" type="button">Log in</button>
+                </a>
+            </div>
+            <div class="sign-up mb-2 w-100">
+                <a href="{{ url_for('auth.sign_up') }}">
+                    <button class="btn btn-outline-success signup-btn w-100 p-2.7" type="button">Sign up</button>
+                </a>
+            </div>
+            <p class="text-center mt-3 terms" style="font-size: .89rem;">
+                By signing up, you agree to our <a href="#" class="text-decoration-none" style="color: #048904;">Terms of Use</a> <br>and <a href="#" class="text-decoration-none" style="color: #048904;">Privacy Policy</a>.
+            </p>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block navbar %}
+    
+{% endblock navbar %}
+
+{% block footer %}
+    <!-- footer -->
+{% endblock footer %}

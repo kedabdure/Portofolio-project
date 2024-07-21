@@ -1,0 +1,443 @@
+:root {
+    --border-color: #242a30;
+    --background-color: white;
+    --text-color: #0a2b14;
+    --btn-color: #038003; /* Primary button color */
+    --btn-background: #fff; /* Background color */
+    --btn-hover-background: #038003; /* Background color on hover */
+    --btn-border-color: #038003; /* Border color */
+    --primary-color: #038003;
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
+
+body {
+    width: 100vw;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--background-color);
+    /* overflow-x: hidden; */
+    position: relative;
+}
+
+/* Alert message */
+.alert {
+    height: 50px;
+    margin-bottom: 0;
+}
+
+
+/* Pop-up Overlay */
+.popup-overlay {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    z-index: 10000;
+}
+
+/* Pop-up Content */
+.popup-content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 20px;
+    padding-top: 4rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    transition: all .1s ease;
+    animation: drop 0.1s ease-out; /* Added duration and timing function */
+    position: relative;
+}
+
+.popup-icon {
+    position: absolute;
+    top: -18%;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    font-weight: 700;
+    background-color: #038003;
+    color: #fff;
+    border-radius: 50%;
+    transition: all .3s ease;
+    animation: check 0.3s ease-out; /* Added duration and timing function */
+}
+
+@keyframes drop {
+    from {
+        top: 0%;
+    }
+    to {
+        top: 50%;
+    }
+}
+
+@keyframes check {
+    from {
+        top: -16%;
+        width: 110px;
+        height: 110px;
+    }
+    to {
+        top: -18%;
+        width: 100px;
+        height: 100px;
+    }
+}
+
+
+
+/* Close Button */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* OK Button */
+.ok-btn {
+    background-color: #038003;
+    color: #fff;
+    border: none;
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.ok-btn:hover {
+    background-color: #025a02;
+}
+/* End of popup */
+
+
+h1, h2, h3, p, span, a {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between; /*create a space between the two div*/
+    align-items: center;
+    border-bottom: 1px solid rgba(24, 24, 24, 0.1);
+    background-color: #eee;
+    line-height: 3rem;
+    padding: .2rem 5rem;
+    margin: 0;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+
+/* FENCY ANINIMATIO FOR LOGO */
+#nav-logo-section a {
+    font-size: 1.6rem; /* Slightly larger font size */
+    text-decoration: none;
+    color: #013220; /* Dark green color */
+    border: none;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    position: relative;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+#nav-logo-section .logo-icon {
+    margin-right: 10px; /* Space between icon and text */
+    font-size: 1.8rem; /* Size of the icon */
+    transition: transform 0.3s ease;
+}
+
+#nav-logo-section a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 10px,
+        rgba(255, 255, 255, 0.1) 10px,
+        rgba(255, 255, 255, 0.1) 20px
+    ); /* Abstract effect */
+    opacity: 0.3;
+    z-index: -1;
+    transition: opacity 0.3s ease;
+}
+
+#nav-logo-section a:hover::before {
+    opacity: 0.5;
+}
+
+#nav-logo-section a:hover {
+    color: #024b30; /* Slightly lighter dark green */
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4); /* Darker shadow on hover */
+}
+
+#nav-logo-section .logo-icon:hover {
+    transform: rotate(15deg); /* Slightly rotate the icon on hover */
+}
+
+/* Styling for the navigation links */
+#nav-social-section a {
+    color: var(--btn-color);
+    margin: auto;
+    text-decoration: none;
+    position: relative;
+    padding: 5px 10px;
+    transition: color 0.3s ease;
+}
+
+#nav-social-section a:hover {
+    color: #024b30; /* Slightly lighter dark green */
+}
+
+#nav-social-section .btn {
+    color: var(--btn-color);
+    margin: auto;
+    background-color: transparent;
+    border: 2px solid var(--btn-color);
+    padding: 5px 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#nav-social-section .btn:hover {
+    background-color: #024b30;
+    color: #fff;
+}
+
+
+#nav-social-section {
+    display: flex;
+    gap: 2rem;
+}
+
+
+/* Style for the navigation links */
+#nav-social-section a {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    color: #000;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+#nav-social-section a:before {
+    content: '';
+    position: absolute;
+    top: 70%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #038003;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    transform-origin: right;
+
+}
+
+/* Hover effect for the navigation links */
+#nav-social-section a:hover {
+    color: #038003;
+}
+
+/* Hover effect for the underline animation */
+#nav-social-section a:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+
+
+/* BUTTON WITH FANCY STYLE */
+#nav-social-section .btn {
+    color: var(--btn-color);
+    background-color: var(--btn-background);
+    margin: auto;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 600;
+    border: 2px solid var(--btn-border-color);
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* Fancy border animation */
+#nav-social-section .btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: var(--btn-hover-background);
+    transition: all 0.3s ease;
+    z-index: -1;
+}
+
+#nav-social-section .btn:hover::before {
+    left: 0;
+}
+
+/* Change text color and shadow on hover */
+#nav-social-section .btn:hover {
+    color: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Optional: additional hover effects */
+#nav-social-section .btn:hover {
+    transform: translateY(-2px);
+}
+
+#nav-social-section .btn:active {
+    transform: translateY(1px);
+}
+
+
+
+/* NAVBAR ICON */
+.navbar-icon i{
+    color: var(--text-color);
+    background-color: #f2f2f2;
+    border-radius: 3px;
+    font-size: 22px;
+    float: left;
+    line-height: 80px;
+    padding: .4rem;
+    cursor: pointer;
+    display: block;
+}
+
+.navbar-icon:hover {
+    background-color: #e4e4e4;
+
+}
+
+.navbar-icon .fa-bars {
+    display: none;
+}
+
+.navbar-icon .fa-times {
+    display: none;
+}
+
+#menu-toggle {
+    display: none;
+}
+
+
+/* MOBILE VERSION */
+
+@media (max-width: 858px) {
+    .navbar-icon {
+        margin: 2rem 3rem;
+    }
+
+    #nav-logo-section {
+        font-size: 1rem;
+    }
+
+    .navbar-icon .fa-bars {
+        display: block;
+    }
+
+    nav {
+        position: fixed;
+        top: 0;
+        width: 0;
+        height: 100vh;
+        flex-direction: column;
+        overflow: hidden;
+        align-items: left;
+        gap: 0;
+        padding: 0;
+        z-index: 1;
+        background-color: rgb(243, 243, 243);
+    }
+
+    #nav-social-section {
+        display: block;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 20px 20px;
+        gap: 0;
+    }
+
+    #nav-social-section .btn{
+        color: var(--btn-color);
+        margin: auto;
+        border: none;
+        background: none;
+        color: var(--text-color);
+    }
+
+    #nav-social-section .btn:hover {
+        background: none;
+    }
+
+
+    #nav-social-section,
+    #nav-request-section {
+        display: block;
+    }
+
+
+    /* Toggle Navbar */
+    #menu-toggle:checked ~ nav {
+        width: 300px;
+        
+    }
+
+    #menu-toggle:checked ~ .navbar-icon .fa-bars {
+        display: none;
+    }
+
+    #menu-toggle:checked ~ .navbar-icon .fa-times {
+        display: block;
+        margin-left: 280px;
+        padding: auto 0;
+        position: fixed;
+    }
+}
