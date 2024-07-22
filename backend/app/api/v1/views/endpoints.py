@@ -1,13 +1,11 @@
-from flask import Blueprint, jsonify
-
-
-api_v1 = Blueprint('api_v1', __name__, url_prefix='/api/v1')
+# app/api/v1/endpoints.py
+from flask import jsonify
+from .. import api_v1
 
 
 @api_v1.route('/hello', methods=['GET'])
 def hello():
-    return jsonify({"message": "Hello, World!"})
-
+    return jsonify({"message": "Hello, All World!"})
 
 @api_v1.route('/goodbye', methods=['GET'])
 def goodbye():

@@ -1,4 +1,3 @@
-from . import main
 from flask import render_template, url_for, redirect, Blueprint
 from flask_login import login_required, current_user
 

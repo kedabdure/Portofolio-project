@@ -7,3 +7,4 @@ MarkupSafe==2.1.5
 Werkzeug==2.0.3
 Flask-Login==0.6.3
 pip==24.1.2
+python-dotenv
