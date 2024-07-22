@@ -8,7 +8,10 @@ def create_app():
     app.config.from_object(Config)
     db.init_app(app)
 
+    with app.app_context():
+        db.create_all()
+
     from .api import create_api
     create_api(app)
-    
+
     return app

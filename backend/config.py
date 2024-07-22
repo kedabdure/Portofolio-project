@@ -13,7 +13,8 @@ class Config:
     SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'postgresql://username:password@localhost/dbname')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
+
     # Print to verify the variables are loaded correctly
     # print("DEBUG: {}".format(DEBUG))
     # print("SECRET_KEY: {}".format(SECRET_KEY))
-    # print("SQLALCHEMY_DATABASE_URI: {}".format(SQLALCHEMY_DATABASE_URI))
+    print("SQLALCHEMY_DATABASE_URI: {}".format(SQLALCHEMY_DATABASE_URI))
