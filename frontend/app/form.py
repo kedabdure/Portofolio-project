@@ -7,6 +7,7 @@ from config import Config
 auth = Blueprint("auth", __name__)
 
 
+
 def check_email_exists(email):
     """
     Check if the given email already exists in the database via the API.
@@ -26,6 +27,7 @@ def check_email_exists(email):
     except requests.exceptions.RequestException as e:
         print(f"An error occurred: {e}")
         return False
+
 
 
 @auth.route('/signup', methods=['GET', 'POST'])
@@ -86,19 +88,115 @@ def signup():
 
 
 
+
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
-    if request.method == 'POST':
-        data = {
-            'email': request.form['email'],
-            'password': request.form['password']
-        }
-        response = requests.post("{}/login".format(Config.API_URL), json=data)  # Fix: Use dot notation
-        if response.status_code == 200:
-            session['user'] = response.json()
-            flash('Login successful', 'success')
-            return redirect(url_for('main.profile'))
-        else:
-            flash('Login failed', 'danger')
-    return render_template('login.html')
+    """
+    Handle user login requests.
 
+    Renders the login page and processes form submissions to authenticate the user.
+    Checks the user credentials against the data retrieved from the API.
+    """
+    if request.method == 'POST':
+        # Collect form data
+        formData = request.form
+        email = formData.get('email')
+        password = formData.get('password')
+
+        # Check if the email exists
+        if check_email_exists(email):
+            try:
+                # Fetch users from API
+                response = requests.get(f"{Config.API_URL}/api/v1/users")
+                response.raise_for_status()  # Check for HTTP errors
+                users = response.json()
+                
+                # Find the user by email
+                user = next((u for u in users if u['email'] == email), None)
+                
+                # Check if the password matches
+                if check_password_hash(user['password'], password):
+                    session['user'] = user
+                    flash('Login successful! 😊', category='success')
+                    return redirect(url_for('main.index'))
+                else:
+                    flash('Incorrect password! 😡', category='error')
+                    # return redirect(url_for('auth.login'))
+            except requests.exceptions.RequestException as e:
+                print(f"An error occurred: {e}")
+                flash('Error fetching users from API', category='danger')
+                return redirect(url_for('auth.login'))
+        else:
+            flash('Email doesn\'t exist! 😔', category='error')
+            return redirect(url_for('auth.login'))
+    
+    return render_template('login.html', user=current_user)
+
+
+
+@auth.route('/booking', methods=['GET', 'POST'])
+def booking():
+    """
+    Handle booking requests.
+
+    Renders the booking page and processes form submissions to create a new booking.
+    Validates the form data and sends it to the API for storage.
+    """
+    booking_success = False
+
+    if request.method == 'POST':
+        # Collect form data
+        formData = request.form
+        service_name = formData.get('service_name')
+        task_location = formData.get('task_location')
+        street_name = formData.get('street_name')
+        task_size = formData.get('task_size')
+        task_detail = formData.get('task_detail')
+        full_name = formData.get('full_name')
+        email = formData.get('email')
+        phone = formData.get('phone')
+
+        # Validate the form data
+        if not full_name or len(full_name) <= 2:
+            flash("Full name must be greater than 2 characters", category='error')
+        elif not email or len(email) < 3:
+            flash('Email must be greater than 3 characters', category='error')
+        elif not phone or len(phone) < 10:
+            flash('Phone number must be at least 10 characters', category='error')
+        elif not task_location:
+            flash('Task location is required', category='error')
+        elif not service_name:
+            flash('Service name is required', category='error')
+        elif not street_name:
+            flash('Street name is required', category='error')
+        elif not task_detail:
+            flash('Task detail is required', category='error')
+        else:
+            # Prepare data for the API
+            data = {
+                'service_name': service_name,
+                'task_location': task_location,
+                'street_name': street_name,
+                'task_size': task_size,
+                'task_detail': task_detail,
+                'full_name': full_name,
+                'email': email,
+                'phone': phone
+            }
+
+            try:
+                # Send data to the API
+                response = requests.post(f"{Config.API_URL}/api/v1/bookings", json=data)
+                response.raise_for_status()  # Check for HTTP errors
+
+                if response.status_code == 201:
+                    # flash('Booking successful!', category='success')
+                    booking_success = True
+                    return redirect(url_for('main.index') + '?success=true')
+                else:
+                    flash('Booking failed', category='danger')
+            except requests.exceptions.RequestException as e:
+                print(f"An error occurred: {e}")
+                flash('Error while booking. Please try again later.', category='danger')
+
+    return render_template('booking.html', user=current_user, booking_success=booking_success)
