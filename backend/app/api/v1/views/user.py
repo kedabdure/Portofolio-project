@@ -21,6 +21,16 @@ def get_user(user_id):
     return jsonify(user.to_dict())
 
 
+# GET USER BY EMAIL
+@api_v1.route('/users/email/<string:email>', methods=['GET'], strict_slashes=False)
+def get_user_by_email(email):
+    """Retrieves a User object by email"""
+    user = User.query.filter_by(email=email).first()
+    if user is None:
+        return jsonify({'error': 'User not found'}), 404
+    return jsonify(user.to_dict())
+
+
 # DELETE USER BY ID
 @api_v1.route('/users/<int:user_id>', methods=['DELETE'], strict_slashes=False)
 def delete_user(user_id):

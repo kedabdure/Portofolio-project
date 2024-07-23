@@ -163,9 +163,10 @@ nav {
 
 /* FENCY ANINIMATIO FOR LOGO */
 #nav-logo-section a {
-    font-size: 1.6rem; /* Slightly larger font size */
+    font-size: 1.6rem;
+    letter-spacing: -2px;
     text-decoration: none;
-    color: #013220; /* Dark green color */
+    color: #013220;
     border: none;
     display: flex;
     align-items: center;
@@ -175,41 +176,14 @@ nav {
 }
 
 #nav-logo-section .logo-icon {
-    margin-right: 10px; /* Space between icon and text */
-    font-size: 1.8rem; /* Size of the icon */
+    margin-right: 5px;
+    font-size: 1.8rem;
     transition: transform 0.3s ease;
 }
 
-#nav-logo-section a::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: repeating-linear-gradient(
-        -45deg,
-        transparent,
-        transparent 10px,
-        rgba(255, 255, 255, 0.1) 10px,
-        rgba(255, 255, 255, 0.1) 20px
-    ); /* Abstract effect */
-    opacity: 0.3;
-    z-index: -1;
-    transition: opacity 0.3s ease;
-}
-
-#nav-logo-section a:hover::before {
-    opacity: 0.5;
-}
-
-#nav-logo-section a:hover {
-    color: #024b30; /* Slightly lighter dark green */
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4); /* Darker shadow on hover */
-}
 
 #nav-logo-section .logo-icon:hover {
-    transform: rotate(15deg); /* Slightly rotate the icon on hover */
+    transform: rotate(900deg);
 }
 
 /* Styling for the navigation links */
@@ -257,31 +231,10 @@ nav {
     transition: color 0.3s ease;
 }
 
-#nav-social-section a:before {
-    content: '';
-    position: absolute;
-    top: 70%;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: #038003;
-    transform: scaleX(0);
-    transition: transform 0.3s ease;
-    transform-origin: right;
-
-}
-
 /* Hover effect for the navigation links */
 #nav-social-section a:hover {
     color: #038003;
 }
-
-/* Hover effect for the underline animation */
-#nav-social-section a:hover::before {
-    transform: scaleX(1);
-    transform-origin: left;
-}
-
 
 
 /* BUTTON WITH FANCY STYLE */
@@ -325,16 +278,6 @@ nav {
     color: #fff;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
-
-/* Optional: additional hover effects */
-#nav-social-section .btn:hover {
-    transform: translateY(-2px);
-}
-
-#nav-social-section .btn:active {
-    transform: translateY(1px);
-}
-
 
 
 /* NAVBAR ICON */

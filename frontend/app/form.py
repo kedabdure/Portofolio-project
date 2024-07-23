@@ -7,7 +7,7 @@ from config import Config
 auth = Blueprint("auth", __name__)
 
 
-
+# CHECK EMAIL
 def check_email_exists(email):
     """
     Check if the given email already exists in the database via the API.
@@ -29,7 +29,7 @@ def check_email_exists(email):
         return False
 
 
-
+# SIGNUP
 @auth.route('/signup', methods=['GET', 'POST'])
 def signup():
     """
@@ -75,20 +75,28 @@ def signup():
                     'email': email,
                     'password': generate_password_hash(password1, method='pbkdf2:sha256'),  # Hash the password
                 }
+                # Post the data
                 response = requests.post(f"{Config.API_URL}/api/v1/users", json=data)
 
-                # Check the response from the API
                 if response.status_code == 201:
-                    flash('Registration successful', 'success')
-                    return redirect(url_for('main.index'))
+                    # Fetch user data for session management
+                    user_response = requests.get(f"{Config.API_URL}/api/v1/users/email/{email}")
+                    if user_response.status_code == 200:
+                        user_data = user_response.json()
+                        print(user_data)
+                        session['user'] = user_data  # Store user data in session
+                        flash('Registration successful', 'success')
+                        return redirect(url_for('main.index'))
+                    else:
+                        flash('Failed to retrieve user data after registration', 'error')
                 else:
                     flash('Registration failed', 'error')
-    
+
     return render_template('signup.html', user=current_user)
 
 
 
-
+# LOGIN
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
     """
@@ -133,6 +141,14 @@ def login():
     return render_template('login.html', user=current_user)
 
 
+@auth.route('/logout')
+# @login_required
+def logout():
+    """Handle user logout by clearing the session and redirecting to the login page."""
+    session.pop('user', None)  # Remove user data from the session
+    flash('You have been logged out. See you next time! 😊', category='success')
+    return redirect(url_for('main.index'))
+
 
 @auth.route('/booking', methods=['GET', 'POST'])
 def booking():
@@ -142,6 +158,7 @@ def booking():
     Renders the booking page and processes form submissions to create a new booking.
     Validates the form data and sends it to the API for storage.
     """
+    service_title = request.args.get('service_title', default='', type=str)
     booking_success = False
 
     if request.method == 'POST':
@@ -199,4 +216,4 @@ def booking():
                 print(f"An error occurred: {e}")
                 flash('Error while booking. Please try again later.', category='danger')
 
-    return render_template('booking.html', user=current_user, booking_success=booking_success)
+    return render_template('booking.html', user=current_user, booking_success=booking_success, service_title=service_title)

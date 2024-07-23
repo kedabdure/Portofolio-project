@@ -27,7 +27,13 @@
         <div class="form-step form-step-active">
             <h3>Your task location</h3>
             <div class="input-group">
-                <input type="text" name="service_name" id="service_name" placeholder="Service name"/>
+                <input 
+                    type="text" 
+                    name="service_name" 
+                    id="service_name" 
+                    placeholder="Service name"
+                    value="{{ service_title or '' }}"
+                />
             </div>
             <div class="input-group">
                 <input type="text" name="task_location" id="task_location" placeholder="Address"/>

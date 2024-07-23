@@ -4,6 +4,7 @@ from app import create_app
 
 app = create_app()
 
+
 @app.errorhandler(404)
 def page_not_found(error):
     """Custom page not found message"""

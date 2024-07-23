@@ -101,7 +101,7 @@
             </ul>
         </div>
         <div class="cta">
-            <a href="#" class="btn">Let us help you</a>
+            <a href='{{ url_for("auth.booking") }}' class="btn">LET US HELP YOU</a>
         </div>
     </div>
 </section>
@@ -128,73 +128,73 @@
         </p>
         <ul>
             <li>
-                <a href="#"><img src="../static/images/electric1.jpg" alt="Electrical Services" /></a>
+                <a href='{{ url_for("auth.booking", service_title="Electrical Services") }}'><img src="../static/images/electric1.jpg" alt="Electrical Services" /></a>
                 <h4 class="service-title">Electrical Services</h4>
                 <p class="service-des">
                     Professional electrical services to keep your home safe and powered.
                 </p>
                 <button type="button" class="get-help-btn">
-                    <a href="#">GET HELP</a>
+                    <a href='{{ url_for("auth.booking", service_title="Electrical Services") }}'>GET HELP</a>
                 </button>
             </li>
             <li>
-                <a href="#"><img src="../static/images/furniture-drilling-land2.jpg" alt="Carpentry Services" /></a>
+                <a href='{{ url_for("auth.booking", service_title="Carpentry Services") }}'><img src="../static/images/furniture-drilling-land2.jpg" alt="Carpentry Services" /></a>
                 <h4 class="service-title">Carpentry Services</h4>
                 <p class="service-des">
                     Transform your space with custom carpentry and trim work.
                 </p>
                 <button type="button" class="get-help-btn">
-                    <a href="#">GET HELP</a>
+                    <a href='{{ url_for("auth.booking", service_title="Carpentry Services") }}'>GET HELP</a>
                 </button>
             </li>
             <li>
-                <a href="#"><img src="../static/images/handyman-painting.jpg" alt="Painting Services" /></a>
+                <a href='{{ url_for("auth.booking", service_title="Painting Services") }}'><img src="../static/images/handyman-painting.jpg" alt="Painting Services" /></a>
                 <h4 class="service-title">Painting Services</h4>
                 <p class="service-des">
                     Expert interior and exterior painting with a flawless finish.
                 </p>
                 <button type="button" class="get-help-btn">
-                    <a href="#">GET HELP</a>
+                    <a href='{{ url_for("auth.booking", service_title="Painting Services") }}'>GET HELP</a>
                 </button>
             </li>
             <li>
-                <a href="#"><img src="../static/images/handyman-painting.jpg" alt="HVAC Services" /></a>
+                <a href='{{ url_for("auth.booking", service_title="HVAC Services") }}'><img src="../static/images/handyman-painting.jpg" alt="HVAC Services" /></a>
                 <h4 class="service-title">HVAC Services</h4>
                 <p class="service-des">
                     Reliable HVAC services to keep your home comfortable year-round.
                 </p>
                 <button type="button" class="get-help-btn">
-                    <a href="#">GET HELP</a>
+                    <a href='{{ url_for("auth.booking", service_title="HVAC Services") }}'>GET HELP</a>
                 </button>
             </li>
             <li>
-                <a href="#"><img src="../static/images/furniture-drilling-land2.jpg" alt="Flooring Services" /></a>
+                <a href='{{ url_for("auth.booking", service_title="Flooring Services") }}'><img src="../static/images/furniture-drilling-land2.jpg" alt="Flooring Services" /></a>
                 <h4 class="service-title">Flooring Services</h4>
                 <p class="service-des">
                     Premium flooring services for durable and beautiful options.
                 </p>
                 <button type="button" class="get-help-btn">
-                    <a href="#">GET HELP</a>
+                    <a href='{{ url_for("auth.booking", service_title="Flooring Services") }}'>GET HELP</a>
                 </button>
             </li>
             <li>
-                <a href="#"><img src="../static/images/cleaning-window-land1.jpg" alt="Roofing Services" /></a>
+                <a href='{{ url_for("auth.booking", service_title="Roofing Services") }}'><img src="../static/images/cleaning-window-land1.jpg" alt="Roofing Services" /></a>
                 <h4 class="service-title">Roofing Services</h4>
                 <p class="service-des">
                     Expert roofing services to protect your home with a sturdy roof.
                 </p>
                 <button type="button" class="get-help-btn">
-                    <a href="#">GET HELP</a>
+                    <a href='{{ url_for("auth.booking", service_title="Roofing Services") }}'>GET HELP</a>
                 </button>
             </li>
             <li>
-                <a href="#"><img src="../static/images/electric1.jpg" alt="General Maintenance" /></a>
+                <a href='{{ url_for("auth.booking", service_title="General Maintenance") }}'><img src="../static/images/electric1.jpg" alt="General Maintenance" /></a>
                 <h4 class="service-title">General Maintenance</h4>
                 <p class="service-des">
                     Comprehensive maintenance services to keep your home in top shape.
                 </p>
                 <button type="button" class="get-help-btn">
-                    <a href="#">GET HELP</a>
+                    <a href='{{ url_for("auth.booking", service_title="General Maintenance") }}'>GET HELP</a>
                 </button>
             </li>
         </ul>
@@ -219,11 +219,10 @@
                     <div class="title">Furniture Assembly</div>
                     <div class="topic">Repair & Maintenance</div>
                     <div class="des">
-                        We assemble and repair all types of furniture with precision and
-                        care.
+                        We assemble and repair all types of furniture with precision and care.
                     </div>
                     <div class="buttons">
-                        <button>BOOK NOW</button>
+                        <a href='{{ url_for("auth.booking", service_title="Furniture Assembly") }}'>BOOK NOW</a>
                     </div>
                 </div>
             </div>
@@ -233,11 +232,10 @@
                     <div class="title">Electrical Services</div>
                     <div class="topic">Repairs & Installation</div>
                     <div class="des">
-                        Professional electrical repairs and installations to ensure your
-                        home is safe.
+                        Professional electrical repairs and installations to ensure your home is safe.
                     </div>
                     <div class="buttons">
-                        <button>BOOK NOW</button>
+                        <a href='{{ url_for("auth.booking", service_title="Electrical Services") }}'>BOOK NOW</a>
                     </div>
                 </div>
             </div>
@@ -250,7 +248,7 @@
                         Thorough home cleaning services to keep your living space spotless.
                     </div>
                     <div class="buttons">
-                        <button>BOOK NOW</button>
+                        <a href='{{ url_for("auth.booking", service_title="Home Cleaning") }}'>BOOK NOW</a>
                     </div>
                 </div>
             </div>
@@ -263,12 +261,12 @@
                         Expert window cleaning for sparkling clear views.
                     </div>
                     <div class="buttons">
-                        <button>BOOK NOW</button>
+                        <a href='{{ url_for("auth.booking", service_title="Window Cleaning") }}'>BOOK NOW</a>
                     </div>
                 </div>
             </div>
         </div>
-
+    
         <!-- list thumbnail -->
         <div class="thumbnail">
             <div class="item">
@@ -305,26 +303,25 @@
         <!-- next prev -->
         <div class="arrows">
             <button id="prev"><</button>
-                    <button id="next">></button>
+            <button id="next">></button>
         </div>
         <!-- time running -->
         <div class="time"></div>
     </div>
+    
 </section>
 
 <!-- Review Section -->
 <section id="reviews-section" class="reviews-section">
     <div class="reviews-section-left top">
-        <h1>Read what our customers love about us</h1>
+        <h1>See what our customers love about us</h1>
         <p>
-            Over 200 companies frim diverse sectors consult us to enhance the user
-            experience of their products and services.
+            Over 200 families and businesses rely on our expert handyman services.
         </p>
         <p>
-            We have helped companies increase their customer base and generate
-            multifold revenue with our service.
+            Our skilled handymen have helped improve homes and businesses, bringing satisfaction and peace of mind.
         </p>
-        <button>Read our success stories</button>
+        <a href='{{ url_for("auth.booking")}}'><button>Get our takers</button></a>
     </div>
     <div class="reviews-section-right bottom">
         <div class="card">
@@ -333,10 +330,9 @@
                 <span class="material-symbols-sharp"> format_quote </span>
                 <div class="card-details">
                     <p>
-                        We had a great time collaboraring with the Filament team. They have
-                        my high recommendation!
+                        The handyman team was incredibly efficient and professional. They fixed everything perfectly!
                     </p>
-                    <h4>- Marnus Stephen</h4>
+                    <h4>- Ahmed Yusuf</h4>
                 </div>
             </div>
         </div>
@@ -346,10 +342,9 @@
                 <span class="material-symbols-sharp"> format_quote </span>
                 <div class="card-details">
                     <p>
-                        The team drastically improved our product's user experience &
-                        increased our business outreach.
+                        Our home has never looked better! The service was exceptional, and the handymen were very courteous.
                     </p>
-                    <h4>- Andrew Jettpace</h4>
+                    <h4>- Bethel Mekonnen</h4>
                 </div>
             </div>
         </div>
@@ -359,10 +354,9 @@
                 <span class="material-symbols-sharp"> format_quote </span>
                 <div class="card-details">
                     <p>
-                        I absolutely loved working with the Filament team. Complete experts
-                        at what they do!
+                        I'm extremely happy with the work done by this company. Their handymen are true professionals!
                     </p>
-                    <h4>- Stacy Stone</h4>
+                    <h4>- Dawit Tesfaye</h4>
                 </div>
             </div>
         </div>
@@ -397,28 +391,27 @@
             <div class="footer-col">
                 <h4>Company</h4>
                 <ul>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">All Services</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">All Services</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h4>Our Services</h4>
                 <ul>
-                    <li><a href="#">Plumbing</a></li>
-                    <li><a href="#">Electrical Repairs</a></li>
-                    <li><a href="#">Painting</a></li>
-                    <li><a href="#">Carpentry</a></li>
-                    <li><a href="#">Roofing Repairs</a></li>
-                    <li><a href="#">Furniture Assembly</a></li>
-                    <li><a href="#">Window Repair</a></li>
-                    <li><a href="#">General Maintenance</a></li>
+                    <li><a href='{{ url_for("auth.booking", service_title="Plumbing") }}'>Plumbing</a></li>
+                    <li><a href='{{ url_for("auth.booking", service_title="Electrical Repairs") }}'>Electrical Repairs</a></li>
+                    <li><a href='{{ url_for("auth.booking", service_title="Painting") }}'>Painting</a></li>
+                    <li><a href='{{ url_for("auth.booking", service_title="Carpentry") }}'>Carpentry</a></li>
+                    <li><a href='{{ url_for("auth.booking", service_title="Roofing Repairs") }}'>Roofing Repairs</a></li>
+                    <li><a href='{{ url_for("auth.booking", service_title="Furniture Assembly") }}'>Furniture Assembly</a></li>
+                    <li><a href='{{ url_for("auth.booking", service_title="Window Repair") }}'>Window Repair</a></li>
+                    <li><a href='{{ url_for("auth.booking", service_title="General Maintenance") }}'>General Maintenance</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h4>Follow Us</h4>
                 <div class="social-links">
-                    <a href="#">
+                    <a href="https://github.com/kedabdure/Portofolio-project">
                         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="32" height="32"
                             viewBox="0 0 32 32">
                             <path
@@ -426,7 +419,7 @@
                             </path>
                         </svg>
                     </a>
-                    <a href="#">
+                    <a href="https://x.com/Abdurehimkedir6">
                         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="48" height="48"
                             viewBox="0 0 48 48">
                             <path
@@ -434,7 +427,7 @@
                             </path>
                         </svg>
                     </a>
-                    <a href="#">
+                    <a href="https://x.com/Abdurehimkedir6">
                         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="32" height="32"
                             viewBox="0 0 32 32">
                             <path
@@ -442,7 +435,7 @@
                             </path>
                         </svg>
                     </a>
-                    <a href="#">
+                    <a href="https://github.com/kedabdure/Portofolio-project">
                         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="32" height="32"
                             viewBox="0 0 32 32">
                             <path
@@ -453,8 +446,8 @@
                 </div>
             </div>
             <div class="contact-box">
-                <div class="phone-icon">📞</div>
-                <div class="phone-number">0953431572</div>
+                <div class="phone-icon">📱</div>
+                <div class="phone-number">+251953431572</div>
                 <div class="call-now">Call Us Now</div>
             </div>
         </div>

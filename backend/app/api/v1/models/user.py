@@ -22,6 +22,7 @@ class User(db.Model, UserMixin):
             'email': self.email,
             'phone': self.phone,
             'date_created': self.date_created,
+            'password': self.password
         }
 
     def update(self, data):
