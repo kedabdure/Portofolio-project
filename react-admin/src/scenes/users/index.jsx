@@ -1,12 +1,10 @@
-// import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined";
-// import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
 import { Box, useTheme } from "@mui/material";
 import { GridToolbar } from '@mui/x-data-grid/components';
 import { DataGrid } from "@mui/x-data-grid";
 import Header from "../../components/Header";
 import { tokens } from "../../theme";
 import { useEffect, useState } from "react";
-import dataProvider from "../PrivateRoute/PrivateRoute";
+import dataProvider from '../PrivateRoute/dataProvider';
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 
 const Users = () => {
@@ -68,60 +66,54 @@ const Users = () => {
     ];
 
     const [data, setData] = useState([]);
+    const apiUrl = process.env.REACT_APP_API_BASE_URL;
+
 
     useEffect(() => {
-        fetch('http://localhost:5000/api/v1/users')
-            .then(res => res.json())
-            .then(data => {
-                setData(data);
-            })
-            .catch(error => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch(apiUrl);
+                const result = await response.json();
+                setData(result);
+            } catch (error) {
                 console.error("Error fetching data:", error);
-            });
+            }
+        };
+
+        fetchData();
     }, []);
 
 
     // HANDLE ROW EDIT
-    const handleCellEditCommit = (params) => {
-        const { id, field, value } = params;
-        const updatedFields = { [field]: value };
-        saveDataToDB(id, updatedFields);
-    };
+    const processRowUpdate = async (newRow, oldRow) => {
+        const { id, ...updatedFields } = newRow;
 
-    const saveDataToDB = (id, updatedFields) => {
-        fetch(`http://localhost:5000/api/v1/users/${id}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(updatedFields),
-        })
-            .then(response => response.json())
-            .then(data => {
-                console.log("Success:", data);
-                setData((prevData) =>
-                    prevData.map((row) => (row.id === id ? { ...row, ...updatedFields } : row))
-                );
-            })
-            .catch(error => {
-                console.error("Error:", error);
-            });
+        try {
+            await dataProvider.updateUserRecord(id, updatedFields);
+            return newRow;
+        } catch (error) {
+            console.error("Error updating record:", error);
+            return oldRow;
+        }
     };
 
 
     // HANDLE DELETE
     const handleDelete = async (id) => {
-        console.log("Delete function called");
         const confirmDelete = window.confirm("Are you sure you want to delete this record?");
         if (confirmDelete) {
             try {
-                await dataProvider.deleteRecord(id);
+                console.log(`Deleting record with ID: ${id}`);
+                const response = await dataProvider.deleteUserRecord(id);
+                console.log(`API response for ID ${id}:`, response);
+    
                 setData((prevData) => prevData.filter((row) => row.id !== id));
             } catch (error) {
                 console.error("Error deleting record:", error);
             }
         }
     };
+    
 
     return (
         <Box m="20px">
@@ -163,7 +155,7 @@ const Users = () => {
                     rows={data}
                     columns={columns}
                     components={{ Toolbar: GridToolbar }}
-                    onCellEditCommit={handleCellEditCommit}
+                    processRowUpdate={processRowUpdate}
                 />
             </Box>
         </Box>
