@@ -36,10 +36,10 @@
                 />
             </div>
             <div class="input-group">
-                <input type="text" name="task_location" id="task_location" placeholder="Address"/>
+                <input type="text" name="task_location" value="{{ request.form.get('task_location', '') }}" id="task_location" placeholder="Address"/>
             </div>
             <div class="input-group">
-                <input type="text" name="street_name" id="street_name" placeholder="Street name" />
+                <input type="text" name="street_name" value="{{ request.form.get('street_name', '') }}" id="street_name" placeholder="Street name" />
             </div>
             <div class="">
                 <a href="#" class="btn btn-next">Continue</a>
@@ -85,13 +85,13 @@
         <div class="form-step">
             <h3>Your contact</h3>
             <div class="input-group">
-                <input type="text" name="full_name" id="full_name" placeholder="Full name"/>
+                <input type="text" name="full_name" value="{{ request.form.get('full_name', '') }}" id="full_name" placeholder="Full name"/>
             </div>
             <div class="input-group">
-                <input type="text" name="email" id="email" placeholder="Email"/>
+                <input type="text" name="email" value="{{ request.form.get('email', '') }}" id="email" placeholder="Email"/>
             </div>
             <div class="input-group">
-                <input type="tel" name="phone" id="phone" placeholder="Phone"/>
+                <input type="tel" name="phone" value="{{ request.form.get('phone', '') }}" id="phone" placeholder="Phone"/>
             </div>
             <div class="btns-group">
                 <a href="#" class="btn btn-prev">Back</a>

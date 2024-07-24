@@ -1,10 +1,8 @@
 {% extends "base.html" %}
 
-
 {% block content %}
     <style>
         .header {
-            /* font-family: 'Montserrat', sans-serif; */
             font-size: 2.4rem;
             font-weight: bold;
         }
@@ -14,7 +12,6 @@
             background-color: var(--btn-color);
             margin-bottom: 1rem;
         }
-
 
         .main_container {
             background-image: url('../static/images/cleaning-home-land1.jpg');
@@ -55,12 +52,15 @@
             font-weight: 600;
         }
         
-
+        .admin-link {
+            margin-top: .5rem;
+            text-align: center;
+        }
     </style>
 
     <div class="main_container">
         <form method="POST" class="container-fluid d-flex flex-column justify-content-center align-items-center sub_container">
-            <h1 class="header m-2.5" >Expert Handyman</h1>
+            <h1 class="header m-2.5">Expert Handyman</h1>
             <div class="form-group mt-3">
                 <label for="email">Email Address</label>
                 <input type="email" class="form-control" id="email" name="email" value="{{ request.form.get('email', '') }}"
@@ -71,9 +71,11 @@
                 <input type="password" class="form-control" id="password" name="password"
                     value="{{ request.form.get('password', '') }}" placeholder="Enter password" />
             </div>
-            <p class="forget-password">Forget password?</p>
             <br />
             <button type="submit" class="btn btn-success rounded-pill w-100">Login</button>
+            <div class="admin-link">
+                <a href="{{ url_for('main.admin_login') }}">Login as Admin</a>
+            </div>
         </form>
     </div>
 {% endblock content %}

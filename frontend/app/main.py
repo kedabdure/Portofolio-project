@@ -9,7 +9,9 @@ main = Blueprint("main", __name__)
 @main.route('/home', methods=['GET'])
 def index():
     user = session.get('user')
-    return render_template('index.html', user=user)
+    admin = session.get('admin')
+    print(admin)
+    return render_template('index.html', user=user, admin=admin)
 
 # SERVICES
 @main.route('/services', methods=['GET'])
@@ -36,11 +38,10 @@ def admin_login():
         password = request.form.get('password')
 
         if username == Config.ADMIN_USERNAME and password == Config.ADMIN_PASWORD:
-            session['admin_logged_in'] = True
-            return redirect(Config.ADMIN_DASHBOARD_URL)
+            session['admin'] = username
+            return redirect(url_for('main.index'))
         else:
-            return "Invalid credentials", 401
-
+            flash("Incorrect password or username! Enter the correct credential!", category="error")
     return render_template('admin_login.html')
 
 
