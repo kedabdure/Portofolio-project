@@ -2,8 +2,8 @@ import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined
 import BookOnlineOutlinedIcon from '@mui/icons-material/BookOnlineOutlined'; import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import PeopleOutlinedIcon from '@mui/icons-material/PeopleOutlined';
-import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
-import HomeRepairServiceOutlinedIcon from '@mui/icons-material/HomeRepairServiceOutlined';
+// import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
+// import HomeRepairServiceOutlinedIcon from '@mui/icons-material/HomeRepairServiceOutlined';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { useState } from "react";
@@ -13,8 +13,9 @@ import { Link } from "react-router-dom";
 import { tokens } from "../../theme";
 
 
-const FLASK_APP_URL = process.env.FLASK_APP_URL
-console.log(FLASK_APP_URL);
+const handleRedirect = () => {
+    window.location.href = 'https://frontend-zlhx.onrender.com/admin-logout';
+};
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
     const theme = useTheme();
@@ -178,17 +179,13 @@ const Sidebar = () => {
                                 setSelected={setSelected}
                             />
                         </Box>
-
-                        <Box sx={{ mt: '60px', mb: 2 }}>
-                            <a href={`${FLASK_APP_URL}/admin-logout`} style={{ textDecoration: 'none' }}>
-                                <Item
-                                    title="Logout"
-                                    // to={`http://localhost:5001/admin-logout`}
-                                    icon={<LogoutOutlinedIcon />}
-                                    selected={selected}
-                                    setSelected={setSelected}
-                                />
-                            </a>
+                        <Box sx={{ mt: '60px', mb: 2 }} onClick={handleRedirect}>
+                            <Item
+                                title="Logout"
+                                icon={<LogoutOutlinedIcon />}
+                                selected={selected}
+                                setSelected={setSelected}
+                            />
                         </Box>
                     </Box>
 
