@@ -183,7 +183,7 @@ const Sidebar = () => {
                             <a href={`${FLASK_APP_URL}/admin-logout`} style={{ textDecoration: 'none' }}>
                                 <Item
                                     title="Logout"
-                                    to={`http://localhost:5001/admin-logout`}
+                                    // to={`http://localhost:5001/admin-logout`}
                                     icon={<LogoutOutlinedIcon />}
                                     selected={selected}
                                     setSelected={setSelected}
