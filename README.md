@@ -4,6 +4,8 @@ ExpertHandymanServices provides handyman services for customers at their homes. 
 
 ## Table of Contents
 
+- [Project Name](#project-name)
+- [Introduction](#introduction)
 - [Installation](#installation)
 - [Configuration](#configuration)
 - [Database Setup](#database-setup)
@@ -13,6 +15,21 @@ ExpertHandymanServices provides handyman services for customers at their homes. 
     - [Generating and Applying Migrations](#generating-and-applying-migrations)
 - [Running the Application](#running-the-application)
 - [Usage](#usage)
+- [Contributing](#contributing)
+- [Related Projects](#related-projects)
+- [Licensing](#licensing)
+
+## Project Name
+
+**ExpertHandymanServices**
+
+## Introduction
+
+ExpertHandymanServices is a web application designed to connect customers with reliable handyman services. Inspired by my family's background in handyman work, this project aims to help them reach more clients and boost their income through a user-friendly platform.
+
+- **Deployed Site:** [ExpertHandymanServices](https://your-deployed-site-url.com)
+- **Final Project Blog Article:** [Read the blog](https://your-blog-article-url.com)
+- **Author LinkedIn:** [Abdurehim Kedir](https://www.linkedin.com/in/abdurehim-kedir)
 
 ## Installation
 
