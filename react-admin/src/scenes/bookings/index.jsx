@@ -108,15 +108,6 @@ const Bookings = () => {
 
     // HANDLE STATUS CHANGE
     const handleStatusChange = async (newStatus) => {
-        const updatedData = data.map((row) => {
-            if (selectionModel.includes(row.id)) {
-                return { ...row, status: newStatus };
-            }
-            return row;
-        });
-
-        setData(updatedData);
-
         // Save changes to the database
         for (const id of selectionModel) {
             const updatedFields = { status: newStatus };
@@ -126,9 +117,19 @@ const Bookings = () => {
                 console.error("Error updating record in the database:", error);
             }
         }
-
-        setSelectionModel([]);
+    
+        // Update local state after successful database update
+        const updatedData = data.map((row) => {
+            if (selectionModel.includes(row.id)) {
+                return { ...row, status: newStatus };
+            }
+            return row;
+        });
+    
+        setData(updatedData);
+        setSelectionModel([]); // Clear selection after status change
     };
+    
 
     // HANDLE DELETE
     const handleDelete = async () => {

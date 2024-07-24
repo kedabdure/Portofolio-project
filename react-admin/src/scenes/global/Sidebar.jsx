@@ -1,5 +1,5 @@
 import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
-import BookOnlineOutlinedIcon from '@mui/icons-material/BookOnlineOutlined';import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
+import BookOnlineOutlinedIcon from '@mui/icons-material/BookOnlineOutlined'; import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import PeopleOutlinedIcon from '@mui/icons-material/PeopleOutlined';
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
@@ -13,11 +13,8 @@ import { Link } from "react-router-dom";
 import { tokens } from "../../theme";
 
 
-
-const handleLogout = () => {
-    localStorage.removeItem('authToken');
-};
-
+const FLASK_APP_URL = process.env.FLASK_APP_URL
+console.log(FLASK_APP_URL);
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
     const theme = useTheme();
@@ -151,13 +148,13 @@ const Sidebar = () => {
                                 selected={selected}
                                 setSelected={setSelected}
                             />
-                            <Item
+                            {/* <Item
                                 title="Manage Admins"
                                 to="/services"
                                 icon={<HomeRepairServiceOutlinedIcon />}
                                 selected={selected}
                                 setSelected={setSelected}
-                            />
+                            /> */}
 
                             <Typography
                                 variant="h6"
@@ -166,13 +163,13 @@ const Sidebar = () => {
                             >
                                 Pages
                             </Typography>
-                            <Item
+                            {/* <Item
                                 title="Admin Form"
                                 to="/form"
                                 icon={<PersonOutlinedIcon />}
                                 selected={selected}
                                 setSelected={setSelected}
-                            />
+                            /> */}
                             <Item
                                 title="Calendar"
                                 to="/calendar"
@@ -183,14 +180,15 @@ const Sidebar = () => {
                         </Box>
 
                         <Box sx={{ mt: '60px', mb: 2 }}>
-                            <Item
-                                title="Logout"
-                                to="/dashboard"
-                                icon={<LogoutOutlinedIcon />}
-                                selected={selected}
-                                setSelected={setSelected}
-                                onClick={handleLogout}
-                            />
+                            <a href={`${FLASK_APP_URL}/admin-logout`} style={{ textDecoration: 'none' }}>
+                                <Item
+                                    title="Logout"
+                                    to={`http://localhost:5001/admin-logout`}
+                                    icon={<LogoutOutlinedIcon />}
+                                    selected={selected}
+                                    setSelected={setSelected}
+                                />
+                            </a>
                         </Box>
                     </Box>
 

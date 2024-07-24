@@ -9,72 +9,66 @@ import Header from "../../components/Header";
 import StatBox from "../../components/StatBox";
 import { tokens } from "../../theme";
 import { useState, useEffect } from "react";
+import axios from 'axios';
 
 
 const Dashboard = () => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
 
-
     const [userData, setUserData] = useState([]);
     const [totalUsers, setTotalUsers] = useState(0);
 
     const [data, setData] = useState([]);
-    const [taskCount, setTaskCount] = useState({ completed: 0, pending: 0, in_progress: 0 });
+    const [taskCount, setTaskCount] = useState({ Approved: 0, Pending: 0, Progressing: 0 });
     const [totalBookings, setTotalBookings] = useState(0);
+
+    const apiUrl = process.env.REACT_APP_API_BASE_URL;
 
     useEffect(() => {
         updateAnalytics();
     }, []);
-    
+
     // USER DATA
     useEffect(() => {
-        fetch('/api/v1/users')
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                const lastFiveUsers = data.slice(-5);
+        axios.get(`${apiUrl}/api/v1/users`)
+            .then(res => {
+                console.log(res.data);
+                const lastFiveUsers = res.data.slice(-5);
                 setUserData(lastFiveUsers);
-                setTotalUsers(data.length);
+                setTotalUsers(res.data.length);
             })
             .catch(error => {
                 console.error("Error fetching data:", error);
             });
-    }, []);
+    }, [apiUrl]);
 
     // BOOKING DATA
     useEffect(() => {
-        fetch('/api/v1/booking')
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                const lastFiveBooking = data.slice(-6);
+        axios.get(`${apiUrl}/api/v1/bookings`)
+            .then(res => {
+                console.log(res.data);
+                setTotalBookings(res.data.length);
+                const lastFiveBooking = res.data.slice(-10);
                 setData(lastFiveBooking);
-                setTotalBookings(data.length);
             })
             .catch(error => {
                 console.error("Error fetching data:", error);
             });
-    }, []);
-
+    }, [apiUrl]);
 
     // FUNCTION TO COUNT EACH TASK STATUS AND DISPLAY WITH ANIMATION
     const updateAnalytics = () => {
-        fetch("/api/v1/booking/task_counts")
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error("Network response was not ok");
-                }
-                return response.json();
+        axios.get(`${apiUrl}/api/v1/bookings/task_counts`)
+            .then(res => {
+                setTaskCount(res.data);
             })
-            .then((data) => {
-                setTaskCount(data);
-            })
-            .catch((error) => {
+            .catch(error => {
                 console.error("There was a problem with the fetch operation:", error);
-                alert("Failed to fetch task counts. Please try again later.");
             });
     };
+
+
 
 
     return (
@@ -118,10 +112,10 @@ const Dashboard = () => {
                     {/* completed */}
                     <StatBox
                         id="completedTasks"
-                        title={taskCount.completed}
+                        title={taskCount.Approved}
                         subtitle="Completed Tasks"
-                        progress="1"
-                        increase="+14%"
+                        progress={`${taskCount.Approved / totalBookings}`}
+                        const increase = {`${((taskCount.Approved / totalBookings) * 100).toFixed(1)}%`}
                         icon={
                             <DoneAllOutlinedIcon
                                 sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
@@ -140,10 +134,10 @@ const Dashboard = () => {
                 >
                     <StatBox
                         id="pendingTasks"
-                        title={taskCount.pending}
+                        title={taskCount.Pending}
                         subtitle="Pending Tasks"
-                        progress="0.50"
-                        increase="+21%"
+                        progress={`${taskCount.Pending / totalBookings}`}
+                        const increase = {`${((taskCount.Pending / totalBookings) * 100).toFixed(1)}%`}
                         icon={
                             <PendingOutlinedIcon
                                 sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
@@ -162,10 +156,10 @@ const Dashboard = () => {
                 >
                     <StatBox
                         id="inProgressTasks"
-                        title={taskCount.in_progress}
+                        title={taskCount.Progressing}
                         subtitle="Progressing Tasks"
-                        progress="0.30"
-                        increase="+5%"
+                        progress={`${taskCount.Progressing / totalBookings}`}
+                        const increase = {`${((taskCount.Progressing / totalBookings) * 100).toFixed(1)}%`}
                         icon={
                             <ApprovalOutlinedIcon
                                 sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
@@ -184,8 +178,8 @@ const Dashboard = () => {
                     <StatBox
                         title={totalBookings}
                         subtitle="Total Bookings"
-                        progress="0.80"
-                        increase="+43%"
+                        progress={`${totalBookings / totalBookings}`}
+                        increase={`${((totalBookings / totalBookings) * 100).toFixed(1)}%`}
                         icon={
                             <WorkOutlineOutlinedIcon
                                 sx={{ color: colors.greenAccent[600], fontSize: "26px" }}

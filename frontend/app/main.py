@@ -1,5 +1,6 @@
-from flask import render_template, url_for, redirect, Blueprint, session
+from flask import render_template, url_for, redirect, Blueprint, session, request, flash
 from flask_login import login_required, current_user
+from config import Config
 
 main = Blueprint("main", __name__)
 
@@ -26,3 +27,36 @@ def register():
 def profile():
     user = session.get('user')
     return render_template('profile.html', user=user)
+
+
+@main.route('/admin-login', methods=['GET', 'POST'])
+def admin_login():
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+
+        if username == Config.ADMIN_USERNAME and password == Config.ADMIN_PASWORD:
+            session['admin_logged_in'] = True
+            return redirect(Config.ADMIN_DASHBOARD_URL)
+        else:
+            return "Invalid credentials", 401
+
+    return render_template('admin_login.html')
+
+
+# Admin
+@main.route('/admin', methods=['GET'])
+def admin():
+    if not session.get('admin_logged_in'):
+        return redirect(url_for('main.admin_login'))
+    return redirect(Config.ADMIN_DASHBOARD_URL)
+
+
+@main.route('/admin-logout')
+def admin_logout():
+    """
+    handle admin logout
+    """
+    session.pop('admin_logged_in', None)
+    flash('You have been logged out. See you next time! 😊', category='success')
+    return redirect(url_for('main.index'))

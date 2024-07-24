@@ -3,7 +3,6 @@ from ..models import db, Booking
 from .. import api_v1
 
 
-
 # GET ALL BOOKINGS
 @api_v1.route('/bookings', methods=['GET'], strict_slashes=False)
 def get_bookings():
@@ -69,12 +68,12 @@ def update_booking(book_id):
 @api_v1.route('/bookings/task_counts', methods=['GET'], strict_slashes=False)
 def get_task_counts():
     """Return counts of tasks based on their status"""
-    completed_count = Booking.query.filter_by(status='Completed').count()
+    completed_count = Booking.query.filter_by(status='Approved').count()
     pending_count = Booking.query.filter_by(status='Pending').count()
     in_progress_count = Booking.query.filter_by(status='Progressing').count()
 
     return jsonify({
-        'completed': completed_count,
-        'pending': pending_count,
-        'in_progress': in_progress_count
+        'Approved': completed_count,
+        'Pending': pending_count,
+        'Progressing': in_progress_count
     }), 200

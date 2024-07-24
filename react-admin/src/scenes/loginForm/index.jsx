@@ -5,6 +5,8 @@ import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header";
 
+const API_URL = process.env.REACT_APP_API_BASE_URL || "http://127.0.0.1:5000";
+
 const Login = () => {
     const isNonMobile = useMediaQuery("(min-width:600px)");
     const navigate = useNavigate();
@@ -12,7 +14,7 @@ const Login = () => {
     const handleFormSubmit = (values) => {
         console.log(values);
         // Submit the form data to your API
-        fetch("http://127.0.0.1:5000/api/v1/login", {
+        fetch(`${API_URL}/api/v1/admins/login`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

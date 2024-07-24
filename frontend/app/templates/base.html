@@ -54,19 +54,24 @@
                         "
                         onmouseover="this.querySelector('div').style.backgroundColor='#145a27';"
                         onmouseout="this.querySelector('div').style.backgroundColor='#1a8834';"
-            
                     >
                     <div class="d-flex align-items-center justify-content-center" style="background-color: #1a8834; width: 35px; height: 35px; border-radius: 50%; color: white; font-weight: bold; font-size: 15px;">
                         {{ user['first_name'][0] | upper}}
                     </div>
                 </a>
                 <a href="{{ url_for('auth.booking') }}" class="btn btn-outline-success btn-light">GET HELP NOW</a>
-            {% else %}
+                {% if session.get('admin_logged_in') %}
+                    <a href="{{ url_for('admin') }}">Admin</a>
+                {% endif %}
+                {% else %}
                 <a href="/home">Home</a>
                 <a href="{{ url_for('main.services') }}">Services</a>
                 <a href="{{ url_for('main.register') }}">Sign up / Log in</a>
+                <a href="{{ url_for('main.admin_login') }}">Admin</a>
                 <a href="{{ url_for('auth.booking') }}" class="btn btn-outline-success btn-light">GET HELP NOW</a>
-            {% endif %}
+                {% endif %}
+            </div>
+            
 
             </div>
         </nav>

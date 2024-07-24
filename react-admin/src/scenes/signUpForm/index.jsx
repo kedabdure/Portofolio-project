@@ -4,35 +4,24 @@ import { Formik } from "formik";
 import * as yup from "yup";
 import Header from "../../components/Header";
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 
-const SingUp = () => {
+const API_URL = process.env.REACT_APP_API_BASE_URL;
+console.log(API_URL);
+
+const SignUp = () => {
     const isNonMobile = useMediaQuery("(min-width:600px)");
     const navigate = useNavigate();
 
-    const handleFormSubmit = (values) => {
-        console.log(values);
-        // Submit the form data to your API
-        fetch("http://127.0.0.1:5000/api/v1/signup", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(values),
-        })
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error("Network response was not ok");
-                }
-                return response.json();
-            })
-            .then((data) => {
-                console.log("Success:", data);
-            
-                navigate("/dashboard");
-            })
-            .catch((error) => {
-                console.error("Error:", error);
-            });
+    const handleFormSubmit = async (values) => {
+        try {
+            const response = await axios.post(`${API_URL}/api/v1/admins/login`, values);
+            console.log("Response:", response.data);
+            navigate("/dashboard");
+        } catch (error) {
+            console.error("Error creating Admin:", values);
+            throw error;
+        }
     };
 
     return (
@@ -90,7 +79,7 @@ const SingUp = () => {
                             <TextField
                                 fullWidth
                                 variant="filled"
-                                type="text"
+                                type="email"
                                 label="Email"
                                 onBlur={handleBlur}
                                 onChange={handleChange}
@@ -157,4 +146,4 @@ const initialValues = {
     password: "",
 };
 
-export default SingUp;
+export default SignUp;
