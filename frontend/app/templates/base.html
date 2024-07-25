@@ -41,9 +41,9 @@
                 </a>
             </div>
             <div id="nav-social-section" class="nav-section">
-                {% if session.get('admin_logged_in') %}
+                {% if session.get('admin') %}
                 <a href="{{ url_for('main.services') }}">Services</a>
-                <a href="{{ url_for('auth.logout') }}">logout</a>
+                <a href="{{ url_for('main.admin_logout') }}">logout</a>
                 <a href="{{ url_for('main.admin') }}">Admin</a>
                 <a href="{{ url_for('main.admin') }}"
                 style="

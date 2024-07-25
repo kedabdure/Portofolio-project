@@ -33,9 +33,7 @@ function updateDateTime() {
     const now = new Date();
 
     const options = { 
-        year: 'numeric', 
-        month: 'long', 
-        day: 'numeric'
+        year: 'numeric',
     };
     
     const formattedDateTime = now.toLocaleDateString(undefined, options);

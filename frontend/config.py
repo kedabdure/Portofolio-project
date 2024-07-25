@@ -12,7 +12,7 @@ class Config:
     ADMIN_USERNAME = os.getenv('ADMIN_USERNAME', '')
     PORT=os.getenv('PORT', '5000')
     HOST=os.getenv('HOST', '0.0.0.0')
-    ADMIN_DASHBOARD_URL=os.getenv('ADMIN_DASHBOARD_URL', '0.0.0.0')
+    ADMIN_DASHBOARD_URL=os.getenv('ADMIN_DASHBOARD_URL', '')
     
     
     # print("ADMIN_PASWORD: {}".format(ADMIN_PASWORD))

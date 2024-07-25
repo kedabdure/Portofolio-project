@@ -48,7 +48,7 @@ def admin_login():
 # Admin
 @main.route('/admin', methods=['GET'])
 def admin():
-    if not session.get('admin_logged_in'):
+    if not session.get('admin'):
         return redirect(url_for('main.admin_login'))
     return redirect(Config.ADMIN_DASHBOARD_URL)
 
@@ -58,6 +58,6 @@ def admin_logout():
     """
     handle admin logout
     """
-    session.pop('admin_logged_in', None)
+    session.pop('admin', None)
     flash('You have been logged out. See you next time! 😊', category='success')
     return redirect(url_for('main.index'))
