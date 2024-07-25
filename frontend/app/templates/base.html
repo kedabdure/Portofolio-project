@@ -32,7 +32,6 @@
     <header>
         <!-- NAVIGATION BAR -->
         {% block navbar %}
-        <input type="checkbox" id="menu-toggle">
         <nav>
             <div id="nav-logo-section" class="nav-section">
                 <a href="{{ url_for('main.index') }}">
@@ -85,11 +84,12 @@
                 <a href="{{ url_for('auth.booking') }}" class="btn btn-outline-success btn-light">GET HELP NOW</a>
                 {% endif %}
             </div>
+            <label class="navbar-icon" onclick="toggleMenu();">
+                <span class="material-symbols-sharp">
+                    menu
+                </span>
+            </label>
         </nav>
-        <!-- <label for="menu-toggle" class="navbar-icon">
-            <i class="fa-solid fa-bars"></i>
-            <i class="fa-solid fa-times"></i>
-        </label> -->
         {% endblock %}
     </header>
     {% block popup %}

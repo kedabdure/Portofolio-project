@@ -1,3 +1,14 @@
+// TOGGLE MENU
+function toggleMenu() {
+    const dropdownContent = document.getElementById("nav-social-section");
+    if (dropdownContent.style.maxHeight == '0px') {
+        dropdownContent.style.maxHeight = '300px';
+    } else {
+        dropdownContent.style.maxHeight = '0px';
+    }
+}
+
+
 // SHOW ALL CARDS
 document.querySelector('.all-services a').addEventListener('click', function() {
     document.querySelectorAll('.service-container ul li').forEach(function(card) {
