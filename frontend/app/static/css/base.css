@@ -279,7 +279,7 @@ nav {
 
 .navbar-icon {
     display: none;
-    margin-top: .5rem;
+    margin-top: .8rem;
     padding: .2rem;
 }
 
@@ -308,17 +308,17 @@ nav {
     }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 810px) {
     #nav-logo-section a {
         font-size: 1.2rem;
     }
 
     #nav-logo-section a .logo-icon {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
     }
 
     #nav-social-section a{
-        font-size: .8rem;
+        font-size: .9rem;
         gap: .3rem;
     }
 
@@ -327,14 +327,15 @@ nav {
     }
 }
 
-@media (max-width: 730px) {
+@media (max-width: 740px) {
     #nav-logo-section {
-        margin-left: -2rem;
+        margin-left: -3rem;
     }
 
     .navbar-icon {
         display: block;
         padding-top: .6rem;
+        margin-right: -2rem;
     }
 
     #nav-social-section a{
