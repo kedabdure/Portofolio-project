@@ -198,3 +198,10 @@
     }
     
 }
+
+
+@media (max-width: 450px) {
+    .about-section {
+        height: 90vh;
+    }
+}

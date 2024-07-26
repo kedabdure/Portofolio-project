@@ -12,8 +12,8 @@
 
 .trending-services {
     position: absolute;
-    top: 2rem;
-    left: 2rem;
+    top: 5%;
+    left: 5%;
     padding: 23px 46px;
     border-radius: 20px;
     background-color: #eee;
@@ -29,12 +29,12 @@
 
 /* carousel */
 .carousel{
-    height: 85%;
-    width: 85%;
+    height: 95%;
+    width: 95%;
     margin: 0 auto;
     overflow: hidden;
-    border-radius: 20px;
-    border: 3px solid green;
+    border-radius: 10px;
+    /* border: 3px solid green; */
     position: relative;
     box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.5);
 }
@@ -306,13 +306,83 @@
         opacity: 0;
     }
 }
-@media screen and (max-width: 678px) {
+
+
+@media screen and (max-width: 1024px) {
+    .carousel{
+        height: 100%;
+        width: 100%;
+        border-radius: 0;
+        border: none;
+        box-shadow: none;
+    }
+
+    .carousel .list {
+        width: 100%;
+        border: none;
+        border-radius: none;
+    }
+
+    .carousel .list .item{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        inset: 0 0 0 0;
+    }
+
     .carousel .list .item .content{
         padding-right: 0;
     }
+
     .carousel .list .item .content .title{
         font-size: 30px;
     }
+
+    .trending-services {
+        top: 5%;
+        left: 3%;
+        padding: 16px 32px;
+    }
+    
+    .trending-services h1{
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+    
+    .thumbnail{
+        display: none;
+    }
+
+    .arrows{
+        right: 22%;
+        gap: 15px;
+    }
+
 }
 
-/* END OF SLIDER SECTION */
+
+@media screen and (max-width: 678px) {
+    .trending-services {
+        top: 5.2%;
+        left: 3%;
+        padding: 12px 24px;
+    }
+    
+    .trending-services h1{
+        font-size: 1.3rem;
+        font-weight: 600;
+    }
+
+    .arrows{
+        right: 33%;
+    }
+
+}
+
+
+@media screen and (max-width: 450px) {
+    .slider-section{
+        height: 90vh;
+    }
+    
+}

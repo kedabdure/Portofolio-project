@@ -103,28 +103,35 @@
     height: 40px;
     width: 40px;
     background-color: rgba(255, 255, 255, 0.2);
-    margin-right: 10px; /* Adjusted margin for spacing */
+    margin-right: 10px;
+    /* Adjusted margin for spacing */
     text-align: center;
     line-height: 36px;
     border-radius: 50%;
-    transition: transform 0.5s ease, background-color 0.3s ease; /* Added background-color transition */
+    transition: transform 0.5s ease, background-color 0.3s ease;
+    /* Added background-color transition */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .footer-col .social-links a svg {
     width: 20px;
     height: 20px;
-    fill: white; /* Default color */
-    transition: fill 0.3s ease; /* Smooth color transition */
+    fill: white;
+    /* Default color */
+    transition: fill 0.3s ease;
+    /* Smooth color transition */
 }
 
 .footer-col .social-links a:hover {
-    background-color: #ffffffdc; /* Lighten background on hover */
-    transform: scale(1.1); /* Scale up on hover */
+    background-color: #ffffffdc;
+    /* Lighten background on hover */
+    transform: scale(1.1);
+    /* Scale up on hover */
 }
 
 .footer-col .social-links a:hover svg {
-    fill: #24262b; /* Change fill color on hover */
+    fill: #24262b;
+    /* Change fill color on hover */
 }
 
 
@@ -168,16 +175,69 @@
 
 /* Responsive Styles */
 @media (max-width: 767px) {
+
+    #footer-section {
+        width: 100vw;
+        height: auto;
+    }
+
+    .footer {
+        background: none;
+    }
+
+
     .footer-col {
         width: 48%;
         margin-bottom: 30px;
     }
 
+    .row {
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        gap: 2rem;
+    }
+
+    .row .log-png {
+        width: 100px;
+        height: auto;
+        margin: -3rem 0 1rem 0;
+    }
+    
+
+    /* Contact Box */
     .contact-box {
-        position: static;
+        position: relative;
+        padding: .2rem .4rem;
+        margin-bottom: 7%;
+        left: 0;
+    }
+
+    .phone-icon {
+        font-size: 30px;
+    }
+
+    .phone-number {
+        font-size: 20px;
+        font-weight: bold;
+        margin-top: 5px;
+    }
+
+    .call-now {
+        font-size: 15px;
+        margin-top: 5px;
+        text-transform: uppercase;
+        color: #d1d1d1;
+    }
+
+    .copy-right {
         margin: 20px auto 0;
+        text-align: center;
+        width: 70%;
+        z-index: 3;
     }
 }
+
 
 @media (max-width: 574px) {
     .footer-col {

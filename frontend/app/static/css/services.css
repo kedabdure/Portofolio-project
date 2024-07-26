@@ -186,7 +186,8 @@
 /* Responsive Design */
 @media (max-width: 768px) {
     #services {
-        margin-top: -10rem;
+        margin-top: -13rem;
+        padding-top: 4rem;
     }
     #blob-top-svg {
         display: none;
@@ -233,11 +234,20 @@
     }
 }
 
-
-
-@media (max-width: 510px) {
+@media (max-width: 700px) {
     #services {
-        margin-top: -9rem;
+        margin-top: -16rem;
+        padding-top: 6rem;
+    }
+}
+
+
+
+
+@media (max-width: 518px) {
+    #services {
+        margin-top: -14rem;
+        padding-top: 6rem;
     }
 
     .service-container .subtitle {
@@ -285,3 +295,26 @@
     }
 }
 
+
+@media (max-width: 460px) {
+    #services {
+        margin-top: -16rem;
+        padding-top: 6rem;
+    }
+}
+
+
+
+@media (max-width: 415px) {
+    #services {
+        margin-top: -19rem;
+        padding-top: 6rem;
+    }
+}
+
+@media (max-width: 378px) {
+    #services {
+        margin-top: -15rem;
+        padding-top: 6rem;
+    }
+}
